@@ -16,7 +16,9 @@ public:
         AttackRunning,
         Attacking90,
         Attack90Running,
-        Die
+        Die,
+        Injuring,
+        Climbing
     };
 
     PlayerState(PlayerData* playerData);
