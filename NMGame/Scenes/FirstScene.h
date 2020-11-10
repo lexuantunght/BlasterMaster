@@ -50,6 +50,7 @@ protected:
     Map* mMap;
     Camera* mCamera;
     RECT mCurrentMapBound;
+    int mCurrentMapIndex;
     RECT* mListMapBound;
     vector<Enemy*> mEnemies;
     vector<Sprite*> mPowerCollections;

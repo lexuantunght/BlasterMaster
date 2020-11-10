@@ -1,5 +1,6 @@
 #include "FirstScene.h"
 #include "SecondScene.h"
+#include "ThirdScene.h"
 #include "../SceneManager.h"
 #include "../Player.h"
 #include "../GameDefines.h"
@@ -32,6 +33,7 @@ FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse)
     {
         mPlayer->SetPosition(3220, 336);
     }
+    else mPlayer->SetPosition(4268, 906);
 }
 
 FirstScene::~FirstScene()
@@ -58,6 +60,7 @@ void FirstScene::LoadContent()
     mListMapBound = new RECT[15];
     LoadMapBound("Assets/map_bounds.txt");
     mCurrentMapBound = mListMapBound[6];
+    mCurrentMapIndex = 6;
 
     mPlayer = new Player();
     //mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
@@ -342,7 +345,10 @@ void FirstScene::checkCollision()
             {
                 mPlayer->AddPosition(-10, 0);
                 isReplace = true;
-                SceneManager::GetInstance()->ReplaceScene(new SecondScene(mPlayer->mSophia->GetPosition(), mPlayer->mSophia->IsFlipVertical()));
+                if (mCurrentMapIndex == 6)
+                    SceneManager::GetInstance()->ReplaceScene(new SecondScene(mPlayer->mSophia->GetPosition(), mPlayer->mSophia->IsFlipVertical()));
+                else
+                    SceneManager::GetInstance()->ReplaceScene(new ThirdScene(mPlayer->mSophia->GetPosition(), mPlayer->mSophia->IsFlipVertical()));
                 return;
             }
 
@@ -676,6 +682,7 @@ void FirstScene::PassGateRight()
                     && mListMapBound[i].top < mPlayer->GetPosition().y && mListMapBound[i].bottom > mPlayer->GetPosition().y)
                 {
                     mCurrentMapBound = mListMapBound[i];
+                    mCurrentMapIndex = i;
                     break;
                 }
             }
@@ -716,6 +723,7 @@ void FirstScene::PassGateLeft()
                     && mListMapBound[i].top < mPlayer->GetPosition().y && mListMapBound[i].bottom > mPlayer->GetPosition().y)
                 {
                     mCurrentMapBound = mListMapBound[i];
+                    mCurrentMapIndex = i;
                     break;
                 }
             }
