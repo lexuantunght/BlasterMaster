@@ -378,7 +378,7 @@ void SecondScene::checkCollision()
     }
 
     //xu ly player va cham voi enemy
-    if (mPlayer->getState() != PlayerState::Injuring)
+    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead && mPlayer->getState() != PlayerState::InjuringDownOverhead)
         for (size_t i = 0; i < mEnemies.size(); i++)
         {
             if (!mEnemies[i]->mIsActive)
@@ -427,6 +427,7 @@ void SecondScene::checkCollision()
         }
 
     //xu ly player va cham voi dan enemy
+    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead && mPlayer->getState() != PlayerState::InjuringDownOverhead)
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
         if (!mEnemies[i]->mIsActive)

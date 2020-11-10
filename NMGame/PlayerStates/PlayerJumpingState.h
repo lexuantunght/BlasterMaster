@@ -6,6 +6,7 @@ class PlayerJumpingState : public PlayerState
 {
 public:
     PlayerJumpingState(PlayerData* playerData);
+    PlayerJumpingState();
     ~PlayerJumpingState();
 
     void Update(float dt);

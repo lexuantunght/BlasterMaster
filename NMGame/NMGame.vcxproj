@@ -204,6 +204,7 @@
     <ClCompile Include="PlayerStates\PlayerClimbingState.cpp" />
     <ClCompile Include="PlayerStates\PlayerFallingState.cpp" />
     <ClCompile Include="PlayerStates\PlayerInjuringDownOverheadState.cpp" />
+    <ClCompile Include="PlayerStates\PlayerInjuringJumpState.cpp" />
     <ClCompile Include="PlayerStates\PlayerInjuringOverheadState.cpp" />
     <ClCompile Include="PlayerStates\PlayerInjuringState.cpp" />
     <ClCompile Include="PlayerStates\PlayerInjuringUpOverheadState.cpp" />
@@ -293,6 +294,7 @@
     <ClInclude Include="PlayerStates\PlayerClimbingState.h" />
     <ClInclude Include="PlayerStates\PlayerFallingState.h" />
     <ClInclude Include="PlayerStates\PlayerInjuringDownOverheadState.h" />
+    <ClInclude Include="PlayerStates\PlayerInjuringJumpState.h" />
     <ClInclude Include="PlayerStates\PlayerInjuringOverheadState.h" />
     <ClInclude Include="PlayerStates\PlayerInjuringState.h" />
     <ClInclude Include="PlayerStates\PlayerInjuringUpOverheadState.h" />

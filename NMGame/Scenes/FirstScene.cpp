@@ -285,9 +285,11 @@ void FirstScene::checkCollision()
     {
         if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
         {
-            if (mPlayer->getState() == PlayerState::Injuring || mPlayer->getState() == PlayerState::Falling)
+            if (mPlayer->getState() == PlayerState::Injuring || mPlayer->getState() == PlayerState::Falling || mPlayer->getState() == PlayerState::InjuringJump)
                 continue;
         }
+        if (listCollision[i]->Tag == Entity::EntityTypes::Ladder && !mPlayer->isShowJason)
+            continue;
         Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
             listCollision.at(i)->GetBound());
         //string str = std::to_string(listCollision.at(i)->GetBound().top);
@@ -391,6 +393,8 @@ void FirstScene::checkCollision()
             mEnemies[i]->widthBottom = 0;
         for (size_t j = 0; j < listCollisionWithEnemy.size(); j++)
         {
+            if (listCollisionWithEnemy[i]->Tag == Entity::EntityTypes::Dangers)
+                continue;
             Entity::CollisionReturn r = Collision::RecteAndRect(mEnemies[i]->GetBound(),
                 listCollisionWithEnemy.at(j)->GetBound());
             //string str = std::to_string(listCollision.at(i)->GetBound().top);
@@ -511,7 +515,7 @@ void FirstScene::checkCollision()
     }
     
     //xu ly player va cham voi enemy
-    if (mPlayer->getState() != PlayerState::Injuring && mPlayer->getState() != PlayerState::Falling)
+    if (mPlayer->getState() != PlayerState::Injuring && mPlayer->getState() != PlayerState::Falling && mPlayer->getState() != PlayerState::InjuringJump)
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
         if (!mEnemies[i]->mIsActive)
@@ -548,6 +552,7 @@ void FirstScene::checkCollision()
     }
     
     //xu ly player va cham voi dan enemy
+    if (mPlayer->getState() != PlayerState::Injuring && mPlayer->getState() != PlayerState::InjuringJump)
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
         if (!mEnemies[i]->mIsActive)

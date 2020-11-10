@@ -6,6 +6,7 @@
 #include "PlayerJumpingState.h"
 #include "PlayerRunningState.h"
 #include "PlayerStandingState.h"
+#include "PlayerInjuringJumpState.h"
 #include "../GameDefines.h"
 
 PlayerInjuringState::PlayerInjuringState(PlayerData* playerData)
@@ -13,7 +14,7 @@ PlayerInjuringState::PlayerInjuringState(PlayerData* playerData)
     this->mPlayerData = playerData;
     this->mPlayerData->player->SetVx(0);
     this->mPlayerData->player->SetVy(0);
-    this->mTimeExist = 0.5f;
+    this->mTimeExist = 1.0f;
     this->mCurrentTime = 0;
 }
 
@@ -43,7 +44,7 @@ void PlayerInjuringState::HandleKeyboard(std::map<int, bool> keys)
         if (this->mPlayerData->player->allowMoveRight)
         {
             mPlayerData->player->SetReverse(false);
-            this->mPlayerData->player->SetVx(140);
+            this->mPlayerData->player->SetVx(180);
         }
         return;
     }
@@ -52,13 +53,8 @@ void PlayerInjuringState::HandleKeyboard(std::map<int, bool> keys)
         if (this->mPlayerData->player->allowMoveLeft)
         {
             mPlayerData->player->SetReverse(true);
-            this->mPlayerData->player->SetVx(-140);
+            this->mPlayerData->player->SetVx(-180);
         }
-        return;
-    }
-    else if (keys[VK_SPACE])
-    {
-        this->mPlayerData->player->SetVy(-800);
         return;
     }
     else
@@ -71,7 +67,6 @@ void PlayerInjuringState::OnCollision(Entity* impactor, Entity::SideCollisions s
 {
     //lay phia va cham so voi player
     //GameCollision::SideCollisions side = GameCollision::getSideCollision(this->mPlayerData->player, data);
-
     switch (side)
     {
     case Entity::Left:

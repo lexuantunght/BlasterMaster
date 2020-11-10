@@ -16,6 +16,10 @@ PlayerJumpingState::PlayerJumpingState(PlayerData* playerData)
     allowMoveRight = true;
 }
 
+PlayerJumpingState::PlayerJumpingState()
+{
+
+}
 
 PlayerJumpingState::~PlayerJumpingState()
 {

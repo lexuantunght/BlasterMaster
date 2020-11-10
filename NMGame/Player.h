@@ -84,6 +84,7 @@ protected:
         * mAnimationAttack90Running,
         * mAnimationJumping,
         * mAnimationInjuring,
+        * mAnimationInjuringJump,
         * mAnimationInjuringDownOverhead,
         * mAnimationInjuringUpOverhead,
         * mAnimationInjuringOverhead,

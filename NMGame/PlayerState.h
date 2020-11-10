@@ -18,6 +18,7 @@ public:
         Attack90Running,
         Die,
         Injuring,
+        InjuringJump,
         Climbing,
         RunningOverhead,
         StandingOverhead,

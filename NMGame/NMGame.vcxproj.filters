@@ -276,6 +276,9 @@
     <ClCompile Include="MapObjects\BulletEyeball.cpp">
       <Filter>Header Files\MapObjects</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerStates\PlayerInjuringJumpState.cpp">
+      <Filter>PlayerStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -535,6 +538,9 @@
     </ClInclude>
     <ClInclude Include="MapObjects\BulletEyeball.h">
       <Filter>Header Files\MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStates\PlayerInjuringJumpState.h">
+      <Filter>PlayerStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

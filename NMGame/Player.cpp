@@ -7,6 +7,7 @@
 #include "PlayerStates/PlayerAttack90RunningState.h"
 #include "PlayerStates/PlayerAttacking90State.h"
 #include "PlayerStates/PlayerInjuringState.h"
+#include "PlayerStates/PlayerInjuringJumpState.h"
 #include "PlayerStates/PlayerInjuringDownOverheadState.h"
 #include "PlayerStates/PlayerInjuringOverheadState.h"
 #include "PlayerStates/PlayerInjuringUpOverheadState.h"
@@ -23,6 +24,7 @@ Player::Player()
     mAnimationAttacking90 = new Animation("Assets/sophiaAttack90.png", 1, 1, 1, 0);
     mAnimationAttack90Running = new Animation("Assets/sophiaRunAttack90.png", 4, 1, 4, 0.08f);
     mAnimationInjuring = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
+    mAnimationInjuringJump = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
     mAnimationClimbing = new Animation("Assets/climb.png", 2, 1, 2, 0.25f);
     mSophia = nullptr;
     isShowJason = false;
@@ -99,7 +101,10 @@ void Player::OnKeyPressed(int key)
             {
                 this->SetState(new PlayerJumpingState(this->mPlayerData));
             }
-
+            if (mCurrentState == PlayerState::Injuring)
+            {
+                this->SetState(new PlayerInjuringJumpState(this->mPlayerData));
+            }
             allowJump = false;
         }
     }
@@ -122,6 +127,7 @@ void Player::OnKeyPressed(int key)
                     mAnimationAttacking90 = new Animation("Assets/sophiaAttack90.png", 1, 1, 1, 0);
                     mAnimationAttack90Running = new Animation("Assets/sophiaRunAttack90.png", 4, 1, 4, 0.08f);
                     mAnimationInjuring = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
+                    mAnimationInjuringJump = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
                     mCurrentAnimation = mAnimationStanding;
                     isShowJason = false;
                 }
@@ -185,6 +191,7 @@ void Player::showJason()
     mAnimationAttacking90 = new Animation("Assets/idle.png", 1, 1, 1, 0);
     mAnimationAttack90Running = new Animation("Assets/run.png", 3, 1, 3, 0.08f);
     mAnimationInjuring = new Animation("Assets/injuring.png", 2, 1, 2, 0.02f);
+    mAnimationInjuringJump = new Animation("Assets/injuring.png", 2, 1, 2, 0.02f);
     mCurrentAnimation = mAnimationStanding;
     this->AddVy(-240);
     isShowJason = true;
@@ -326,6 +333,9 @@ void Player::changeAnimation(PlayerState::StateName state)
     case PlayerState::InjuringDownOverhead:
         mCurrentAnimation = mAnimationInjuringDownOverhead;
         break;
+    case PlayerState::InjuringJump:
+        mCurrentAnimation = mAnimationInjuringJump;
+        break;
     }
 
     this->SetPosition(this->GetPosition().x, this->GetPosition().y - (mCurrentAnimation->GetHeight() - this->GetHeight()) / 2);
@@ -359,7 +369,7 @@ PlayerData* Player::getPlayerData()
 
 void Player::OnNoCollisionWithBottom()
 {
-    if (mCurrentState != PlayerState::Jumping && mCurrentState != PlayerState::Falling && mCurrentState != PlayerState::Climbing && !isGoingLadder)
+    if (mCurrentState != PlayerState::Jumping && mCurrentState != PlayerState::Falling && mCurrentState != PlayerState::Climbing && !isGoingLadder && mCurrentState != PlayerState::InjuringJump)
     {
         this->SetState(new PlayerFallingState(this->mPlayerData));
     }

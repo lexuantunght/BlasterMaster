@@ -6,7 +6,7 @@
 PlayerFallingState::PlayerFallingState(PlayerData *playerData)
 {
     this->mPlayerData = playerData;
-    acceleratorY = 60.0f;
+    acceleratorY = 40.0f;
     acceleratorX = 5.0f;
     isLeftOrRightKeyPressed = false;
 
