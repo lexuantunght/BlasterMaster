@@ -22,11 +22,11 @@
     <Filter Include="MapReader">
       <UniqueIdentifier>{d888c2fe-84f2-4bfd-800f-5cba81aa9736}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\MapObjects">
-      <UniqueIdentifier>{4131ad14-8436-472f-8822-c9861e6cb193}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Intro">
       <UniqueIdentifier>{11838784-918f-426d-a35e-475775707bb1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="MapObjects">
+      <UniqueIdentifier>{4131ad14-8436-472f-8822-c9861e6cb193}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -151,10 +151,10 @@
       <Filter>MapReader</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\MapObject.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Floor.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
@@ -163,7 +163,7 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Bee.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStates\PlayerAttackRuningState.cpp">
       <Filter>PlayerStates</Filter>
@@ -175,7 +175,7 @@
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Bullet.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStates\PlayerAttacking90State.cpp">
       <Filter>PlayerStates</Filter>
@@ -184,37 +184,37 @@
       <Filter>PlayerStates</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Enemy.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Worm.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Floater.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Dome.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\BulletFloater.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Orb.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Skull.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Insect.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Jumper.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\BulletSkull.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Mine.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStates\PlayerInjuringState.cpp">
       <Filter>PlayerStates</Filter>
@@ -247,16 +247,16 @@
       <Filter>PlayerStates</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\BulletOverhead.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\BulletCannon.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Cannon.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Teleporter.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStates\PlayerInjuringOverheadState.cpp">
       <Filter>PlayerStates</Filter>
@@ -268,16 +268,16 @@
       <Filter>PlayerStates</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\ItemCollection.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="Scenes\ThirdScene.cpp">
       <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Eyeball.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\BulletEyeball.cpp">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="PlayerStates\PlayerInjuringJumpState.cpp">
       <Filter>PlayerStates</Filter>
@@ -429,10 +429,10 @@
       <Filter>MapReader</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\MapObject.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Floor.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
@@ -441,7 +441,7 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Bee.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStates\PlayerAttackRuningState.h">
       <Filter>PlayerStates</Filter>
@@ -453,7 +453,7 @@
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Bullet.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStates\PlayerAttacking90State.h">
       <Filter>PlayerStates</Filter>
@@ -462,37 +462,37 @@
       <Filter>PlayerStates</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Enemy.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Worm.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Dome.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Floater.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\BulletFloater.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Jumper.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Orb.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Skull.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Insect.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\BulletSkull.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Mine.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStates\PlayerInjuringState.h">
       <Filter>PlayerStates</Filter>
@@ -525,16 +525,16 @@
       <Filter>PlayerStates</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\BulletOverhead.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Teleporter.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\BulletCannon.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Cannon.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStates\PlayerInjuringDownOverheadState.h">
       <Filter>PlayerStates</Filter>
@@ -546,16 +546,16 @@
       <Filter>PlayerStates</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\ItemCollection.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="Scenes\ThirdScene.h">
       <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Eyeball.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\BulletEyeball.h">
-      <Filter>Header Files\MapObjects</Filter>
+      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="PlayerStates\PlayerInjuringJumpState.h">
       <Filter>PlayerStates</Filter>
