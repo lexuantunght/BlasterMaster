@@ -55,6 +55,7 @@ public:
 
     //true thi se lat nguoc anh theo truc y
     void SetReverse(bool flag);
+    bool GetReverse();
 
     void showJason();
 
@@ -78,6 +79,7 @@ protected:
         * mAnimationRunning,
         * mAnimationFalling,
         * mAnimationStanding,
+        * mAnimationFlipping,
         * mAnimationAttacking,
         * mAnimationAttackRunning,
         * mAnimationAttacking90,

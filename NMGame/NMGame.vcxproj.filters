@@ -25,6 +25,9 @@
     <Filter Include="Header Files\MapObjects">
       <UniqueIdentifier>{4131ad14-8436-472f-8822-c9861e6cb193}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Intro">
+      <UniqueIdentifier>{11838784-918f-426d-a35e-475775707bb1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -278,6 +281,21 @@
     </ClCompile>
     <ClCompile Include="PlayerStates\PlayerInjuringJumpState.cpp">
       <Filter>PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStates\PlayerFlippingState.cpp">
+      <Filter>PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="Intro\IntroScene.cpp">
+      <Filter>Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="Intro\SophiaAnimation.cpp">
+      <Filter>Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="Intro\TitleAnimation.cpp">
+      <Filter>Intro</Filter>
+    </ClCompile>
+    <ClCompile Include="Intro\IntroAnimation.cpp">
+      <Filter>Intro</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -541,6 +559,21 @@
     </ClInclude>
     <ClInclude Include="PlayerStates\PlayerInjuringJumpState.h">
       <Filter>PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStates\PlayerFlippingState.h">
+      <Filter>PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Intro\IntroScene.h">
+      <Filter>Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="Intro\IntroAnimation.h">
+      <Filter>Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="Intro\SophiaAnimation.h">
+      <Filter>Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="Intro\TitleAnimation.h">
+      <Filter>Intro</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

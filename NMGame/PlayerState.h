@@ -12,6 +12,7 @@ public:
         Running,
         Falling,
         Jumping,
+        Flipping,
         Attacking,
         AttackRunning,
         Attacking90,

@@ -50,8 +50,8 @@ void FirstScene::LoadContent()
 
     mMap = new Map("Assets/area2.tmx");
     mCamera = new Camera(GameGlobal::GetWidth(), GameGlobal::GetHeight());
-    mCamera->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
-    //mCamera->SetPosition(3584, 702);
+    //mCamera->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
+    mCamera->SetPosition(3584, 702);
     mMap->SetCamera(mCamera);
 
     LoadEnemies("Assets/enemies.txt");
@@ -59,12 +59,12 @@ void FirstScene::LoadContent()
     //get bound submap
     mListMapBound = new RECT[15];
     LoadMapBound("Assets/map_bounds.txt");
-    mCurrentMapBound = mListMapBound[0];
-    mCurrentMapIndex = 0;
+    mCurrentMapBound = mListMapBound[6];
+    mCurrentMapIndex = 6;
 
     mPlayer = new Player();
-    mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
-    //mPlayer->SetPosition(3584, 702);
+    //mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
+    mPlayer->SetPosition(3584, 702);
     mPlayer->SetCamera(mCamera);
 }
 

@@ -26,6 +26,7 @@ Player::Player()
     mAnimationInjuring = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
     mAnimationInjuringJump = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
     mAnimationClimbing = new Animation("Assets/climb.png", 2, 1, 2, 0.25f);
+    mAnimationFlipping = new Animation("Assets/sophiaFlipping.png", 4, 1, 4, 0.08f);
     mSophia = nullptr;
     isShowJason = false;
 
@@ -128,6 +129,7 @@ void Player::OnKeyPressed(int key)
                     mAnimationAttack90Running = new Animation("Assets/sophiaRunAttack90.png", 4, 1, 4, 0.08f);
                     mAnimationInjuring = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
                     mAnimationInjuringJump = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
+                    mAnimationFlipping = new Animation("Assets/sophiaFlipping.png", 4, 1, 4, 0.08f);
                     mCurrentAnimation = mAnimationStanding;
                     isShowJason = false;
                 }
@@ -208,6 +210,11 @@ void Player::OnKeyUp(int key)
 void Player::SetReverse(bool flag)
 {
     mCurrentReverse = flag;
+}
+
+bool Player::GetReverse()
+{
+    return mCurrentReverse;
 }
 
 void Player::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
@@ -335,6 +342,11 @@ void Player::changeAnimation(PlayerState::StateName state)
         break;
     case PlayerState::InjuringJump:
         mCurrentAnimation = mAnimationInjuringJump;
+        break;
+    case PlayerState::Flipping:
+        delete mAnimationFlipping;
+        mAnimationFlipping = new Animation("Assets/sophiaFlipping.png", 4, 1, 4, 0.1f);
+        mCurrentAnimation = mAnimationFlipping;
         break;
     }
 

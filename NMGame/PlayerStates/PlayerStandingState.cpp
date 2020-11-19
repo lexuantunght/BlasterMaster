@@ -7,6 +7,7 @@
 #include "PlayerRunningState.h"
 #include "PlayerInjuringState.h"
 #include "PlayerClimbingState.h"
+#include "PlayerFlippingState.h"
 #include "../GameDefines.h"
 
 PlayerStandingState::PlayerStandingState(PlayerData *playerData)
@@ -30,7 +31,13 @@ void PlayerStandingState::HandleKeyboard(std::map<int, bool> keys)
 {
     if (keys[VK_LEFT] || keys[VK_RIGHT])
     {
-        this->mPlayerData->player->SetState(new PlayerRunningState(this->mPlayerData));
+        //this->mPlayerData->player->SetState(new PlayerRunningState(this->mPlayerData));
+        if (!mPlayerData->player->isShowJason && ((keys[VK_LEFT] && !mPlayerData->player->GetReverse()) || (keys[VK_RIGHT] && mPlayerData->player->GetReverse())))
+        {
+            this->mPlayerData->player->SetState(new PlayerFlippingState(this->mPlayerData));
+            return;
+        }
+        else this->mPlayerData->player->SetState(new PlayerRunningState(this->mPlayerData));
         return;
     }
     if (keys[VK_UP])

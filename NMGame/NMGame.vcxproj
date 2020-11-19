@@ -150,6 +150,10 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameGlobal.cpp" />
     <ClCompile Include="GameTime.cpp" />
+    <ClCompile Include="Intro\IntroAnimation.cpp" />
+    <ClCompile Include="Intro\IntroScene.cpp" />
+    <ClCompile Include="Intro\SophiaAnimation.cpp" />
+    <ClCompile Include="Intro\TitleAnimation.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapObjects\Bee.cpp" />
     <ClCompile Include="MapObjects\Bullet.cpp" />
@@ -203,6 +207,7 @@
     <ClCompile Include="PlayerStates\PlayerAttackRuningState.cpp" />
     <ClCompile Include="PlayerStates\PlayerClimbingState.cpp" />
     <ClCompile Include="PlayerStates\PlayerFallingState.cpp" />
+    <ClCompile Include="PlayerStates\PlayerFlippingState.cpp" />
     <ClCompile Include="PlayerStates\PlayerInjuringDownOverheadState.cpp" />
     <ClCompile Include="PlayerStates\PlayerInjuringJumpState.cpp" />
     <ClCompile Include="PlayerStates\PlayerInjuringOverheadState.cpp" />
@@ -237,6 +242,10 @@
     <ClInclude Include="GameDefines.h" />
     <ClInclude Include="GameGlobal.h" />
     <ClInclude Include="GameTime.h" />
+    <ClInclude Include="Intro\IntroAnimation.h" />
+    <ClInclude Include="Intro\IntroScene.h" />
+    <ClInclude Include="Intro\SophiaAnimation.h" />
+    <ClInclude Include="Intro\TitleAnimation.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapObjects\Bee.h" />
     <ClInclude Include="MapObjects\Bullet.h" />
@@ -293,6 +302,7 @@
     <ClInclude Include="PlayerStates\PlayerAttackRuningState.h" />
     <ClInclude Include="PlayerStates\PlayerClimbingState.h" />
     <ClInclude Include="PlayerStates\PlayerFallingState.h" />
+    <ClInclude Include="PlayerStates\PlayerFlippingState.h" />
     <ClInclude Include="PlayerStates\PlayerInjuringDownOverheadState.h" />
     <ClInclude Include="PlayerStates\PlayerInjuringJumpState.h" />
     <ClInclude Include="PlayerStates\PlayerInjuringOverheadState.h" />

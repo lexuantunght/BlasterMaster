@@ -4,6 +4,7 @@
 #include "PlayerAttackRuningState.h"
 #include "PlayerAttack90RunningState.h"
 #include "PlayerJumpingState.h"
+#include "PlayerFlippingState.h"
 #include "../GameDefines.h"
 
 PlayerRunningState::PlayerRunningState(PlayerData* playerData)
@@ -25,7 +26,7 @@ void PlayerRunningState::Update(float dt)
 
 void PlayerRunningState::HandleKeyboard(std::map<int, bool> keys)
 {
-    if (keys[VK_RIGHT])
+    if (keys[VK_RIGHT] && !keys[VK_LEFT])
     {
         if (keys[0x4B])
         {
@@ -39,8 +40,15 @@ void PlayerRunningState::HandleKeyboard(std::map<int, bool> keys)
         {
             if (mPlayerData->player->allowMoveRight)
             {
-                mPlayerData->player->SetReverse(false);
-
+                if (!mPlayerData->player->isShowJason && mPlayerData->player->GetReverse())
+                {
+                    this->mPlayerData->player->SetState(new PlayerFlippingState(this->mPlayerData));
+                    return;
+                }
+                else if (mPlayerData->player->isShowJason)
+                {
+                    this->mPlayerData->player->SetReverse(false);
+                }
                 //di chuyen sang phai
                 /*if (this->mPlayerData->player->GetVx() < Define::PLAYER_MAX_RUNNING_SPEED)
                 {
@@ -55,7 +63,7 @@ void PlayerRunningState::HandleKeyboard(std::map<int, bool> keys)
             }
         }
     }
-    else if (keys[VK_LEFT])
+    else if (keys[VK_LEFT] && !keys[VK_RIGHT])
     {
         if (keys[0x4B])
         {
@@ -69,7 +77,15 @@ void PlayerRunningState::HandleKeyboard(std::map<int, bool> keys)
         {
             if (mPlayerData->player->allowMoveLeft)
             {
-                mPlayerData->player->SetReverse(true);
+                if (!mPlayerData->player->isShowJason && !mPlayerData->player->GetReverse())
+                {
+                    this->mPlayerData->player->SetState(new PlayerFlippingState(this->mPlayerData));
+                    return;
+                }
+                else if (mPlayerData->player->isShowJason)
+                {
+                    this->mPlayerData->player->SetReverse(true);
+                }
 
                 //di chuyen sang trai
                 /*if (this->mPlayerData->player->GetVx() > -Define::PLAYER_MAX_RUNNING_SPEED)
