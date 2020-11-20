@@ -297,6 +297,9 @@
     <ClCompile Include="Intro\IntroAnimation.cpp">
       <Filter>Intro</Filter>
     </ClCompile>
+    <ClCompile Include="GameSound.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -574,6 +577,9 @@
     </ClInclude>
     <ClInclude Include="Intro\TitleAnimation.h">
       <Filter>Intro</Filter>
+    </ClInclude>
+    <ClInclude Include="GameSound.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

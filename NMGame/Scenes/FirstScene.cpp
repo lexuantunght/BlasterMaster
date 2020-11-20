@@ -4,12 +4,15 @@
 #include "../SceneManager.h"
 #include "../Player.h"
 #include "../GameDefines.h"
+#include "../GameSound.h"
 #include <string>
 #include <fstream>
 
 FirstScene::FirstScene()
 {
     LoadContent();
+    GameSound::GetInstance()->Close();
+    GameSound::GetInstance()->Play("Assets/Sounds/area2.mp3");
 }
 
 FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse)

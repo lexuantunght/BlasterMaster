@@ -1,11 +1,17 @@
 #include "IntroScene.h"
 #include "../Scenes/FirstScene.h"
 #include "../SceneManager.h"
+#include "../GameSound.h"
 
 IntroScene::IntroScene()
 {
     LoadContent();
     mTimeCounter = 0;
+}
+
+IntroScene::~IntroScene()
+{
+    
 }
 
 void IntroScene::LoadContent()
@@ -26,13 +32,22 @@ void IntroScene::LoadContent()
 
 void IntroScene::Update(float dt)
 {
-    if (mTimeCounter >= 5.0f)
+    if (mTimeCounter >= 5.0f && mTimeCounter < 38)
     {
-        mCurrentAnimation = mAnimationIntro;
+        if (mCurrentAnimation != mAnimationIntro)
+        {
+            GameSound::GetInstance()->Play("Assets/Sounds/intro.mp3");
+            mCurrentAnimation = mAnimationIntro;
+        }
     }
-    if (mTimeCounter >= 38.0f)
+    if (mTimeCounter >= 38.0f && mTimeCounter < 43)
     {
-        mCurrentAnimation = mAnimationSophia;
+        if (mCurrentAnimation != mAnimationSophia)
+        {
+            GameSound::GetInstance()->Close();
+            GameSound::GetInstance()->Play("Assets/Sounds/intro2.mp3");
+            mCurrentAnimation = mAnimationSophia;
+        }
     }
     if (mTimeCounter >= 43.0f)
     {

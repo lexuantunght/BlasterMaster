@@ -16,6 +16,7 @@ class SecondScene : public Scene
 {
 public:
     SecondScene();
+    ~SecondScene();
     SecondScene(D3DXVECTOR3 oldPos, bool currReverse);
 
     void Update(float dt);

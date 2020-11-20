@@ -1,10 +1,8 @@
 ﻿  IntroScene.cpp
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(21,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(21,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(22,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(22,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(23,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(23,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  SophiaAnimation.cpp
-  Generating Code...
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(27,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(27,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(28,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(28,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(29,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(29,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
   NMGame.vcxproj -> C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\Debug\NMGame.exe

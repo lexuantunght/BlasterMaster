@@ -17,7 +17,7 @@ public:
 
     D3DCOLOR GetBackcolor();
 
-    ~Scene();
+    virtual ~Scene();
 
 protected:
     Scene();

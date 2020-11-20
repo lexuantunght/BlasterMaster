@@ -30,6 +30,12 @@ SecondScene::SecondScene(D3DXVECTOR3 oldPos, bool currReverse)
     LoadContent();
 }
 
+SecondScene::~SecondScene()
+{
+    delete mPlayer;
+    delete mMap;
+}
+
 void SecondScene::LoadContent()
 {
     //set mau backcolor cho scene o day la mau xanh

@@ -10,19 +10,16 @@ Map::~Map()
 {
     delete mMap;
 
-    for (size_t i = 0; i < mBees.size(); i++)
-    {
-        if (mBees[i])
-            delete mBees[i];
-    }
-    mBees.clear();
-
     for (size_t i = 0; i < mListTileset.size(); i++)
     {
         if (mListTileset[i])
             delete mListTileset[i];
     }
     mListTileset.clear();
+
+    delete mSpriteHandler;
+    delete mCamera;
+    delete mQuadTree;
 }
 
 void Map::LoadMap(const char* filePath)
@@ -157,10 +154,7 @@ bool Map::IsBoundBottom()
 
 void Map::Update(float dt)
 {
-    for (size_t i = 0; i < mBees.size(); i++)
-    {
-        mBees[i]->Update(dt);
-    }
+    
 }
 
 void Map::Draw()
@@ -231,11 +225,6 @@ void Map::Draw()
                 }
             }
         }
-    }
-
-    for (size_t i = 0; i < mBees.size(); i++)
-    {
-        mBees[i]->Draw(trans);
     }
 }
 
@@ -317,11 +306,6 @@ void Map::SetCamera(Camera* camera)
 std::map<int, Sprite*> Map::getListTileSet()
 {
     return mListTileset;
-}
-
-std::vector<Bee*> Map::GetListBees()
-{
-    return mBees;
 }
 
 QuadTree* Map::GetQuadTree()

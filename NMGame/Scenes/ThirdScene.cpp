@@ -14,6 +14,12 @@ ThirdScene::ThirdScene(D3DXVECTOR3 oldPos, bool currReverse)
 	LoadContent();
 }
 
+ThirdScene::~ThirdScene()
+{
+    delete mPlayer;
+    delete mMap;
+}
+
 void ThirdScene::LoadContent()
 {
     //set mau backcolor cho scene o day la mau xanh

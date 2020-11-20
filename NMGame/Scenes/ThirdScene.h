@@ -17,6 +17,7 @@ class ThirdScene : public SecondScene
 {
 public:
     ThirdScene();
+    ~ThirdScene();
     ThirdScene(D3DXVECTOR3 oldPos, bool currReverse);
 
     void LoadContent();

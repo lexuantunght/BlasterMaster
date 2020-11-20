@@ -41,8 +41,6 @@ public:
 
     QuadTree* GetQuadTree();
 
-    std::vector<Bee*> GetListBees();
-
     ~Map();
 
 private:
@@ -55,5 +53,4 @@ private:
     std::map<int, Sprite*>          mListTileset;
     Camera*                         mCamera;
     QuadTree*                       mQuadTree;
-    std::vector<Bee*>               mBees;
 };
