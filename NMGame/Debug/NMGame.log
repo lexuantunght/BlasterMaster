@@ -1,8 +1,9 @@
-﻿  IntroScene.cpp
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(27,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(27,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(28,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(28,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(29,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(29,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  NMGame.vcxproj -> C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\Debug\NMGame.exe
+﻿  Player.cpp
+E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(66,23): warning C4018: '<': signed/unsigned mismatch
+E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(235,27): warning C4018: '<': signed/unsigned mismatch
+E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(249,27): warning C4018: '<': signed/unsigned mismatch
+E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(272,28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(274,27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(354,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(355,48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  NMGame.vcxproj -> E:\HK5\Nhập môn Game\BlasterMaster\Debug\NMGame.exe

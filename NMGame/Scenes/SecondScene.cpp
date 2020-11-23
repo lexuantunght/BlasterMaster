@@ -189,6 +189,18 @@ void SecondScene::InitForEnemies(float dt)
             {
                 mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 2));
             }
+            else if (mEnemies[i]->mIsContainItem == 3)
+            {
+                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 3));
+            }
+            else if (mEnemies[i]->mIsContainItem == 4)
+            {
+                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 4));
+            }
+            else if (mEnemies[i]->mIsContainItem == 5)
+            {
+                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 5));
+            }
             mEnemies.erase(mEnemies.begin() + i);
         }
     }
@@ -246,6 +258,12 @@ void SecondScene::checkCollision()
             if (mPlayer->getState() == PlayerState::Injuring)
                 continue;
         }
+        if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
+        {
+            if (mPlayer->getState() == PlayerState::Injuring)
+                continue;
+        }
+
         Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
             listCollision.at(i)->GetBound());
         //string str = std::to_string(listCollision.at(i)->GetBound().top);
@@ -304,6 +322,12 @@ void SecondScene::checkCollision()
 
             //kiem tra neu va cham voi phia duoi cua Player 
             if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
+            {
+                if (mPlayer->mPower > 0) mPlayer->mPower--;
+            }
+
+            //Kiem tra va cham voi chong gai
+            if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
             {
                 if (mPlayer->mPower > 0) mPlayer->mPower--;
             }
