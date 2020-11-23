@@ -18,8 +18,8 @@ MissileBullet::MissileBullet(D3DXVECTOR3 position, int angle)
     SetPosition(position);
     mStartedPosition = position;
     mTimeExist = 0;
-    countTimeToGoto = 0;
     countTimeChange = 0;
+    minIndex = FindIndexMinDistance();
     mIsValid = true;
 
     Entity::SetWidth(mAnimation->GetWidth());
@@ -37,14 +37,15 @@ int MissileBullet::FindIndexMinDistance()
     if (FirstScene::mEnemies.size() > 0)
     {
         int index = 0;
-        double minLength = sqrt(((double)FirstScene::mEnemies.at(0)->GetPosition().x - this->GetPosition().x) * (FirstScene::mEnemies.at(0)->GetPosition().x - this->GetPosition().x)
-            + ((double)FirstScene::mEnemies.at(0)->GetPosition().y - this->GetPosition().y) * (FirstScene::mEnemies.at(0)->GetPosition().y - this->GetPosition().y));
+        double minLength = sqrt(((double)FirstScene::mEnemies.at(0)->GetPosition().x - this->GetPosition().x) * (FirstScene::mEnemies.at(0)->GetPosition().x - (double)this->GetPosition().x) + ((double)FirstScene::mEnemies.at(0)->GetPosition().y - this->GetPosition().y) * (FirstScene::mEnemies.at(0)->GetPosition().y - (double)this->GetPosition().y));
         for (int i = 0; i < FirstScene::mEnemies.size(); i++)
         {
-            double tmp = sqrt(((double)FirstScene::mEnemies.at(i)->GetPosition().x - this->GetPosition().x) * (FirstScene::mEnemies.at(i)->GetPosition().x - this->GetPosition().x)
-                + ((double)FirstScene::mEnemies.at(i)->GetPosition().y - this->GetPosition().y) * (FirstScene::mEnemies.at(i)->GetPosition().y - this->GetPosition().y));
+            double tmp = sqrt(((double)FirstScene::mEnemies.at(i)->GetPosition().x - this->GetPosition().x) * (FirstScene::mEnemies.at(i)->GetPosition().x - (double)this->GetPosition().x) + ((double)FirstScene::mEnemies.at(i)->GetPosition().y - this->GetPosition().y) * (FirstScene::mEnemies.at(i)->GetPosition().y - (double)this->GetPosition().y));
             if (tmp < minLength)
+            {
+                minLength = tmp;
                 index = i;
+            }
         }
         return index;
     }
@@ -99,13 +100,6 @@ void MissileBullet::Update(float dt)
         countTimeChange = 0;
     }
     else countTimeChange += dt;
-
-    if (countTimeToGoto >= 0.5f)
-    {
-        minIndex = FindIndexMinDistance();
-        countTimeToGoto = 0;
-    }
-    else countTimeToGoto += dt;
 
     if (mIsValid && mTimeExist >= mTimeExistMaximum)
     {

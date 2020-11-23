@@ -10,7 +10,6 @@ public:
 private:
 	int FindIndexMinDistance();
 	void GotoEnemy();
-	float countTimeToGoto;
 	float countTimeChange;
 	int minIndex;
 };

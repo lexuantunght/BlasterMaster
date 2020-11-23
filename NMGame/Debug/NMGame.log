@@ -1,7 +1,5 @@
-﻿  MissileBullet.cpp
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\MissileBullet.cpp(42,27): warning C4018: '<': signed/unsigned mismatch
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\MissileBullet.cpp(80,50): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\MissileBullet.cpp(81,50): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\MissileBullet.cpp(86,50): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\MissileBullet.cpp(87,50): warning C4305: 'argument': truncation from 'double' to 'float'
+﻿  Bullet.cpp
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(142,42): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(158,28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(160,27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
   NMGame.vcxproj -> C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\Debug\NMGame.exe
