@@ -1,9 +1,0 @@
-﻿  Player.cpp
-E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(66,23): warning C4018: '<': signed/unsigned mismatch
-E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(235,27): warning C4018: '<': signed/unsigned mismatch
-E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(249,27): warning C4018: '<': signed/unsigned mismatch
-E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(272,28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(274,27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(354,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-E:\HK5\Nhập môn Game\BlasterMaster\NMGame\Player.cpp(355,48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-  NMGame.vcxproj -> E:\HK5\Nhập môn Game\BlasterMaster\Debug\NMGame.exe
