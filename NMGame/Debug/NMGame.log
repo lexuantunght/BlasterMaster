@@ -1,8 +1,12 @@
-﻿  IntroScene.cpp
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(27,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(27,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(28,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(28,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(29,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(29,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+﻿  PlayerInjuringDownOverheadState.cpp
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\PlayerStates\PlayerInjuringDownOverheadState.cpp(80,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\PlayerStates\PlayerInjuringDownOverheadState.cpp(93,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\PlayerStates\PlayerInjuringDownOverheadState.cpp(101,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\PlayerStates\PlayerInjuringDownOverheadState.cpp(110,77): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerInjuringUpOverheadState.cpp
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\PlayerStates\PlayerInjuringUpOverheadState.cpp(80,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\PlayerStates\PlayerInjuringUpOverheadState.cpp(93,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\PlayerStates\PlayerInjuringUpOverheadState.cpp(101,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\PlayerStates\PlayerInjuringUpOverheadState.cpp(110,77): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  Generating Code...
   NMGame.vcxproj -> C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\Debug\NMGame.exe

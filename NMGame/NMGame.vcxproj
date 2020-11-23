@@ -156,7 +156,6 @@
     <ClCompile Include="Intro\SophiaAnimation.cpp" />
     <ClCompile Include="Intro\TitleAnimation.cpp" />
     <ClCompile Include="Map.cpp" />
-    <ClCompile Include="MapObjects\Bee.cpp" />
     <ClCompile Include="MapObjects\Bullet.cpp" />
     <ClCompile Include="MapObjects\BulletCannon.cpp" />
     <ClCompile Include="MapObjects\BulletEyeball.cpp" />
@@ -172,11 +171,13 @@
     <ClCompile Include="MapObjects\ItemCollection.cpp" />
     <ClCompile Include="MapObjects\Jumper.cpp" />
     <ClCompile Include="MapObjects\Mine.cpp" />
+    <ClCompile Include="MapObjects\MissileBullet.cpp" />
     <ClCompile Include="MapObjects\Orb.cpp" />
+    <ClCompile Include="MapObjects\RocketBullet.cpp" />
     <ClCompile Include="MapObjects\Skull.cpp" />
     <ClCompile Include="MapObjects\Teleporter.cpp" />
+    <ClCompile Include="MapObjects\ThunderBullet.cpp" />
     <ClCompile Include="MapObjects\Worm.cpp" />
-    <ClCompile Include="MapObjects\Floor.cpp" />
     <ClCompile Include="MapObjects\MapObject.cpp" />
     <ClCompile Include="MapReader\base64.cpp" />
     <ClCompile Include="MapReader\miniz.c" />
@@ -227,11 +228,10 @@
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SceneManager.cpp" />
     <ClCompile Include="Scenes\FirstScene.cpp" />
-    <ClCompile Include="Scenes\Map1Scene.cpp" />
-    <ClCompile Include="Scenes\Map2Scene.cpp" />
     <ClCompile Include="Scenes\SecondScene.cpp" />
     <ClCompile Include="Scenes\ThirdScene.cpp" />
     <ClCompile Include="Sprite.cpp" />
+    <ClCompile Include="Views\Menu.cpp" />
     <ClCompile Include="WinMain.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -249,7 +249,6 @@
     <ClInclude Include="Intro\SophiaAnimation.h" />
     <ClInclude Include="Intro\TitleAnimation.h" />
     <ClInclude Include="Map.h" />
-    <ClInclude Include="MapObjects\Bee.h" />
     <ClInclude Include="MapObjects\Bullet.h" />
     <ClInclude Include="MapObjects\BulletCannon.h" />
     <ClInclude Include="MapObjects\BulletEyeball.h" />
@@ -265,11 +264,13 @@
     <ClInclude Include="MapObjects\ItemCollection.h" />
     <ClInclude Include="MapObjects\Jumper.h" />
     <ClInclude Include="MapObjects\Mine.h" />
+    <ClInclude Include="MapObjects\MissileBullet.h" />
     <ClInclude Include="MapObjects\Orb.h" />
+    <ClInclude Include="MapObjects\RocketBullet.h" />
     <ClInclude Include="MapObjects\Skull.h" />
     <ClInclude Include="MapObjects\Teleporter.h" />
+    <ClInclude Include="MapObjects\ThunderBullet.h" />
     <ClInclude Include="MapObjects\Worm.h" />
-    <ClInclude Include="MapObjects\Floor.h" />
     <ClInclude Include="MapObjects\MapObject.h" />
     <ClInclude Include="MapReader\base64.h" />
     <ClInclude Include="MapReader\tinyxml2.h" />
@@ -323,11 +324,10 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Scenes\FirstScene.h" />
-    <ClInclude Include="Scenes\Map1Scene.h" />
-    <ClInclude Include="Scenes\Map2Scene.h" />
     <ClInclude Include="Scenes\SecondScene.h" />
     <ClInclude Include="Scenes\ThirdScene.h" />
     <ClInclude Include="Sprite.h" />
+    <ClInclude Include="Views\Menu.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="MapReader\Tmx.h.in" />

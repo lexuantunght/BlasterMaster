@@ -28,6 +28,9 @@
     <Filter Include="MapObjects">
       <UniqueIdentifier>{4131ad14-8436-472f-8822-c9861e6cb193}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Views">
+      <UniqueIdentifier>{8aa0bb06-73d7-4300-9d95-4336178e8834}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -153,26 +156,14 @@
     <ClCompile Include="MapObjects\MapObject.cpp">
       <Filter>MapObjects</Filter>
     </ClCompile>
-    <ClCompile Include="MapObjects\Floor.cpp">
-      <Filter>MapObjects</Filter>
-    </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="QuadTree.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="MapObjects\Bee.cpp">
-      <Filter>MapObjects</Filter>
-    </ClCompile>
     <ClCompile Include="PlayerStates\PlayerAttackRuningState.cpp">
       <Filter>PlayerStates</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\Map2Scene.cpp">
-      <Filter>Scenes</Filter>
-    </ClCompile>
-    <ClCompile Include="Scenes\Map1Scene.cpp">
-      <Filter>Scenes</Filter>
     </ClCompile>
     <ClCompile Include="MapObjects\Bullet.cpp">
       <Filter>MapObjects</Filter>
@@ -299,6 +290,18 @@
     </ClCompile>
     <ClCompile Include="GameSound.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Views\Menu.cpp">
+      <Filter>Views</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjects\RocketBullet.cpp">
+      <Filter>MapObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjects\ThunderBullet.cpp">
+      <Filter>MapObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjects\MissileBullet.cpp">
+      <Filter>MapObjects</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -434,26 +437,14 @@
     <ClInclude Include="MapObjects\MapObject.h">
       <Filter>MapObjects</Filter>
     </ClInclude>
-    <ClInclude Include="MapObjects\Floor.h">
-      <Filter>MapObjects</Filter>
-    </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="QuadTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="MapObjects\Bee.h">
-      <Filter>MapObjects</Filter>
-    </ClInclude>
     <ClInclude Include="PlayerStates\PlayerAttackRuningState.h">
       <Filter>PlayerStates</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenes\Map2Scene.h">
-      <Filter>Scenes</Filter>
-    </ClInclude>
-    <ClInclude Include="Scenes\Map1Scene.h">
-      <Filter>Scenes</Filter>
     </ClInclude>
     <ClInclude Include="MapObjects\Bullet.h">
       <Filter>MapObjects</Filter>
@@ -580,6 +571,18 @@
     </ClInclude>
     <ClInclude Include="GameSound.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Views\Menu.h">
+      <Filter>Views</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjects\RocketBullet.h">
+      <Filter>MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjects\ThunderBullet.h">
+      <Filter>MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjects\MissileBullet.h">
+      <Filter>MapObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

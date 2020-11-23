@@ -11,7 +11,9 @@ IntroScene::IntroScene()
 
 IntroScene::~IntroScene()
 {
-    
+    delete mAnimationSophia;
+    delete mAnimationIntro;
+    delete mAnimationTitle;
 }
 
 void IntroScene::LoadContent()
@@ -40,16 +42,24 @@ void IntroScene::Update(float dt)
             mCurrentAnimation = mAnimationIntro;
         }
     }
-    if (mTimeCounter >= 38.0f && mTimeCounter < 43)
+    if (mTimeCounter >= 38 && mTimeCounter < 41)
+    {
+        if (mCurrentAnimation != mAnimationTitle)
+        {
+            mAnimationTitle->Reset();
+            mCurrentAnimation = mAnimationTitle;
+        }
+    }
+    if (mTimeCounter >= 41.0f && mTimeCounter < 46)
     {
         if (mCurrentAnimation != mAnimationSophia)
         {
-            GameSound::GetInstance()->Close();
+            GameSound::GetInstance()->Close("intro");
             GameSound::GetInstance()->Play("Assets/Sounds/intro2.mp3");
             mCurrentAnimation = mAnimationSophia;
         }
     }
-    if (mTimeCounter >= 43.0f)
+    if (mTimeCounter >= 46.0f)
     {
         SceneManager::GetInstance()->ReplaceScene(new FirstScene());
         return;

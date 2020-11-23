@@ -59,6 +59,8 @@ public:
 
     void showJason();
 
+    void SetEnemyPos(vector<D3DXVECTOR3> mEnemyPos);
+
     bool allowMoveRight;
     bool allowMoveLeft;
     bool allowMoveUp;
@@ -70,6 +72,8 @@ public:
     bool isOnLadder;
     bool isGoingLadder;
     Sprite* mSophia;
+    int skill; //missle = 1, thunder = 2, rocket = 3
+    int missleBulletCount = 20, thunderBulletCount = 20, rocketBulletCount = 20;
 protected:
     PlayerData* mPlayerData;
 
@@ -100,6 +104,7 @@ protected:
 
     Sprite* mPowerView;
     vector<Sprite*> mPowerItems;
+    vector<D3DXVECTOR3> mEnemyPos;
 
     void changeAnimation(PlayerState::StateName state);
 

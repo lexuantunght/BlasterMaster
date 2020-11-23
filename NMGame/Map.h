@@ -7,10 +7,8 @@
 #include "MapReader/Tmx.h.in"
 #include "GameGlobal.h"
 #include "Camera.h"
-#include "MapObjects/Floor.h"
 #include "QuadTree.h"
 #include "Collision.h"
-#include "MapObjects/Bee.h"
 
 class Map
 {

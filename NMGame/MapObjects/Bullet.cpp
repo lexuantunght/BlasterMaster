@@ -59,6 +59,10 @@ bool Bullet::init(D3DXVECTOR3 position, int angle)
     return true;
 }
 
+void Bullet::SetMission(vector<D3DXVECTOR3> listMission) {
+
+}
+
 void Bullet::OnSetPosition(D3DXVECTOR3 pos)
 {
     mAnimation->SetPosition(pos);

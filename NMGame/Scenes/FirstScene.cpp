@@ -11,8 +11,9 @@
 FirstScene::FirstScene()
 {
     LoadContent();
-    GameSound::GetInstance()->Close();
-    GameSound::GetInstance()->Play("Assets/Sounds/area2.mp3");
+    //GameSound::GetInstance()->Close("intro2");
+    GameSound::GetInstance()->PlayRepeat("Assets/Sounds/area2.mp3");
+    menu = new Menu();
 }
 
 FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse)
@@ -25,6 +26,7 @@ FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse)
             && mListMapBound[i].top < newPos.y && mListMapBound[i].bottom > newPos.y)
         {
             mCurrentMapBound = mListMapBound[i];
+            mCurrentMapIndex = i;
             indexMap = i;
             break;
         }
@@ -69,6 +71,11 @@ void FirstScene::LoadContent()
     //mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
     mPlayer->SetPosition(3584, 702);
     mPlayer->SetCamera(mCamera);
+    for (int i = 0; i < mEnemies.size(); i++)
+    {
+        pos.push_back(mEnemies.at(i)->GetPosition());
+    }
+    mPlayer->SetEnemyPos(pos);
 }
 
 const vector<string> explode(const string& s, const char& c)
@@ -154,15 +161,22 @@ void FirstScene::LoadEnemies(const char* path)
 
 void FirstScene::Update(float dt)
 {
-    if (!mIsPassGateRight && !mIsPassGateLeft) checkCollision();
-    if (isReplace) return;
-    mMap->Update(dt);
-    if (!mIsPassGateRight && !mIsPassGateLeft) mPlayer->HandleKeyboard(keys);
-    mPlayer->Update(dt);
-    if (!mIsPassGateRight && !mIsPassGateLeft) InitForEnemies(dt);
-    if (!mIsPassGateRight && !mIsPassGateLeft) CheckCameraAndWorldMap();
-    if (mIsPassGateRight) PassGateRight();
-    if (mIsPassGateLeft) PassGateLeft();
+    if (!mIsShowMenu)
+    {
+        if (!mIsPassGateRight && !mIsPassGateLeft) checkCollision();
+        if (isReplace) return;
+        mMap->Update(dt);
+        if (!mIsPassGateRight && !mIsPassGateLeft) mPlayer->HandleKeyboard(keys);
+        mPlayer->Update(dt);
+        if (!mIsPassGateRight && !mIsPassGateLeft) InitForEnemies(dt);
+        if (!mIsPassGateRight && !mIsPassGateLeft) CheckCameraAndWorldMap();
+        if (mIsPassGateRight) PassGateRight();
+        if (mIsPassGateLeft) PassGateLeft();
+    }
+    else
+    {
+        menu->Update(dt);
+    }
 }
 
 void FirstScene::InitForEnemies(float dt)
@@ -756,12 +770,28 @@ void FirstScene::Draw()
             GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
         mPowerCollections.at(i)->Draw(mPowerCollections[i]->GetPosition(), RECT(), D3DXVECTOR2(), trans);
     }
+
+    if (mIsShowMenu)
+        menu->Draw();
 }
 
 void FirstScene::OnKeyDown(int keyCode)
 {
     keys[keyCode] = true;
-    mPlayer->OnKeyPressed(keyCode);
+    if (!mIsShowMenu)
+        mPlayer->OnKeyPressed(keyCode);
+    if (mIsShowMenu)
+        menu->OnKeyPressed(keyCode);
+    if (keyCode == 0x4D && !mIsShowMenu)
+    {
+        menu->UpdateBulletCount(mPlayer->missleBulletCount, mPlayer->thunderBulletCount, mPlayer->rocketBulletCount);
+        mIsShowMenu = true;
+    }
+    if (keyCode == VK_RETURN && mIsShowMenu)
+    {
+        mPlayer->skill = menu->GetSkill();
+        mIsShowMenu = false;
+    }
 }
 
 void FirstScene::OnKeyUp(int keyCode)

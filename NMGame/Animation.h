@@ -22,6 +22,8 @@ public:
 
     void Draw(D3DXVECTOR2 translate);
 
+    virtual void Reset();
+
     ~Animation();
 
 protected:

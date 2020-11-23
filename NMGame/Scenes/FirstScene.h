@@ -19,6 +19,7 @@
 #include "../MapObjects/Orb.h"
 #include "../MapObjects/Mine.h"
 #include "../MapObjects/Enemy.h"
+#include "../Views/Menu.h"
 
 class FirstScene : public Scene
 {
@@ -45,6 +46,7 @@ protected:
     void PassGateLeft();
     bool mIsPassGateRight = false;
     bool mIsPassGateLeft = false;
+    bool mIsShowMenu = false;
 
     Player* mPlayer;
     Map* mMap;
@@ -54,9 +56,13 @@ protected:
     RECT* mListMapBound;
     vector<Enemy*> mEnemies;
     vector<Sprite*> mPowerCollections;
+    Menu* menu;
 
     float mTimeCounter;
 
     std::map<int, bool> keys;
+
+private:
+    vector<D3DXVECTOR3> pos;
 };
 
