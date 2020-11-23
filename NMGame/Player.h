@@ -59,8 +59,6 @@ public:
 
     void showJason();
 
-    void SetEnemyPos(vector<D3DXVECTOR3> mEnemyPos);
-
     bool allowMoveRight;
     bool allowMoveLeft;
     bool allowMoveUp;
@@ -104,7 +102,6 @@ protected:
 
     Sprite* mPowerView;
     vector<Sprite*> mPowerItems;
-    vector<D3DXVECTOR3> mEnemyPos;
 
     void changeAnimation(PlayerState::StateName state);
 

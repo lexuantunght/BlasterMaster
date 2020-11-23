@@ -7,10 +7,11 @@ public:
 	~MissileBullet();
 	void Update(float dt);
 	void OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side);
-	void SetMission(vector<D3DXVECTOR3> listMission);
 private:
 	int FindIndexMinDistance();
 	void GotoEnemy();
-	vector<D3DXVECTOR3> listMission;
+	float countTimeToGoto;
+	float countTimeChange;
+	int minIndex;
 };
 

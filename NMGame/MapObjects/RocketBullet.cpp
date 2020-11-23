@@ -5,12 +5,12 @@ RocketBullet::RocketBullet(D3DXVECTOR3 position, int angle, int id)
     if (angle == 0)
     {
         mAnimation = new Animation("Assets/rocketBullet0.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(480);
+        this->SetVx(320);
     }
     else
     {
         mAnimation = new Animation("Assets/rocketBullet180.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(-480);
+        this->SetVx(-320);
     }
 
     mTimeExistMaximum = 0.5f;
@@ -51,5 +51,6 @@ void RocketBullet::Update(float dt)
 
 void RocketBullet::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
 {
-
+    if (impactor->Tag != EntityTypes::Static && impactor->Tag != EntityTypes::Ladder)
+        mIsValid = false;
 }

@@ -38,6 +38,8 @@ public:
 
     void LoadEnemies(const char* path);
     void LoadMapBound(const char* path);
+
+    static vector<Enemy*> mEnemies;
 protected:
     void checkCollision();
     void CheckCameraAndWorldMap();
@@ -54,15 +56,11 @@ protected:
     RECT mCurrentMapBound;
     int mCurrentMapIndex;
     RECT* mListMapBound;
-    vector<Enemy*> mEnemies;
     vector<Sprite*> mPowerCollections;
     Menu* menu;
 
     float mTimeCounter;
 
     std::map<int, bool> keys;
-
-private:
-    vector<D3DXVECTOR3> pos;
 };
 

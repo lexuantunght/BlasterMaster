@@ -193,17 +193,14 @@ void Player::OnKeyPressed(int key)
                 switch (skill)
                 {
                 case 1:
-                    Bullet * tmp;
                     if (!mCurrentReverse)
                     {
-                        tmp = new MissileBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 50, mPlayerData->player->GetPosition().y, 0), 0);
+                        this->mPlayerData->player->mBullets.push_back(new MissileBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 50, mPlayerData->player->GetPosition().y, 0), 0));
                     }
                     else
                     {
-                        tmp = new MissileBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 50, mPlayerData->player->GetPosition().y, 0), 180);
+                        this->mPlayerData->player->mBullets.push_back(new MissileBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 50, mPlayerData->player->GetPosition().y, 0), 180));
                     }
-                    tmp->SetMission(mEnemyPos);
-                    this->mPlayerData->player->mBullets.push_back(tmp);
                     missleBulletCount--;
                     break;
                 case 2:
@@ -464,13 +461,4 @@ void Player::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity:
         }
     }
     this->mPlayerData->state->OnCollision(impactor, side, data);
-}
-
-void Player::SetEnemyPos(vector<D3DXVECTOR3> mEnemyPos)
-{
-    this->mEnemyPos.clear();
-    for (int i = 0; i < mEnemyPos.size(); i++)
-    {
-        this->mEnemyPos.push_back(mEnemyPos.at(i));
-    }
 }
