@@ -189,6 +189,18 @@ void SecondScene::InitForEnemies(float dt)
             {
                 mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 2));
             }
+            else if (mEnemies[i]->mIsContainItem == 3)
+            {
+                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 3));
+            }
+            else if (mEnemies[i]->mIsContainItem == 4)
+            {
+                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 4));
+            }
+            else if (mEnemies[i]->mIsContainItem == 5)
+            {
+                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 5));
+            }
             mEnemies.erase(mEnemies.begin() + i);
         }
     }

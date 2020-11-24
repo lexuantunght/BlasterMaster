@@ -19,6 +19,7 @@
 #include "../MapObjects/Orb.h"
 #include "../MapObjects/Mine.h"
 #include "../MapObjects/Enemy.h"
+#include "../Views/Menu.h"
 
 class FirstScene : public Scene
 {
@@ -37,6 +38,8 @@ public:
 
     void LoadEnemies(const char* path);
     void LoadMapBound(const char* path);
+
+    static vector<Enemy*> mEnemies;
 protected:
     void checkCollision();
     void CheckCameraAndWorldMap();
@@ -45,6 +48,7 @@ protected:
     void PassGateLeft();
     bool mIsPassGateRight = false;
     bool mIsPassGateLeft = false;
+    bool mIsShowMenu = false;
 
     Player* mPlayer;
     Map* mMap;
@@ -52,8 +56,8 @@ protected:
     RECT mCurrentMapBound;
     int mCurrentMapIndex;
     RECT* mListMapBound;
-    vector<Enemy*> mEnemies;
     vector<Sprite*> mPowerCollections;
+    Menu* menu;
 
     float mTimeCounter;
 

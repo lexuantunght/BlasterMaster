@@ -12,7 +12,11 @@
 #include "PlayerStates/PlayerInjuringDownOverheadState.h"
 #include "PlayerStates/PlayerInjuringOverheadState.h"
 #include "PlayerStates/PlayerInjuringUpOverheadState.h"
+#include "MapObjects/ThunderBullet.h"
+#include "MapObjects/RocketBullet.h"
+#include "MapObjects/MissileBullet.h"
 #include <string>
+#include "GameSound.h"
 
 Player::Player()
 {
@@ -36,6 +40,7 @@ Player::Player()
     this->vx = 0;
     this->vy = 0;
     this->SetState(new PlayerStandingState(this->mPlayerData));
+    skill = 2;
 
     allowJump = true;
     allowShoot = true;
@@ -145,6 +150,7 @@ void Player::OnKeyPressed(int key)
     {
         if (allowShoot)
         {
+            GameSound::GetInstance()->Play("Assets/Sounds/shoot.mp3");
             if (!mCurrentReverse)
             {
                 if (mCurrentState == PlayerState::Attacking90 || mCurrentState == PlayerState::Attack90Running)
@@ -178,6 +184,52 @@ void Player::OnKeyPressed(int key)
             allowShoot = false;
         }
     }
+    else if (key == 0x58)
+    {
+        if (allowShoot && !isShowJason)
+        {
+            if ((skill == 1 && missleBulletCount > 0) || (skill == 2 && thunderBulletCount > 0) || (skill == 3 && rocketBulletCount > 0))
+            {
+                GameSound::GetInstance()->Play("Assets/Sounds/shoot.mp3");
+                switch (skill)
+                {
+                case 1:
+                    if (!mCurrentReverse)
+                    {
+                        this->mPlayerData->player->mBullets.push_back(new MissileBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 50, mPlayerData->player->GetPosition().y, 0), 0));
+                    }
+                    else
+                    {
+                        this->mPlayerData->player->mBullets.push_back(new MissileBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 50, mPlayerData->player->GetPosition().y, 0), 180));
+                    }
+                    missleBulletCount--;
+                    break;
+                case 2:
+                    this->mPlayerData->player->mBullets.push_back(new ThunderBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y + 90, 0)));
+                    thunderBulletCount--;
+                    break;
+                case 3:
+                    if (!mCurrentReverse)
+                    {
+                        this->mPlayerData->player->mBullets.push_back(new RocketBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 50, mPlayerData->player->GetPosition().y, 0), 0, 1));
+                        this->mPlayerData->player->mBullets.push_back(new RocketBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 50, mPlayerData->player->GetPosition().y, 0), 0, 2));
+                        this->mPlayerData->player->mBullets.push_back(new RocketBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 50, mPlayerData->player->GetPosition().y, 0), 0, 3));
+                    }
+                    else
+                    {
+                        this->mPlayerData->player->mBullets.push_back(new RocketBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 50, mPlayerData->player->GetPosition().y, 0), 180, 1));
+                        this->mPlayerData->player->mBullets.push_back(new RocketBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 50, mPlayerData->player->GetPosition().y, 0), 180, 2));
+                        this->mPlayerData->player->mBullets.push_back(new RocketBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 50, mPlayerData->player->GetPosition().y, 0), 180, 3));
+                    }
+                    rocketBulletCount--;
+                    break;
+                default:
+                    break;
+                }
+                allowShoot = false;
+            }
+        }
+    }
 }
 
 void Player::showJason()
@@ -204,7 +256,7 @@ void Player::OnKeyUp(int key)
 {
     if (key == VK_SPACE)
         allowJump = true;
-    if (key == 0x4A)
+    if (key == 0x4A || key == 0x58)
         allowShoot = true;
 }
 
@@ -235,10 +287,10 @@ void Player::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DX
         // vien dan
         for (int i = 0; i < mBullets.size(); i++)
             mBullets[i]->Draw(mBullets[i]->GetPosition(), sourceRect, scale, trans, angle, rotationCenter, colorKey);
-        mPowerView->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 200, mCamera->GetPosition().y + 150, 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
+        mPowerView->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 198, mCamera->GetPosition().y + 112, 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
         for (int i = mPower - 1; i >= 0; i--)
         {
-            mPowerItems.at(i)->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 200, mCamera->GetPosition().y + 97 + 10 * (7 - i), 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
+            mPowerItems.at(i)->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 200, mCamera->GetPosition().y + 97 + 8 * (7 - i), 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
         }
     }
     else

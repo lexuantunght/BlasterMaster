@@ -59,6 +59,10 @@ bool Bullet::init(D3DXVECTOR3 position, int angle)
     return true;
 }
 
+void Bullet::SetMission(vector<D3DXVECTOR3> listMission) {
+
+}
+
 void Bullet::OnSetPosition(D3DXVECTOR3 pos)
 {
     mAnimation->SetPosition(pos);
@@ -112,7 +116,7 @@ float Bullet::SecondPerFrame()
 
 void Bullet::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
 {
-    if (impactor->Tag == EntityTypes::Player || this->Tag == EntityTypes::Bullets)
+    if ((impactor->Tag == EntityTypes::Player || this->Tag == EntityTypes::Bullets) && impactor->Tag != EntityTypes::Ladder)
     {
         mIsValid = false;
     }

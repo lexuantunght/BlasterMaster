@@ -20,7 +20,7 @@ public:
     SecondScene(D3DXVECTOR3 oldPos, bool currReverse);
 
     void Update(float dt);
-    virtual void LoadContent();
+    void LoadContent();
     void Draw();
 
     void OnKeyDown(int keyCode);
