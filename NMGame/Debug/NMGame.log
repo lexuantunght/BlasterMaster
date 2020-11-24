@@ -14,7 +14,7 @@ C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(215,53): wa
 C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(222,77): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
 C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(229,37): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
 C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(241,23): warning C4018: '<': signed/unsigned mismatch
-C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(492,64): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(493,65): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(508,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(495,64): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(496,65): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.cpp(511,23): warning C4018: '<': signed/unsigned mismatch
   NMGame.vcxproj -> C:\Users\18521\Desktop\Nhập môn Game\Debug\NMGame.exe

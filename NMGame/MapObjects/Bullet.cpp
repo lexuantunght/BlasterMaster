@@ -116,7 +116,7 @@ float Bullet::SecondPerFrame()
 
 void Bullet::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
 {
-    if (impactor->Tag == EntityTypes::Player || this->Tag == EntityTypes::Bullets)
+    if ((impactor->Tag == EntityTypes::Player || this->Tag == EntityTypes::Bullets) && impactor->Tag != EntityTypes::Thorns)
     {
         mIsValid = false;
     }

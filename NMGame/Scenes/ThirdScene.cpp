@@ -359,10 +359,13 @@ void ThirdScene::checkCollision()
         //va cham bullet cannon
         for (size_t j = 0; j < listCollisionWithEnemy.size(); j++)
         {
+            if (listCollisionWithEnemy.at(i)->Tag == Entity::EntityTypes::Thorns)
+                continue;
             if (mEnemies[i]->mBullets.size() > 0 && mEnemies[i]->type == Enemy::EnemyType::cannon)
             {
                 for (size_t k = 0; k < mEnemies[i]->mBullets.size(); k++)
                 {
+                    
                     Entity::CollisionReturn r = Collision::RecteAndRect(mEnemies[i]->mBullets[k]->GetBound(),
                         listCollisionWithEnemy.at(j)->GetBound());
                     //string str = std::to_string(listCollision.at(i)->GetBound().top);
