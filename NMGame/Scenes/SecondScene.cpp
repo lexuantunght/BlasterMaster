@@ -253,7 +253,7 @@ void SecondScene::checkCollision()
 
     for (size_t i = 0; i < listCollision.size(); i++)
     {
-        if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
+        if (listCollision[i]->Tag == Entity::EntityTypes::Dangers || listCollision[i]->Tag == Entity::EntityTypes::Thorns)
         {
             if (mPlayer->getState() == PlayerState::Injuring)
                 continue;
@@ -318,6 +318,14 @@ void SecondScene::checkCollision()
             if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
             {
                 if (mPlayer->mPower > 0) mPlayer->mPower--;
+            }
+
+            //kiem tra neu va cham voi phia duoi cua Player 
+            if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
+            {
+                if (mPlayer->mPower > 0) mPlayer->mPower--;
+                /*if (mPlayer->getState() == PlayerState::Injuring || mPlayer->getState() == PlayerState::Falling || mPlayer->getState() == PlayerState::InjuringJump)
+                    continue;*/
             }
         }
     }
