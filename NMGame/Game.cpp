@@ -10,12 +10,7 @@ Game::Game(int fps)
 {
 	mFPS = fps;
 
-<<<<<<< HEAD
-	SceneManager::GetInstance()->ReplaceScene(new ThirdScene());
-=======
 	SceneManager::GetInstance()->ReplaceScene(new FirstScene());
->>>>>>> e9bd6a8710eb6f129c14ed88a6a5eec9b551337a
-
 	InitLoop();
 }
 

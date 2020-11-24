@@ -94,10 +94,7 @@ void PlayerInjuringUpOverheadState::OnCollision(Entity* impactor, Entity::SideCo
         }
         return;
     }
-<<<<<<< HEAD
-=======
 
->>>>>>> e9bd6a8710eb6f129c14ed88a6a5eec9b551337a
     case Entity::Top:
     {
         this->mPlayerData->player->allowMoveUp = false;
