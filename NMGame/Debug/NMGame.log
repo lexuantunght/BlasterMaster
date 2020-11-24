@@ -1,8 +1,252 @@
-﻿  IntroScene.cpp
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(27,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(27,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(28,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(28,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(29,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Intro\IntroScene.cpp(29,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-  NMGame.vcxproj -> C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\Debug\NMGame.exe
+﻿  Animation.cpp
+  Camera.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Camera.cpp(36,30): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Camera.cpp(38,29): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Collision.cpp
+  Entity.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Entity.cpp(17,23): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Entity.cpp(18,24): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Entity.cpp(19,22): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Entity.cpp(20,25): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Entity.cpp(77,19): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Entity.cpp(82,12): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Entity.cpp(87,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Entity.cpp(92,12): warning C4244: 'return': conversion from 'float' to 'int', possible loss of data
+  Game.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Game.cpp(11,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Game.cpp(79,23): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  GameGlobal.cpp
+  GameSound.cpp
+  GameTime.cpp
+  IntroAnimation.cpp
+  IntroScene.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Intro\IntroScene.cpp(27,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Intro\IntroScene.cpp(27,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Intro\IntroScene.cpp(28,86): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Intro\IntroScene.cpp(28,57): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Intro\IntroScene.cpp(29,87): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Intro\IntroScene.cpp(29,58): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  SophiaAnimation.cpp
+  TitleAnimation.cpp
+  Map.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(39,26): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(60,26): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(64,30): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(72,32): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(71,48): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(165,26): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(174,30): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(186,34): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(188,38): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(206,92): warning C4244: 'argument': conversion from 'size_t' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(206,60): warning C4244: 'argument': conversion from 'size_t' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(211,55): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(212,54): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(236,26): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(242,34): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(254,38): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(256,42): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(274,96): warning C4244: 'argument': conversion from 'size_t' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(274,64): warning C4244: 'argument': conversion from 'size_t' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(279,59): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Map.cpp(280,58): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  Bee.cpp
+  Bullet.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Bullet.cpp(138,42): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Bullet.cpp(154,28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Bullet.cpp(156,27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+  BulletCannon.cpp
+  BulletEyeball.cpp
+  BulletFloater.cpp
+  BulletOverhead.cpp
+  BulletSkull.cpp
+  Generating Code...
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Collision.cpp(118): warning C4715: 'Collision::getSideCollision': not all control paths return a value
+  Compiling...
+  Cannon.cpp
+  Dome.cpp
+  Enemy.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Enemy.cpp(82,23): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Enemy.cpp(91,23): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Enemy.cpp(125,28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Enemy.cpp(127,27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Enemy.cpp(197,42): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  Eyeball.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Eyeball.cpp(72,38): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  Floater.cpp
+  Insect.cpp
+  ItemCollection.cpp
+  Jumper.cpp
+  Mine.cpp
+  Orb.cpp
+  Skull.cpp
+  Teleporter.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Teleporter.cpp(57,19): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Teleporter.cpp(60,55): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapObjects\Teleporter.cpp(60,38): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+  Worm.cpp
+  Floor.cpp
+  MapObject.cpp
+  base64.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapReader\base64.cpp(96,69): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapReader\base64.cpp(113,65): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+  tinyxml2.cpp
+  TmxEllipse.cpp
+  TmxImage.cpp
+  TmxImageLayer.cpp
+  Generating Code...
+  Compiling...
+  TmxLayer.cpp
+  TmxMap.cpp
+  TmxObject.cpp
+  TmxObjectGroup.cpp
+  TmxPolygon.cpp
+  TmxPolyline.cpp
+  TmxPropertySet.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\MapReader\TmxPropertySet.cpp(87,28): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  TmxTerrain.cpp
+  TmxTerrainArray.cpp
+  TmxTile.cpp
+  TmxTileLayer.cpp
+  TmxTileOffset.cpp
+  TmxTileset.cpp
+  TmxUtil.cpp
+  Player.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Player.cpp(67,23): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Player.cpp(236,27): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Player.cpp(250,27): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Player.cpp(273,28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Player.cpp(275,27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Player.cpp(355,46): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Player.cpp(356,48): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+  PlayerData.cpp
+  PlayerOverhead.cpp
+  PlayerState.cpp
+  PlayerAttack90RunningState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerAttack90RunningState.cpp(109,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerAttack90RunningState.cpp(123,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerAttack90RunningState.cpp(134,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerAttacking90State.cpp
+  Generating Code...
+  Compiling...
+  PlayerAttackingState.cpp
+  PlayerAttackRuningState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerAttackRuningState.cpp(109,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerAttackRuningState.cpp(123,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerAttackRuningState.cpp(134,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerClimbingState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerClimbingState.cpp(63,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerClimbingState.cpp(77,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerClimbingState.cpp(91,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerFallingState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerFallingState.cpp(87,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerFallingState.cpp(95,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerFallingState.cpp(108,55): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerFlippingState.cpp
+  PlayerInjuringDownOverheadState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerInjuringDownOverheadState.cpp(80,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerInjuringDownOverheadState.cpp(93,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerInjuringJumpState.cpp
+  PlayerInjuringOverheadState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerInjuringOverheadState.cpp(72,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerInjuringOverheadState.cpp(85,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerInjuringState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerInjuringState.cpp(80,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerInjuringState.cpp(93,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerInjuringUpOverheadState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerInjuringUpOverheadState.cpp(80,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerInjuringUpOverheadState.cpp(93,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerJumpingState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerJumpingState.cpp(115,75): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerJumpingState.cpp(122,48): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerJumpingState.cpp(129,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerJumpingState.cpp(136,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerRunningDownOverheadState.cpp
+  PlayerRunningOverheadState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerRunningOverheadState.cpp(84,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerRunningOverheadState.cpp(98,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerRunningOverheadState.cpp(105,80): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerRunningOverheadState.cpp(116,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerRunningState.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerRunningState.cpp(126,79): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerRunningState.cpp(140,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\PlayerStates\PlayerRunningState.cpp(151,51): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+  PlayerRunningUpOverheadState.cpp
+  PlayerStandingDownOverheadState.cpp
+  PlayerStandingOverheadState.cpp
+  PlayerStandingState.cpp
+  PlayerStandingUpOverheadState.cpp
+  QuadTree.cpp
+  Generating Code...
+  Compiling...
+  Scene.cpp
+  SceneManager.cpp
+  FirstScene.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(121,72): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(121,57): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(125,72): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(125,57): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(129,75): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(129,60): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(133,74): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(133,59): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(137,74): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(137,59): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(141,71): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(141,56): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(145,73): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(145,58): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(149,72): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(149,57): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(249,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(255,53): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(262,77): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(269,37): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(285,23): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(598,56): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(599,57): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\FirstScene.cpp(616,23): warning C4018: '<': signed/unsigned mismatch
+  Map1Scene.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\Map1Scene.cpp(26,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\Map1Scene.cpp(26,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\Map1Scene.cpp(30,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\Map1Scene.cpp(30,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Map2Scene.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\Map2Scene.cpp(26,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\Map2Scene.cpp(26,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\Map2Scene.cpp(30,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\Map2Scene.cpp(30,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  SecondScene.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(47,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(47,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(64,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(64,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(116,78): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(116,63): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(120,74): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(120,59): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(124,75): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(124,60): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(205,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(211,53): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(218,77): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(225,37): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(237,23): warning C4018: '<': signed/unsigned mismatch
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(481,64): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(482,65): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\SecondScene.cpp(497,23): warning C4018: '<': signed/unsigned mismatch
+  ThirdScene.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\ThirdScene.cpp(31,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\ThirdScene.cpp(31,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\ThirdScene.cpp(43,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Scenes\ThirdScene.cpp(43,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+  Sprite.cpp
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Sprite.cpp(21,13): warning C4101: 'result': unreferenced local variable
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Sprite.cpp(136,60): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+D:\Documents\CodeSources\GameDev\GameProject\NMGame\Sprite.cpp(136,45): warning C4244: 'argument': conversion from 'double' to 'FLOAT', possible loss of data
+  WinMain.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+  Generating Code...
+  miniz.c
+  NMGame.vcxproj -> D:\Documents\CodeSources\GameDev\GameProject\Debug\NMGame.exe
