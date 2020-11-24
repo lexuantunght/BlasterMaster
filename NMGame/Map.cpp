@@ -80,6 +80,8 @@ void Map::LoadMap(const char* filePath)
                 entity->Tag = Entity::EntityTypes::Ladder;
             else if (objectGroup->GetName() == "OVERWORLD")
                 entity->Tag = Entity::EntityTypes::Overworld;
+            else if (objectGroup->GetName() == "THORNS")
+                entity->Tag = Entity::EntityTypes::Thorns;
             else entity->Tag = Entity::EntityTypes::Static;
 
             mQuadTree->insertEntity(entity);

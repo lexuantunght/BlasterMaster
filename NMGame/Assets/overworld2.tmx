@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="64" height="126" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="64">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="64" height="126" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="79">
  <tileset firstgid="1" name="overworld" tilewidth="32" tileheight="32" tilecount="16384" columns="128">
   <image source="Assets/overworld.png" width="4096" height="4096"/>
  </tileset>
@@ -133,6 +133,15 @@
 16001,16002,16003,16004,16005,16006,16007,16008,16009,16010,16011,16012,16013,16014,16015,16016,16017,16018,16019,16020,16021,16022,16023,16024,16025,16026,16027,16028,16029,16030,16031,16032,16033,16034,16035,16036,16037,16038,16039,16040,16041,16042,16043,16044,16045,16046,16047,16048,16049,16050,16051,16052,16053,16054,16055,16056,16057,16058,16059,16060,16061,16062,16063,16064
 </data>
  </layer>
+ <objectgroup id="6" name="THORNS">
+  <object id="72" x="63" y="1596" width="385" height="30"/>
+  <object id="73" x="64" y="1630" width="48" height="289"/>
+  <object id="74" x="111" y="1854" width="94" height="64"/>
+  <object id="75" x="204" y="1732" width="104" height="22"/>
+  <object id="76" x="305" y="1797" width="36" height="119"/>
+  <object id="77" x="343" y="1830" width="99" height="87"/>
+  <object id="78" x="396" y="1628" width="50" height="91"/>
+ </objectgroup>
  <layer id="5" name="GATES" width="64" height="126">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,

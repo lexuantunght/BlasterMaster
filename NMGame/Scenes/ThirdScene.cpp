@@ -250,6 +250,11 @@ void ThirdScene::checkCollision()
             if (mPlayer->getState() == PlayerState::Injuring)
                 continue;
         }
+        if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
+        {
+            if (mPlayer->getState() == PlayerState::InjuringDownOverhead || mPlayer->getState() == PlayerState::InjuringUpOverhead || mPlayer->getState() == PlayerState::InjuringOverhead)
+                continue;
+        }
         Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
             listCollision.at(i)->GetBound());
         //string str = std::to_string(listCollision.at(i)->GetBound().top);
@@ -308,6 +313,16 @@ void ThirdScene::checkCollision()
 
             //kiem tra neu va cham voi phia duoi cua Player 
             if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
+            {
+                if (mPlayer->mPower > 0) mPlayer->mPower--;
+            }
+            //kiem tra neu cham gai
+            if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
+            {
+                if (mPlayer->mPower > 0) mPlayer->mPower--;
+            }
+
+            if (listCollision[i]->Tag == Entity::BulletEyeballs)
             {
                 if (mPlayer->mPower > 0) mPlayer->mPower--;
             }
