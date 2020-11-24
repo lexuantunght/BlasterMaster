@@ -1,5 +1,0 @@
-﻿  Bullet.cpp
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(142,42): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(158,28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(160,27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-  NMGame.vcxproj -> C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\Debug\NMGame.exe

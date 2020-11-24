@@ -258,6 +258,12 @@ void SecondScene::checkCollision()
             if (mPlayer->getState() == PlayerState::Injuring)
                 continue;
         }
+        if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
+        {
+            if (mPlayer->getState() == PlayerState::InjuringDownOverhead || mPlayer->getState() == PlayerState::InjuringUpOverhead || mPlayer->getState() == PlayerState::InjuringOverhead)
+                continue;
+        }
+
         Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
             listCollision.at(i)->GetBound());
         //string str = std::to_string(listCollision.at(i)->GetBound().top);
@@ -316,6 +322,12 @@ void SecondScene::checkCollision()
 
             //kiem tra neu va cham voi phia duoi cua Player 
             if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
+            {
+                if (mPlayer->mPower > 0) mPlayer->mPower--;
+            }
+
+            //Kiem tra va cham voi chong gai
+            if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
             {
                 if (mPlayer->mPower > 0) mPlayer->mPower--;
             }
