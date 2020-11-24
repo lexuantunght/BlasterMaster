@@ -8,16 +8,20 @@
 #include <string>
 #include <fstream>
 
+std::vector<Enemy*> FirstScene::mEnemies;
+
 FirstScene::FirstScene()
 {
     LoadContent();
     //GameSound::GetInstance()->Close("intro2");
     GameSound::GetInstance()->PlayRepeat("Assets/Sounds/area2.mp3");
     menu = new Menu();
+    mTimeCounter = 0;
 }
 
 FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse)
 {
+    mEnemies.clear();
     LoadContent();
     int indexMap = 0;
     for (int i = 0; i < 15; i++)
@@ -55,8 +59,8 @@ void FirstScene::LoadContent()
 
     mMap = new Map("Assets/area2.tmx");
     mCamera = new Camera(GameGlobal::GetWidth(), GameGlobal::GetHeight());
-    //mCamera->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
-    mCamera->SetPosition(3584, 702);
+    mCamera->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
+    //mCamera->SetPosition(3584, 702);
     mMap->SetCamera(mCamera);
 
     LoadEnemies("Assets/enemies.txt");
@@ -64,18 +68,13 @@ void FirstScene::LoadContent()
     //get bound submap
     mListMapBound = new RECT[15];
     LoadMapBound("Assets/map_bounds.txt");
-    mCurrentMapBound = mListMapBound[6];
-    mCurrentMapIndex = 6;
+    mCurrentMapBound = mListMapBound[0];
+    mCurrentMapIndex = 0;
 
     mPlayer = new Player();
-    //mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
-    mPlayer->SetPosition(3584, 702);
+    mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
+    //mPlayer->SetPosition(3584, 702);
     mPlayer->SetCamera(mCamera);
-    for (int i = 0; i < mEnemies.size(); i++)
-    {
-        pos.push_back(mEnemies.at(i)->GetPosition());
-    }
-    mPlayer->SetEnemyPos(pos);
 }
 
 const vector<string> explode(const string& s, const char& c)

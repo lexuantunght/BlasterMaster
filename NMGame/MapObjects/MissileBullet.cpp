@@ -1,22 +1,25 @@
 #include "MissileBullet.h"
+#include "../Scenes/FirstScene.h"
 MissileBullet::MissileBullet(D3DXVECTOR3 position, int angle)
 {
+    mAnimation = new Animation("Assets/missileBullet.png", 2, 1, 2, 0.1f);
     if (angle == 0)
     {
-        mAnimation = new Animation("Assets/missileBullet0.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(240);
+        this->SetVx(180);
     }
     else
     {
-        mAnimation = new Animation("Assets/missileBullet180.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(-240);
+        mAnimation->FlipVertical(true);
+        this->SetVx(-180);
     }
 
-    mTimeExistMaximum = 2.0f;
+    mTimeExistMaximum = 3.0f;
 
     SetPosition(position);
     mStartedPosition = position;
     mTimeExist = 0;
+    countTimeChange = 0;
+    minIndex = FindIndexMinDistance();
     mIsValid = true;
 
     Entity::SetWidth(mAnimation->GetWidth());
@@ -29,28 +32,20 @@ MissileBullet::~MissileBullet()
 
 }
 
-void MissileBullet::SetMission(vector<D3DXVECTOR3> listMission)
-{
-    this->listMission.clear();
-    for (int i = 0; i < listMission.size(); i++)
-    {
-        this->listMission.push_back(listMission.at(i));
-    }
-}
-
 int MissileBullet::FindIndexMinDistance()
 {
-    if (listMission.size() > 0)
+    if (FirstScene::mEnemies.size() > 0)
     {
         int index = 0;
-        double minLength = sqrt(((double)listMission.at(0).x - this->GetPosition().x) * (listMission.at(0).x - this->GetPosition().x)
-            + ((double)listMission.at(0).y - this->GetPosition().y) * (listMission.at(0).y - this->GetPosition().y));
-        for (int i = 1; i < listMission.size(); i++)
+        double minLength = sqrt(((double)FirstScene::mEnemies.at(0)->GetPosition().x - this->GetPosition().x) * (FirstScene::mEnemies.at(0)->GetPosition().x - (double)this->GetPosition().x) + ((double)FirstScene::mEnemies.at(0)->GetPosition().y - this->GetPosition().y) * (FirstScene::mEnemies.at(0)->GetPosition().y - (double)this->GetPosition().y));
+        for (int i = 0; i < FirstScene::mEnemies.size(); i++)
         {
-            double tmp = sqrt(((double)listMission.at(i).x - this->GetPosition().x) * (listMission.at(i).x - this->GetPosition().x)
-                + ((double)listMission.at(i).y - this->GetPosition().y) * (listMission.at(i).y - this->GetPosition().y));
+            double tmp = sqrt(((double)FirstScene::mEnemies.at(i)->GetPosition().x - this->GetPosition().x) * (FirstScene::mEnemies.at(i)->GetPosition().x - (double)this->GetPosition().x) + ((double)FirstScene::mEnemies.at(i)->GetPosition().y - this->GetPosition().y) * (FirstScene::mEnemies.at(i)->GetPosition().y - (double)this->GetPosition().y));
             if (tmp < minLength)
+            {
+                minLength = tmp;
                 index = i;
+            }
         }
         return index;
     }
@@ -59,20 +54,59 @@ int MissileBullet::FindIndexMinDistance()
 
 void MissileBullet::GotoEnemy()
 {
-    int index = FindIndexMinDistance();
-    if (index == -1) return;
-    this->SetVx((listMission.at(index).x - this->GetPosition().x) / 5);
-    this->SetVy((listMission.at(index).y - this->GetPosition().y) / 5);
+    if (FirstScene::mEnemies.at(minIndex)->GetPosition().x > this->GetPosition().x + 10)
+        this->SetVx(120);
+    else if (FirstScene::mEnemies.at(minIndex)->GetPosition().x < this->GetPosition().x - 10) this->SetVx(-120);
+    else this->SetVx(0);
+
+    if (FirstScene::mEnemies.at(minIndex)->GetPosition().y > this->GetPosition().y + 10)
+        this->SetVy(80);
+    else if (FirstScene::mEnemies.at(minIndex)->GetPosition().y < this->GetPosition().y - 10) this->SetVy(-80);
+    else this->SetVy(0);
+
+    if (vx > 0)
+    {
+        mAnimation->FlipVertical(false);
+    }
+    else
+    {
+        mAnimation->FlipVertical(true);
+    }
+    
+    if (vx == 0)
+    {
+        if (mAnimation->IsFlipVertical())
+        {
+            if (vy > 0)
+                mAnimation->SetRotation(-3.14 / 2);
+            else mAnimation->SetRotation(3.14 / 2);
+        }
+        else
+        {
+            if (vy > 0)
+                mAnimation->SetRotation(-3.14 / 2);
+            else mAnimation->SetRotation(3.14 / 2);
+        }
+    }
+    else mAnimation->SetRotation(0);
 }
 
 void MissileBullet::Update(float dt)
 {
     //goto a enemy
-    GotoEnemy();
+    if (countTimeChange >= 0.25f)
+    {
+        GotoEnemy();
+        countTimeChange = 0;
+    }
+    else countTimeChange += dt;
+
     if (mIsValid && mTimeExist >= mTimeExistMaximum)
     {
         mIsValid = false;
     }
+
+    mAnimation->SetPosition(Entity::GetPosition());
     mAnimation->Update(dt);
     mTimeExist += dt;
     Entity::Update(dt);
@@ -80,5 +114,6 @@ void MissileBullet::Update(float dt)
 
 void MissileBullet::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
 {
-
+    if (impactor->Tag != EntityTypes::Static && impactor->Tag != EntityTypes::Ladder)
+        mIsValid = false;
 }

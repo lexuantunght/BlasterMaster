@@ -321,6 +321,7 @@
     <ClInclude Include="PlayerStates\PlayerStandingState.h" />
     <ClInclude Include="PlayerStates\PlayerStandingUpOverheadState.h" />
     <ClInclude Include="QuadTree.h" />
+    <ClInclude Include="resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SceneManager.h" />
     <ClInclude Include="Scenes\FirstScene.h" />
