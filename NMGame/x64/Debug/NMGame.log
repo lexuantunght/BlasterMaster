@@ -1,0 +1,246 @@
+﻿  Animation.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Animation.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Camera.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Camera.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Collision.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Collision.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Entity.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Game.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Game.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  GameGlobal.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameGlobal.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  GameSound.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(26,2): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(39,61): error C2664: 'MCIERROR mciSendStringW(LPCWSTR,LPWSTR,UINT,HWND)': cannot convert argument 1 from 'char *' to 'LPCWSTR'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(39,43): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\mciapi.h(88,1): message : see declaration of 'mciSendStringW'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(41,62): error C2664: 'MCIERROR mciSendStringW(LPCWSTR,LPWSTR,UINT,HWND)': cannot convert argument 1 from 'char *' to 'LPCWSTR'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(41,44): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\mciapi.h(88,1): message : see declaration of 'mciSendStringW'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(48,61): error C2664: 'MCIERROR mciSendStringW(LPCWSTR,LPWSTR,UINT,HWND)': cannot convert argument 1 from 'char *' to 'LPCWSTR'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(48,43): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\mciapi.h(88,1): message : see declaration of 'mciSendStringW'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(50,62): error C2664: 'MCIERROR mciSendStringW(LPCWSTR,LPWSTR,UINT,HWND)': cannot convert argument 1 from 'char *' to 'LPCWSTR'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(50,44): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\mciapi.h(88,1): message : see declaration of 'mciSendStringW'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(56,61): error C2664: 'MCIERROR mciSendStringW(LPCWSTR,LPWSTR,UINT,HWND)': cannot convert argument 1 from 'char *' to 'LPCWSTR'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(56,43): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\mciapi.h(88,1): message : see declaration of 'mciSendStringW'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(62,61): error C2664: 'MCIERROR mciSendStringW(LPCWSTR,LPWSTR,UINT,HWND)': cannot convert argument 1 from 'char *' to 'LPCWSTR'
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\GameSound.cpp(62,43): message : Types pointed to are unrelated; conversion requires reinterpret_cast, C-style cast or function-style cast
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.18362.0\um\mciapi.h(88,1): message : see declaration of 'mciSendStringW'
+  GameTime.cpp
+  IntroAnimation.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Animation.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  IntroScene.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scene.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  SophiaAnimation.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Animation.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  TitleAnimation.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Animation.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Map.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Map.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Bullet.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  BulletCannon.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  BulletEyeball.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  BulletFloater.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  BulletOverhead.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  BulletSkull.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Cannon.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Generating Code...
+  Compiling...
+  Dome.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Enemy.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Eyeball.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Floater.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Insect.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  ItemCollection.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Sprite.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Jumper.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Mine.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  MissileBullet.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Orb.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  RocketBullet.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Skull.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Teleporter.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  ThunderBullet.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Worm.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  MapObject.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapObjects\MapObject.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  base64.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\base64.cpp(85,39): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\base64.cpp(96,69): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\base64.cpp(113,65): warning C4267: '=': conversion from 'size_t' to 'unsigned char', possible loss of data
+  tinyxml2.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\tinyxml2.cpp(2146,82): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\tinyxml2.cpp(2146,82): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+  TmxEllipse.cpp
+  TmxImage.cpp
+  Generating Code...
+  Compiling...
+  TmxImageLayer.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TmxLayer.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(177,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(186,38): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(195,40): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(204,39): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(219,36): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TmxMap.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(177,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(186,38): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(195,40): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(204,39): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(219,36): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxObjectGroup.h(61,35): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.cpp(126,51): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.cpp(179,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.cpp(193,9): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+  TmxObject.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolygon.h(55,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolyline.h(55,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TmxObjectGroup.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxObjectGroup.h(61,35): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TmxPolygon.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolygon.h(55,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolygon.cpp(44,23): error C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolygon.cpp(48,13): error C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolygon.cpp(52,21): error C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  TmxPolyline.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolyline.h(55,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolyline.cpp(44,23): error C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolyline.cpp(48,13): error C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPolyline.cpp(52,21): error C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  TmxPropertySet.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.cpp(87,28): warning C4244: 'return': conversion from 'double' to 'float', possible loss of data
+  TmxTerrain.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TmxTerrainArray.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TmxTile.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTile.h(72,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTile.h(115,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TmxTileLayer.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(177,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(186,38): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(195,40): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(204,39): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(219,36): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTileLayer.cpp(154,13): error C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTileLayer.cpp(193,56): warning C4267: 'argument': conversion from 'size_t' to 'uLong', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTileLayer.cpp(201,35): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTileLayer.cpp(245,21): error C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTileLayer.cpp(251,13): error C4996: 'sscanf': This function or variable may be unsafe. Consider using sscanf_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTileLayer.cpp(267,19): error C4996: 'strtok': This function or variable may be unsafe. Consider using strtok_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+  TmxTileOffset.cpp
+  TmxTileset.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxPropertySet.h(60,29): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTile.h(72,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxTile.h(115,1): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(177,34): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(186,38): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(195,40): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(204,39): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\MapReader\TmxMap.h(219,36): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  TmxUtil.cpp
+  Player.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerData.cpp
+  PlayerOverhead.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerAttack90RunningState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Generating Code...
+  Compiling...
+  PlayerAttacking90State.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerAttackingState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerAttackRuningState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerClimbingState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerFallingState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerFlippingState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerInjuringDownOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerInjuringJumpState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerInjuringOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerInjuringState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerInjuringUpOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerJumpingState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerRunningDownOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerRunningOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerRunningState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerRunningUpOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerStandingDownOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerStandingOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerStandingState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Entity.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  PlayerStandingUpOverheadState.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Player.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Generating Code...
+  Compiling...
+  QuadTree.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\QuadTree.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Scene.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scene.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  SceneManager.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scene.h(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  FirstScene.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\FirstScene.h(5,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  SecondScene.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\SecondScene.h(5,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  ThirdScene.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Scenes\ThirdScene.h(5,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Sprite.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Sprite.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Menu.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\Sprite.h(3,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  WinMain.cpp
+C:\Users\18521\Desktop\Nhập môn Game\NMGame\WinMain.cpp(2,10): fatal error C1083: Cannot open include file: 'd3dx9.h': No such file or directory
+  Generating Code...

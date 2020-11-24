@@ -333,12 +333,6 @@
   <ItemGroup>
     <None Include="MapReader\Tmx.h.in" />
   </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="NMGame.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\..\Downloads\Blaster Master.ico" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
