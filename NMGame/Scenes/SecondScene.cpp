@@ -260,7 +260,7 @@ void SecondScene::checkCollision()
         }
         if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
         {
-            if (mPlayer->getState() == PlayerState::Injuring)
+            if (mPlayer->getState() == PlayerState::InjuringDownOverhead || mPlayer->getState() == PlayerState::InjuringUpOverhead || mPlayer->getState() == PlayerState::InjuringOverhead)
                 continue;
         }
 

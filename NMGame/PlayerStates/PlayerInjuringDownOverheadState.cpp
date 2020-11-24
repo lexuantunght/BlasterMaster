@@ -93,6 +93,22 @@ void PlayerInjuringDownOverheadState::OnCollision(Entity* impactor, Entity::Side
             this->mPlayerData->player->AddPosition(-(data.RegionCollision.right - data.RegionCollision.left), 0);
         }
         return;
+
+    case Entity::Top:
+    {
+        this->mPlayerData->player->allowMoveUp = false;
+        this->mPlayerData->player->AddPosition(0, -(data.RegionCollision.top - data.RegionCollision.bottom));
+        return;
+    }
+
+    case Entity::Bottom:
+    case Entity::BottomLeft:
+    case Entity::BottomRight:
+    {
+        this->mPlayerData->player->allowMoveDown = false;
+        this->mPlayerData->player->AddPosition(0, (data.RegionCollision.top - data.RegionCollision.bottom));
+        return;
+    }
     }
     }
 }

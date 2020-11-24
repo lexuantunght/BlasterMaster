@@ -303,7 +303,7 @@
   <object id="77" x="578" y="2721" width="119" height="222"/>
   <object id="78" x="700" y="2883.67" width="256" height="60.3333"/>
   <object id="80" x="805.333" y="2621" width="151.667" height="89.6667"/>
-  <object id="81" x="826.667" y="2714" width="132.333" height="31"/>
+  <object id="81" x="830" y="2710.67" width="129" height="39.6667"/>
   <object id="82" x="837.333" y="2849.33" width="119.667" height="34"/>
  </objectgroup>
  <objectgroup id="3" name="GATES">
