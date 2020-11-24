@@ -250,6 +250,11 @@ void ThirdScene::checkCollision()
             if (mPlayer->getState() == PlayerState::Injuring)
                 continue;
         }
+        if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
+        {
+            if (mPlayer->getState() == PlayerState::InjuringDownOverhead || mPlayer->getState() == PlayerState::InjuringUpOverhead || mPlayer->getState() == PlayerState::InjuringOverhead)
+                continue;
+        }
         Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
             listCollision.at(i)->GetBound());
         //string str = std::to_string(listCollision.at(i)->GetBound().top);
@@ -311,6 +316,16 @@ void ThirdScene::checkCollision()
             {
                 if (mPlayer->mPower > 0) mPlayer->mPower--;
             }
+            //kiem tra neu cham gai
+            if (listCollision[i]->Tag == Entity::EntityTypes::Thorns)
+            {
+                if (mPlayer->mPower > 0) mPlayer->mPower--;
+            }
+
+            if (listCollision[i]->Tag == Entity::BulletEyeballs)
+            {
+                if (mPlayer->mPower > 0) mPlayer->mPower--;
+            }
         }
     }
 
@@ -344,10 +359,13 @@ void ThirdScene::checkCollision()
         //va cham bullet cannon
         for (size_t j = 0; j < listCollisionWithEnemy.size(); j++)
         {
+            if (listCollisionWithEnemy.at(i)->Tag == Entity::EntityTypes::Thorns)
+                continue;
             if (mEnemies[i]->mBullets.size() > 0 && mEnemies[i]->type == Enemy::EnemyType::cannon)
             {
                 for (size_t k = 0; k < mEnemies[i]->mBullets.size(); k++)
                 {
+                    
                     Entity::CollisionReturn r = Collision::RecteAndRect(mEnemies[i]->mBullets[k]->GetBound(),
                         listCollisionWithEnemy.at(j)->GetBound());
                     //string str = std::to_string(listCollision.at(i)->GetBound().top);

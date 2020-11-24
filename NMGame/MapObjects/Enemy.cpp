@@ -146,7 +146,7 @@ void Enemy::OnNoCollisionWithBottom()
 
 void Enemy::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
 {
-    if (impactor->Tag == EntityTypes::Bullets)
+    if (impactor->Tag == EntityTypes::Bullets || impactor->Tag == EntityTypes::Thorns)
     {
         mHp--;
     }

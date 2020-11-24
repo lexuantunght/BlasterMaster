@@ -275,7 +275,7 @@ void SecondScene::checkCollision()
             listCollision.at(i)->OnCollision(mPlayer, r, sideImpactor);
 
             //ngan di chuyen
-            if (sidePlayer == Entity::SideCollisions::Right)
+            if (sidePlayer == Entity::SideCollisions::Right )
             {
                 mPlayer->allowMoveRight = false;
             }
@@ -319,6 +319,9 @@ void SecondScene::checkCollision()
             {
                 if (mPlayer->mPower > 0) mPlayer->mPower--;
             }
+
+            
+
         }
     }
 

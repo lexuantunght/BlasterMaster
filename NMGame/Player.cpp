@@ -441,7 +441,7 @@ void Player::OnNoCollisionWithBottom()
 
 void Player::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
 {
-    if (impactor->Tag == EntityTypes::Enemy || impactor->Tag == EntityTypes::BulletSkulls || impactor->Tag == EntityTypes::BulletFloaters || impactor->Tag == EntityTypes::Dangers || impactor->Tag == EntityTypes::BulletCannons)
+    if (impactor->Tag == EntityTypes::Enemy || impactor->Tag == EntityTypes::BulletSkulls || impactor->Tag == EntityTypes::BulletFloaters || impactor->Tag == EntityTypes::Dangers || impactor->Tag == EntityTypes::BulletCannons || impactor->Tag == EntityTypes::Thorns || impactor->Tag == EntityTypes::BulletEyeballs)
     {
         if (this->mCurrentState == PlayerState::RunningOverhead || mCurrentState == PlayerState::StandingOverhead || mCurrentState == PlayerState::InjuringOverhead)
         {
