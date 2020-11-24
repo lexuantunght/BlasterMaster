@@ -8,6 +8,7 @@ public:
 		timeLoad = 0;
 	}
 	~TitleAnimation();
+	void Reset();
 	void Update(float dt);
 private:
 	float timeLoad;

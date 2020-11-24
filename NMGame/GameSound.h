@@ -8,10 +8,12 @@ public:
 	GameSound();
 	~GameSound();
 	void Play(std::string filePath);
-	void Stop();
-	void Close();
+	void PlayRepeat(std::string filePath);
+	void Stop(std::string name);
+	void Close(std::string name);
 
 private:
 	static GameSound* mInstance;
+	std::string GetName(std::string s);
 };
 

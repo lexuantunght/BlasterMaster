@@ -70,6 +70,8 @@ public:
     bool isOnLadder;
     bool isGoingLadder;
     Sprite* mSophia;
+    int skill; //missle = 1, thunder = 2, rocket = 3
+    int missleBulletCount = 20, thunderBulletCount = 20, rocketBulletCount = 20;
 protected:
     PlayerData* mPlayerData;
 

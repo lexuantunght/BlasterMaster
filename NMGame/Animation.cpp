@@ -10,6 +10,14 @@ Animation::Animation(const char* filePath, int totalFrame, int rows, int columns
     InitWithAnimation(filePath, totalFrame, rows, columns, timePerFrame, colorKey);
 }
 
+void Animation::Reset()
+{
+    mCurrentTotalTime = 0;
+    mCurrentColumn = 0;
+    mCurrentIndex = 0;
+    mCurrentRow = 0;
+}
+
 void Animation::InitWithAnimation(const char* filePath, int totalFrame, int rows, int columns, float timePerFrame, D3DCOLOR colorKey)
 {
     this->InitWithSprite(filePath);

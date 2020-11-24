@@ -48,3 +48,9 @@ void TitleAnimation::Update(float dt)
 
     timeLoad += dt;
 }
+
+void TitleAnimation::Reset()
+{
+    Animation::Reset();
+    timeLoad = 0;
+}
