@@ -9,10 +9,6 @@
       <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
       <Extensions>h;hh;hpp;hxx;h++;hm;inl;inc;ipp;xsd</Extensions>
     </Filter>
-    <Filter Include="Resource Files">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
     <Filter Include="Scenes">
       <UniqueIdentifier>{5820a749-313c-45a8-962b-8d68597366ec}</UniqueIdentifier>
     </Filter>
@@ -152,9 +148,6 @@
     </ClCompile>
     <ClCompile Include="MapReader\TmxUtil.cpp">
       <Filter>MapReader</Filter>
-    </ClCompile>
-    <ClCompile Include="MapObjects\MapObject.cpp">
-      <Filter>MapObjects</Filter>
     </ClCompile>
     <ClCompile Include="Collision.cpp">
       <Filter>Source Files</Filter>
@@ -303,6 +296,18 @@
     <ClCompile Include="MapObjects\MissileBullet.cpp">
       <Filter>MapObjects</Filter>
     </ClCompile>
+    <ClCompile Include="MapObjects\Rock.cpp">
+      <Filter>MapObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjects\Boss.cpp">
+      <Filter>MapObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjects\BulletBoss.cpp">
+      <Filter>MapObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="MapObjects\BossHand.cpp">
+      <Filter>MapObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -433,9 +438,6 @@
     </ClInclude>
     <ClInclude Include="MapReader\zlib.h">
       <Filter>MapReader</Filter>
-    </ClInclude>
-    <ClInclude Include="MapObjects\MapObject.h">
-      <Filter>MapObjects</Filter>
     </ClInclude>
     <ClInclude Include="Collision.h">
       <Filter>Header Files</Filter>
@@ -584,23 +586,22 @@
     <ClInclude Include="MapObjects\MissileBullet.h">
       <Filter>MapObjects</Filter>
     </ClInclude>
-    <ClInclude Include="resource.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="MapObjects\Rock.h">
+      <Filter>MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjects\Boss.h">
+      <Filter>MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjects\BulletBoss.h">
+      <Filter>MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjects\BossHand.h">
+      <Filter>MapObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="MapReader\Tmx.h.in">
       <Filter>MapReader</Filter>
     </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="NMGame.rc">
-      <Filter>Resource Files</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="..\..\..\..\..\Downloads\Blaster Master.ico">
-      <Filter>Resource Files</Filter>
-    </Image>
   </ItemGroup>
 </Project>

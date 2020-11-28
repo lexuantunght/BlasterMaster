@@ -12,7 +12,9 @@
 #include "../MapObjects/BulletCannon.h"
 #include "../MapObjects/Eyeball.h"
 #include "../MapObjects/BulletEyeball.h"
+#include "../MapObjects/Boss.h"
 #include "FirstScene.h"
+#include "../GameSound.h"
 #include <string>
 #include <fstream>
 ThirdScene::ThirdScene()
@@ -31,6 +33,8 @@ ThirdScene::~ThirdScene()
 {
     delete mPlayer;
     delete mMap;
+    delete bossBackground;
+    delete bossStage;
 }
 
 void ThirdScene::LoadContent()
@@ -42,10 +46,12 @@ void ThirdScene::LoadContent()
     mMap = new Map("Assets/overworld2.tmx");
     mCamera = new Camera(GameGlobal::GetWidth(), GameGlobal::GetHeight());
     mCamera->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 4);
-    //mCamera->SetPosition(3584, 702);
     mMap->SetCamera(mCamera);
 
     LoadEnemies("Assets/enemies_overworld2.txt");
+    LoadRocks("Assets/mapObjects.txt");
+
+    mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(1360, 3372, 0), 1));
 
     //get bound submap
     mListMapBound = new RECT[21];
@@ -54,8 +60,14 @@ void ThirdScene::LoadContent()
 
     mPlayer = new PlayerOverhead();
     mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 4);
-    //mPlayer->SetPosition(3584, 702);
+    //mPlayer->SetPosition(1700, 1800);
     mPlayer->SetCamera(mCamera);
+    bossBackground = new Sprite("Assets/Boss/bossBG.png");
+    bossStage = new Animation("Assets/Boss/bossStage.png", 2, 1, 2, 0.15f);
+    mIsBossStage = false;
+    mIsLoadedBossStage = false;
+    mIsKilledBoss = false;
+    mCountPreBoss = 0;
 }
 
 const vector<string> explode2(const string& s, const char& c)
@@ -95,7 +107,7 @@ void ThirdScene::LoadMapBound(const char* path)
 
 void ThirdScene::LoadEnemies(const char* path)
 {
-    // teleporter = 1, cannon = 2, eyeball = 3
+    // teleporter = 1, cannon = 2, eyeball = 3, boss = 4
     fstream f;
     f.open(path, std::ios::in);
     while (!f.eof())
@@ -115,23 +127,79 @@ void ThirdScene::LoadEnemies(const char* path)
         {
             mEnemies.push_back(new Eyeball(D3DXVECTOR3(stoi(info[1]), stoi(info[2]), 0), stoi(info[3]), stoi(info[4])));
         }
+        else if (info[0] == "4")
+        {
+            mEnemies.push_back(new Boss(D3DXVECTOR3(stoi(info[1]), stoi(info[2]), 0), stoi(info[3]), stoi(info[4])));
+            mEnemies[mEnemies.size() - 1]->mIsActive = false;
+        }
+    }
+    f.close();
+}
+
+void ThirdScene::LoadRocks(const char* path)
+{
+    fstream f;
+    f.open(path, std::ios::in);
+    while (!f.eof())
+    {
+        string line;
+        std::getline(f, line);
+        vector<string> info = { explode2(line, ' ') };
+        if (info[0] == "1")
+        {
+            mRocks.push_back(new Rock(D3DXVECTOR3(stoi(info[1]), stoi(info[2]), 0), stoi(info[3])));
+        }
     }
     f.close();
 }
 
 void ThirdScene::Update(float dt)
 {
+    //game process
     if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) checkCollision();
     if (isReplace) return;
     mMap->Update(dt);
-    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) mPlayer->HandleKeyboard(keys);
+    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom && !mIsBossStage && !mIsKilledBoss) mPlayer->HandleKeyboard(keys);
     mPlayer->Update(dt);
-    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) InitForEnemies(dt);
-    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) CheckCameraAndWorldMap();
+    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom)
+    {
+        InitForEnemies(dt);
+        if (!mIsLoadedBossStage)
+            CheckCameraAndWorldMap();
+    }
+    //pass gates
     if (mIsPassGateRight) PassGateRight();
     if (mIsPassGateLeft) PassGateLeft();
     if (mIsPassGateBottom) PassGateBottom();
     if (mIsPassGateTop) PassGateTop();
+    //boss stage
+    if (mIsBossStage)
+    {
+        if (mCountPreBoss < 4.0f)
+        {
+            bossStage->Update(dt);
+            mCountPreBoss += dt;
+        }
+        else
+        {
+            mIsBossStage = false;
+            mIsLoadedBossStage = true;
+            mEnemies[mEnemies.size() - 1]->mIsActive = true;
+            mCountPreBoss = 0;
+        }
+    }
+    if (mIsKilledBoss)
+    {
+        if (mCountPreBoss >= 5.0f)
+        {
+            GameSound::GetInstance()->Stop("area_clear");
+            GameSound::GetInstance()->Play("Assets/Sounds/area2.mp3");
+            mPlayer->SetPosition(238, 3680);
+            mCurrentMapBound = mListMapBound[0];
+            mIsKilledBoss = false;
+        }
+        else mCountPreBoss += dt;
+    }
 }
 
 void ThirdScene::InitForEnemies(float dt)
@@ -143,7 +211,8 @@ void ThirdScene::InitForEnemies(float dt)
             if (mEnemies[i]->GetPosition().x > mCamera->GetBound().left - mEnemies[i]->GetWidth() / 2 && mEnemies[i]->GetPosition().x < mCamera->GetBound().right + mEnemies[i]->GetWidth() / 2
                 && mEnemies[i]->GetPosition().y > mCamera->GetBound().top - mEnemies[i]->GetHeight() / 2 && mEnemies[i]->GetPosition().y < mCamera->GetBound().bottom + mEnemies[i]->GetHeight() / 2)
             {
-                mEnemies[i]->mIsActive = true;
+                if (mEnemies[i]->type != Enemy::EnemyType::boss)
+                    mEnemies[i]->mIsActive = true;
                 if (mEnemies[i]->type == Enemy::EnemyType::eyeball && mEnemies[i]->mBullets.size() == 0)
                 {
                     mEnemies[i]->mBullets.push_back(new BulletEyeball(D3DXVECTOR3(mEnemies[i]->GetPosition().x, mEnemies[i]->GetPosition().y + 10, 0)));
@@ -173,25 +242,11 @@ void ThirdScene::InitForEnemies(float dt)
         }
         else
         {
-            if (mEnemies[i]->mIsContainItem == 1)
+            if (mEnemies[i]->type == Enemy::EnemyType::boss)
+                mIsLoadedBossStage = false;
+            if (mEnemies[i]->mIsContainItem != 0)
             {
-                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 1));
-            }
-            else if (mEnemies[i]->mIsContainItem == 2)
-            {
-                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 2));
-            }
-            else if (mEnemies[i]->mIsContainItem == 3)
-            {
-                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 3));
-            }
-            else if (mEnemies[i]->mIsContainItem == 4)
-            {
-                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 4));
-            }
-            else if (mEnemies[i]->mIsContainItem == 5)
-            {
-                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), 5));
+                mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0), mEnemies[i]->mIsContainItem));
             }
             mEnemies.erase(mEnemies.begin() + i);
         }
@@ -247,7 +302,8 @@ void ThirdScene::checkCollision()
     {
         if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
         {
-            if (mPlayer->getState() == PlayerState::Injuring)
+            if (mPlayer->getState() == PlayerState::Injuring || mPlayer->getState() == PlayerState::InjuringOverhead
+                || mPlayer->getState() == PlayerState::InjuringUpOverhead || mPlayer->getState() == PlayerState::InjuringDownOverhead)
                 continue;
         }
         Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
@@ -266,6 +322,12 @@ void ThirdScene::checkCollision()
             mPlayer->OnCollision(listCollision.at(i), r, sidePlayer);
             listCollision.at(i)->OnCollision(mPlayer, r, sideImpactor);
 
+            if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
+            {
+                if (mPlayer->getState() == PlayerState::Injuring || mPlayer->getState() == PlayerState::InjuringOverhead
+                    || mPlayer->getState() == PlayerState::InjuringUpOverhead || mPlayer->getState() == PlayerState::InjuringDownOverhead)
+                    continue;
+            }
             //ngan di chuyen
             if (sidePlayer == Entity::SideCollisions::Right)
             {
@@ -305,12 +367,6 @@ void ThirdScene::checkCollision()
                 SceneManager::GetInstance()->ReplaceScene(new FirstScene(oldPos, currReverse));
                 return;
             }
-
-            //kiem tra neu va cham voi phia duoi cua Player 
-            if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
-            {
-                if (mPlayer->mPower > 0) mPlayer->mPower--;
-            }
         }
     }
 
@@ -323,6 +379,8 @@ void ThirdScene::checkCollision()
             continue;
         for (size_t j = 0; j < listCollisionWithEnemy.size(); j++)
         {
+            if (listCollisionWithEnemy[j]->Tag == Entity::EntityTypes::Dangers)
+                continue;
             Entity::CollisionReturn r = Collision::RecteAndRect(mEnemies[i]->GetBound(),
                 listCollisionWithEnemy.at(j)->GetBound());
             //string str = std::to_string(listCollision.at(i)->GetBound().top);
@@ -344,7 +402,9 @@ void ThirdScene::checkCollision()
         //va cham bullet cannon
         for (size_t j = 0; j < listCollisionWithEnemy.size(); j++)
         {
-            if (mEnemies[i]->mBullets.size() > 0 && mEnemies[i]->type == Enemy::EnemyType::cannon)
+            if (listCollisionWithEnemy[j]->Tag == Entity::EntityTypes::Dangers)
+                continue;
+            if (mEnemies[i]->mBullets.size() > 0 && (mEnemies[i]->type == Enemy::EnemyType::cannon || mEnemies[i]->type == Enemy::EnemyType::boss))
             {
                 for (size_t k = 0; k < mEnemies[i]->mBullets.size(); k++)
                 {
@@ -383,6 +443,46 @@ void ThirdScene::checkCollision()
                 //goi den ham xu ly collision cua Player va Entity
                 mEnemies[i]->OnCollision(mPlayer->mBullets.at(j), r, sideEnemy);
                 mPlayer->mBullets.at(j)->OnCollision(mPlayer, r, sideImpactor);
+            }
+        }
+    }
+
+    //xu ly va cham hand boss
+    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead && mPlayer->getState() != PlayerState::InjuringDownOverhead)
+    {
+        if (mEnemies[mEnemies.size() - 1]->mIsActive)
+        {
+            for (int i = 0; i < 5; i++)
+            {
+                Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
+                    mEnemies[mEnemies.size() - 1]->GetBossHandLeft()[i]->GetBound());
+                if (r.IsCollided)
+                {
+                    //lay phia va cham cua Entity so voi Player
+                    Entity::SideCollisions sidePlayer = Collision::getSideCollision(mPlayer, r);
+
+                    //lay phia va cham cua Player so voi Entity
+                    Entity::SideCollisions sideImpactor = Collision::getSideCollision(mEnemies[mEnemies.size() - 1]->GetBossHandLeft()[i], r);
+
+                    //goi den ham xu ly collision cua Player va Entity
+                    mPlayer->OnCollision(mEnemies[mEnemies.size() - 1]->GetBossHandLeft()[i], r, sidePlayer);
+                }
+            }
+            for (int i = 0; i < 5; i++)
+            {
+                Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
+                    mEnemies[mEnemies.size() - 1]->GetBossHandRight()[i]->GetBound());
+                if (r.IsCollided)
+                {
+                    //lay phia va cham cua Entity so voi Player
+                    Entity::SideCollisions sidePlayer = Collision::getSideCollision(mPlayer, r);
+
+                    //lay phia va cham cua Player so voi Entity
+                    Entity::SideCollisions sideImpactor = Collision::getSideCollision(mEnemies[mEnemies.size() - 1]->GetBossHandRight()[i], r);
+
+                    //goi den ham xu ly collision cua Player va Entity
+                    mPlayer->OnCollision(mEnemies[mEnemies.size() - 1]->GetBossHandRight()[i], r, sidePlayer);
+                }
             }
         }
     }
@@ -430,9 +530,6 @@ void ThirdScene::checkCollision()
                     mPlayer->allowMoveUp = false;
                     mPlayer->AddPosition(0, 10);
                 }
-                //tru power
-                if (mPlayer->mPower > 0)
-                    mPlayer->mPower -= 1;
             }
         }
 
@@ -461,10 +558,6 @@ void ThirdScene::checkCollision()
                         //goi den ham xu ly collision cua Player va Entity
                         mPlayer->OnCollision(mEnemies[i]->mBullets[j], r, sidePlayer);
                         mEnemies[i]->mBullets[j]->OnCollision(mPlayer, r, sideImpactor);
-
-                        //tru power
-                        if (mPlayer->mPower > 0)
-                            mPlayer->mPower -= 1;
                     }
                 }
             }
@@ -485,8 +578,58 @@ void ThirdScene::checkCollision()
             //add power
             if (mItemCollections[i]->kindItem == 1 && mPlayer->mPower < 8)
                 mPlayer->mPower += 1;
+            else if (mItemCollections[i]->kindItem == 6)
+            {
+                GameSound::GetInstance()->Play("Assets/Sounds/area_clear.mp3");
+                if (mPlayer->getState() == PlayerState::RunningUpOverhead)
+                    mPlayer->SetState(new PlayerStandingUpOverheadState(mPlayer->getPlayerData()));
+                else if (mPlayer->getState() == PlayerState::RunningDownOverhead)
+                    mPlayer->SetState(new PlayerStandingDownOverheadState(mPlayer->getPlayerData()));
+                else if (mPlayer->getState() == PlayerState::RunningOverhead)
+                    mPlayer->SetState(new PlayerStandingOverheadState(mPlayer->getPlayerData()));
+                mPlayer->SetVx(0);
+                mPlayer->SetVy(0);
+                mIsKilledBoss = true;
+            }
             mItemCollections.erase(mItemCollections.begin() + i);
         }
+    }
+
+    //xu ly va cham da
+    for (size_t i = 0; i < mRocks.size(); i++)
+    {
+        Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
+            mRocks[i]->GetBound());
+        if (r.IsCollided)
+        {
+            Entity::SideCollisions sidePlayer = Collision::getSideCollision(mPlayer, r);
+
+            //lay phia va cham cua Player so voi Entity
+            Entity::SideCollisions sideImpactor = Collision::getSideCollision(mRocks.at(i), r);
+
+            //goi den ham xu ly collision cua Player va Entity
+            mPlayer->OnCollision(listCollision.at(i), r, sidePlayer);
+            mRocks.at(i)->OnCollision(mPlayer, r, sideImpactor);
+
+            //ngan di chuyen
+            if (sidePlayer == Entity::SideCollisions::Right)
+            {
+                mPlayer->allowMoveRight = false;
+            }
+            else if (sidePlayer == Entity::SideCollisions::Left)
+            {
+                mPlayer->allowMoveLeft = false;
+            }
+            else if (sidePlayer == Entity::SideCollisions::Top || sidePlayer == Entity::SideCollisions::TopLeft || sidePlayer == Entity::SideCollisions::TopRight)
+            {
+                mPlayer->allowMoveUp = false;
+            }
+            else if (sidePlayer == Entity::SideCollisions::Bottom || sidePlayer == Entity::SideCollisions::BottomLeft || sidePlayer == Entity::SideCollisions::BottomRight)
+            {
+                mPlayer->allowMoveDown = false;
+            }
+        }
+        
     }
 
     //xu ly dan va cham
@@ -506,6 +649,30 @@ void ThirdScene::checkCollision()
                 //goi den ham xu ly collision cua Bullet va Entity
                 mPlayer->mBullets[i]->OnCollision(listCollisionWithBullet.at(j), r, sidePlayer);
                 listCollisionWithBullet.at(j)->OnCollision(mPlayer->mBullets[i], r, sideImpactor);
+                break;
+            }
+        }
+        for (size_t j = 0; j < mRocks.size(); j++)
+        {
+            Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->mBullets[i]->GetBound(), mRocks.at(j)->GetBound());
+            if (r.IsCollided)
+            {
+                //lay phia va cham cua Entity so voi Bullet
+                Entity::SideCollisions sidePlayer = Collision::getSideCollision(mPlayer->mBullets[i], r);
+
+                //lay phia va cham cua Bullet so voi Entity
+                Entity::SideCollisions sideImpactor = Collision::getSideCollision(listCollisionWithBullet.at(j), r);
+
+                //goi den ham xu ly collision cua Bullet va Entity
+                mPlayer->mBullets[i]->OnCollision(mRocks.at(j), r, sidePlayer);
+                mRocks.at(j)->OnCollision(mPlayer->mBullets[i], r, sideImpactor);
+                if (mRocks.at(j)->mDestroyed)
+                {
+                    if (mRocks[j]->mItem)
+                        mItemCollections.push_back(mRocks[j]->mItem);
+                    delete mRocks[j];
+                    mRocks.erase(mRocks.begin() + j);
+                }
                 break;
             }
         }
@@ -624,6 +791,14 @@ void ThirdScene::PassGateTop()
                     && mListMapBound[i].top < mPlayer->GetPosition().y && mListMapBound[i].bottom > mPlayer->GetPosition().y)
                 {
                     mCurrentMapBound = mListMapBound[i];
+                    if (i == 20)
+                    {
+                        GameSound::GetInstance()->Stop("area2");
+                        GameSound::GetInstance()->Play("Assets/Sounds/preBoss.mp3");
+                        mIsBossStage = true;
+                        bossStage->SetPosition(1792, 1216);
+                        bossBackground->SetPosition(1792, 1216);
+                    }
                     break;
                 }
             }
@@ -675,24 +850,29 @@ void ThirdScene::PassGateBottom()
 void ThirdScene::Draw()
 {
     //goi va draw cac sprite trong vector
-
+    D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
+        GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
     mMap->Draw();
+    if (mIsBossStage) bossStage->Draw(trans);
+    if (mIsLoadedBossStage) bossBackground->Draw(bossBackground->GetPosition(), RECT(), D3DXVECTOR2(), trans);
     mPlayer->Draw();
+    if (!mIsBossStage && !mIsLoadedBossStage) mMap->DrawWalls();
     if (mIsPassGateLeft || mIsPassGateRight || mIsPassGateBottom || mIsPassGateTop)
         mMap->DrawGates();
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
-        D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
-            GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
         if (mEnemies[i]->mIsActive)
             mEnemies.at(i)->Draw(trans);
     }
     for (size_t i = 0; i < mItemCollections.size(); i++)
     {
-        D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
-            GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
         mItemCollections.at(i)->mSprite->Draw(mItemCollections[i]->mSprite->GetPosition(), RECT(), D3DXVECTOR2(), trans);
     }
+    for (size_t i = 0; i < mRocks.size(); i++)
+    {
+        mRocks.at(i)->Draw(mRocks[i]->GetPosition(), RECT(), D3DXVECTOR2(), trans);
+    }
+    mPlayer->DrawPower();
 }
 
 void ThirdScene::OnKeyDown(int keyCode)

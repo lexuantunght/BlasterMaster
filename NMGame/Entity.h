@@ -31,7 +31,7 @@ public:
 
     enum EntityTypes
     {
-        None, Enemy, Static, Bee, Gate, Bullets, Player, BulletFloaters, BulletSkulls, Dangers, Ladder, Overworld, BulletCannons, BulletEyeballs
+        None, Enemy, Static, Bee, Gate, Bullets, Player, BulletFloaters, BulletSkulls, Dangers, Ladder, Overworld, BulletCannons, BulletEyeballs, Rocks, BossHands, BulletBosses
     };
 
     EntityTypes Tag; //Tag de nhan dien loai Entity

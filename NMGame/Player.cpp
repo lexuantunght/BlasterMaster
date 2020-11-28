@@ -286,11 +286,6 @@ void Player::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DX
         // vien dan
         for (int i = 0; i < mBullets.size(); i++)
             mBullets[i]->Draw(mBullets[i]->GetPosition(), sourceRect, scale, trans, angle, rotationCenter, colorKey);
-        mPowerView->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 198, mCamera->GetPosition().y + 112, 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
-        for (int i = mPower - 1; i >= 0; i--)
-        {
-            mPowerItems.at(i)->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 200, mCamera->GetPosition().y + 97 + 8 * (7 - i), 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
-        }
     }
     else
     {
@@ -300,6 +295,20 @@ void Player::Draw(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DX
         // vien dan
         for (int i = 0; i < mBullets.size(); i++)
             mBullets[i]->Draw(mBullets[i]->GetPosition());
+    }
+}
+
+void Player::DrawPower(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
+{
+    if (mCamera)
+    {
+        D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
+            GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
+        mPowerView->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 198, mCamera->GetPosition().y + 112, 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
+        for (int i = mPower - 1; i >= 0; i--)
+        {
+            mPowerItems.at(i)->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 200, mCamera->GetPosition().y + 97 + 8 * (7 - i), 0), sourceRect, scale, trans, angle, rotationCenter, colorKey);
+        }
     }
 }
 
@@ -441,8 +450,11 @@ void Player::OnNoCollisionWithBottom()
 
 void Player::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side)
 {
-    if (impactor->Tag == EntityTypes::Enemy || impactor->Tag == EntityTypes::BulletSkulls || impactor->Tag == EntityTypes::BulletFloaters || impactor->Tag == EntityTypes::Dangers || impactor->Tag == EntityTypes::BulletCannons)
+    if (impactor->Tag == EntityTypes::Enemy || impactor->Tag == EntityTypes::BulletSkulls || impactor->Tag == EntityTypes::BulletFloaters 
+        || impactor->Tag == EntityTypes::Dangers || impactor->Tag == EntityTypes::BulletCannons 
+        || impactor->Tag == EntityTypes::BulletEyeballs || impactor->Tag == EntityTypes::BulletBosses || impactor->Tag == EntityTypes::BossHands)
     {
+        if (mPower > 0) mPower--;
         if (this->mCurrentState == PlayerState::RunningOverhead || mCurrentState == PlayerState::StandingOverhead || mCurrentState == PlayerState::InjuringOverhead)
         {
             this->SetState(new PlayerInjuringOverheadState(mPlayerData));

@@ -28,6 +28,7 @@ public:
 
     void Draw();
     void DrawGates();
+    void DrawWalls();
     std::map<int, Sprite*> getListTileSet();
 
     bool IsBoundLeft(); //kiem tra luc nay Camera o vi bien ben trai so voi WorldMap

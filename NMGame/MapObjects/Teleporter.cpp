@@ -16,7 +16,7 @@ bool Teleporter::init(D3DXVECTOR3 position, int hp)
     widthBottom = 0;
     vx = 0;
     vy = 0;
-    mTimeMove = 2.0f;
+    mTimeMove = 1.0f;
     mCurrTime = 0;
     type = EnemyType::teleporter;
     Tag = EntityTypes::Enemy;
@@ -32,29 +32,14 @@ bool Teleporter::init(D3DXVECTOR3 position, int hp)
 
 void Teleporter::Update(float dt)
 {
-    if (vx < 0)
-        mAnimation->FlipVertical(true);
-    else mAnimation->FlipVertical(false);
     mAnimation->SetPosition(this->GetPosition());
     mAnimation->Update(dt);
-    for (size_t i = 0; i < mBullets.size(); i++)
-    {
-        if (mBullets[i] && mBullets[i]->mIsValid)
-        {
-            mBullets[i]->Update(dt);
-        }
-        else
-        {
-            delete mBullets[i];
-            mBullets.erase(mBullets.begin() + i);
-        }
-    }
     Entity::Update(dt);
 
     mCurrTime += dt;
     if (mCurrTime >= mTimeMove)
     {
-        srand(time(NULL));
+        //srand(time(NULL));
         int x = rand();
         int y = rand();
         this->AddPosition(pow(-1, x) * 40, pow(-1, y) * 40);

@@ -13,7 +13,6 @@ std::vector<Enemy*> FirstScene::mEnemies;
 FirstScene::FirstScene()
 {
     LoadContent();
-    //GameSound::GetInstance()->Close("intro2");
     GameSound::GetInstance()->PlayRepeat("Assets/Sounds/area2.mp3");
     menu = new Menu();
     mTimeCounter = 0;
@@ -43,6 +42,7 @@ FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse)
         mPlayer->SetPosition(3220, 336);
     }
     else mPlayer->SetPosition(4268, 906);
+    menu = new Menu();
 }
 
 FirstScene::~FirstScene()
@@ -59,8 +59,8 @@ void FirstScene::LoadContent()
 
     mMap = new Map("Assets/area2.tmx");
     mCamera = new Camera(GameGlobal::GetWidth(), GameGlobal::GetHeight());
-    //mCamera->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
-    mCamera->SetPosition(3584, 702);
+    mCamera->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
+    //mCamera->SetPosition(3584, 702);
     mMap->SetCamera(mCamera);
 
     LoadEnemies("Assets/enemies.txt");
@@ -68,12 +68,12 @@ void FirstScene::LoadContent()
     //get bound submap
     mListMapBound = new RECT[15];
     LoadMapBound("Assets/map_bounds.txt");
-    mCurrentMapBound = mListMapBound[6];
-    mCurrentMapIndex = 6;
+    mCurrentMapBound = mListMapBound[0];
+    mCurrentMapIndex = 0;
 
     mPlayer = new Player();
-    //mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
-    mPlayer->SetPosition(3584, 702);
+    mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
+    //mPlayer->SetPosition(3584, 702);
     mPlayer->SetCamera(mCamera);
 }
 
@@ -386,7 +386,7 @@ void FirstScene::checkCollision()
             //kiem tra neu va cham voi phia duoi cua Player 
             if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
             {
-                if (mPlayer->mPower > 0) mPlayer->mPower--;
+                
             }
             else
             {
@@ -567,9 +567,6 @@ void FirstScene::checkCollision()
             {
                 mPlayer->allowMoveLeft = false;
             }
-            //tru power
-            if (mPlayer->mPower > 0)
-                mPlayer->mPower -= 1;
         }
     }
     
@@ -596,10 +593,6 @@ void FirstScene::checkCollision()
                 //goi den ham xu ly collision cua Player va Entity
                 mPlayer->OnCollision(mEnemies[i]->mBullets[0], r, sidePlayer);
                 mEnemies[i]->mBullets[0]->OnCollision(mPlayer, r, sideImpactor);
-
-                //tru power
-                if (mPlayer->mPower > 0)
-                    mPlayer->mPower -= 1;
             }
         }
     }
@@ -630,6 +623,8 @@ void FirstScene::checkCollision()
     {
         for (size_t j = 0; j < listCollisionWithBullet.size(); j++)
         {
+            if (listCollisionWithBullet[j]->Tag == Entity::EntityTypes::Ladder)
+                continue;
             Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->mBullets[i]->GetBound(), listCollisionWithBullet.at(j)->GetBound());
             if (r.IsCollided)
             {
@@ -769,6 +764,7 @@ void FirstScene::Draw()
             GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
         mPowerCollections.at(i)->Draw(mPowerCollections[i]->GetPosition(), RECT(), D3DXVECTOR2(), trans);
     }
+    mPlayer->DrawPower();
 
     if (mIsShowMenu)
         menu->Draw();
@@ -785,6 +781,7 @@ void FirstScene::OnKeyDown(int keyCode)
     {
         menu->UpdateBulletCount(mPlayer->missleBulletCount, mPlayer->thunderBulletCount, mPlayer->rocketBulletCount);
         mIsShowMenu = true;
+        GameSound::GetInstance()->Play("Assets/Sounds/menu.mp3");
     }
     if (keyCode == VK_RETURN && mIsShowMenu)
     {

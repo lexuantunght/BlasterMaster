@@ -12,6 +12,7 @@
 #include "../Camera.h"
 #include "../MapObjects/Enemy.h"
 #include "../MapObjects/ItemCollection.h"
+#include "../MapObjects/Rock.h"
 class ThirdScene : public Scene
 {
 public:
@@ -29,6 +30,7 @@ public:
 
     void LoadEnemies(const char* path);
     void LoadMapBound(const char* path);
+    void LoadRocks(const char* path);
 protected:
     void checkCollision();
     void CheckCameraAndWorldMap();
@@ -51,7 +53,15 @@ protected:
     RECT mCurrentMapBound;
     RECT* mListMapBound;
     vector<Enemy*> mEnemies;
+    vector<Rock*> mRocks;
     vector<ItemCollection*> mItemCollections;
+
+    Animation* bossStage;
+    Sprite* bossBackground;
+    bool mIsBossStage;
+    bool mIsLoadedBossStage;
+    bool mIsKilledBoss;
+    float mCountPreBoss;
 
     float mTimeCounter;
 

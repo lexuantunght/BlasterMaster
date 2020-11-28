@@ -6,6 +6,7 @@ ItemCollection::ItemCollection(D3DXVECTOR3 position, int kind)
 	else if (kind == 3) mSprite = new Sprite("Assets/hoverCollection.png");
 	else if (kind == 4) mSprite = new Sprite("Assets/thunderBreak.png");
 	else if (kind == 5) mSprite = new Sprite("Assets/homingMissile.png");
+	else if (kind == 6) mSprite = new Sprite("Assets/Boss/machine.png");
 
 	kindItem = kind;
 	mSprite->SetPosition(position);

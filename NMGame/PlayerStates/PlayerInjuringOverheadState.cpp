@@ -58,7 +58,7 @@ void PlayerInjuringOverheadState::OnCollision(Entity* impactor, Entity::SideColl
 {
     //lay phia va cham so voi player
     //GameCollision::SideCollisions side = GameCollision::getSideCollision(this->mPlayerData->player, data);
-
+    if (impactor->Tag != Entity::EntityTypes::Dangers)
     switch (side)
     {
     case Entity::Left:

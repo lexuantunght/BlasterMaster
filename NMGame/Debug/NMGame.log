@@ -1,5 +1,29 @@
-﻿  Bullet.cpp
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(142,42): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(158,28): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
-C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\MapObjects\Bullet.cpp(160,27): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+﻿  Game.cpp
+  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Game.cpp(11,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Game.cpp(79,23): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
+  ThirdScene.cpp
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(48,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(48,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(62,72): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(62,49): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(120,78): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(120,63): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(124,74): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(124,59): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(128,75): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(128,60): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(132,72): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(132,57): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(150,70): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(150,55): warning C4244: 'argument': conversion from 'int' to 'FLOAT', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(264,52): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(270,53): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(277,77): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(284,37): warning C4244: 'argument': conversion from 'LONG' to 'float', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(296,23): warning C4018: '<': signed/unsigned mismatch
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(570,64): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(571,65): warning C4244: '=': conversion from 'float' to 'LONG', possible loss of data
+C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\NMGame\Scenes\ThirdScene.cpp(636,23): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   NMGame.vcxproj -> C:\Users\XuanTung\Documents\Visual Studio 2019\Projects\NMGame\Debug\NMGame.exe

@@ -313,12 +313,6 @@ void SecondScene::checkCollision()
                 SceneManager::GetInstance()->ReplaceScene(new FirstScene(oldPos, currReverse));
                 return;
             }
-
-            //kiem tra neu va cham voi phia duoi cua Player 
-            if (listCollision[i]->Tag == Entity::EntityTypes::Dangers)
-            {
-                if (mPlayer->mPower > 0) mPlayer->mPower--;
-            }
         }
     }
 
@@ -331,6 +325,8 @@ void SecondScene::checkCollision()
             continue;
         for (size_t j = 0; j < listCollisionWithEnemy.size(); j++)
         {
+            if (listCollisionWithEnemy[j]->Tag == Entity::EntityTypes::Dangers)
+                continue;
             Entity::CollisionReturn r = Collision::RecteAndRect(mEnemies[i]->GetBound(),
                 listCollisionWithEnemy.at(j)->GetBound());
             //string str = std::to_string(listCollision.at(i)->GetBound().top);
@@ -438,9 +434,6 @@ void SecondScene::checkCollision()
                     mPlayer->allowMoveUp = false;
                     mPlayer->AddPosition(0, 10);
                 }
-                //tru power
-                if (mPlayer->mPower > 0)
-                    mPlayer->mPower -= 1;
             }
         }
 
@@ -469,10 +462,6 @@ void SecondScene::checkCollision()
                     //goi den ham xu ly collision cua Player va Entity
                     mPlayer->OnCollision(mEnemies[i]->mBullets[j], r, sidePlayer);
                     mEnemies[i]->mBullets[j]->OnCollision(mPlayer, r, sideImpactor);
-
-                    //tru power
-                    if (mPlayer->mPower > 0)
-                        mPlayer->mPower -= 1;
                 }
             }
         }
@@ -701,6 +690,7 @@ void SecondScene::Draw()
             GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
         mItemCollections.at(i)->mSprite->Draw(mItemCollections[i]->mSprite->GetPosition(), RECT(), D3DXVECTOR2(), trans);
     }
+    mPlayer->DrawPower();
 }
 
 void SecondScene::OnKeyDown(int keyCode)

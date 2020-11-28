@@ -3,6 +3,7 @@
 #include "../Animation.h"
 #include "../Collision.h"
 #include "Bullet.h"
+#include "BossHand.h"
 class Enemy : public Entity
 {
 public:
@@ -11,13 +12,16 @@ public:
 	~Enemy();
 	enum EnemyType
 	{
-		worm, dome, jumper, floater, insect, orb, skull, mine, teleporter, cannon, eyeball
+		worm, dome, jumper, floater, insect, orb, skull, mine, teleporter, cannon, eyeball, boss
 	};
 	virtual void Update(float dt);
 	void Draw(D3DXVECTOR3 position = D3DXVECTOR3(), RECT sourceRect = RECT(), D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
-	void Draw(D3DXVECTOR2 transform);
+	virtual void Draw(D3DXVECTOR2 transform);
 
 	virtual void OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::SideCollisions side);
+
+	virtual vector<BossHand*> GetBossHandLeft();
+	virtual vector<BossHand*> GetBossHandRight();
 
 	void OnNoCollisionWithBottom();
 	RECT GetBound();

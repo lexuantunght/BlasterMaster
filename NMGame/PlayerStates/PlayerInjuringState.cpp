@@ -8,6 +8,7 @@
 #include "PlayerStandingState.h"
 #include "PlayerInjuringJumpState.h"
 #include "../GameDefines.h"
+#include "../GameSound.h"
 
 PlayerInjuringState::PlayerInjuringState(PlayerData* playerData)
 {
@@ -16,6 +17,7 @@ PlayerInjuringState::PlayerInjuringState(PlayerData* playerData)
     this->mPlayerData->player->SetVy(0);
     this->mTimeExist = 1.0f;
     this->mCurrentTime = 0;
+    GameSound::GetInstance()->Play("Assets/Sounds/injuring.mp3");
 }
 
 

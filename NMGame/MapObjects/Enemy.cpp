@@ -129,6 +129,17 @@ RECT Enemy::GetBound()
     return rect;
 }
 
+vector<BossHand*> Enemy::GetBossHandLeft()
+{
+    vector<BossHand*> s;
+    return s;
+}
+vector<BossHand*> Enemy::GetBossHandRight()
+{
+    vector<BossHand*> s;
+    return s;
+}
+
 int Enemy::GetHP()
 {
     return mHp;
