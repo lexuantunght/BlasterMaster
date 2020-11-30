@@ -1,5 +1,0 @@
-﻿  Game.cpp
-  C:\Program Files (x86)\Microsoft DirectX SDK (June 2010)\Include\dinput.h: DIRECTINPUT_VERSION undefined. Defaulting to version 0x0800
-C:\Users\18521\Desktop\Nhập môn Game\NMGame\Game.cpp(11,9): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\18521\Desktop\Nhập môn Game\NMGame\Game.cpp(79,23): warning C4244: 'argument': conversion from 'float' to 'DWORD', possible loss of data
-  NMGame.vcxproj -> C:\Users\18521\Desktop\Nhập môn Game\Debug\NMGame.exe
