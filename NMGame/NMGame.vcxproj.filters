@@ -27,6 +27,9 @@
     <Filter Include="Views">
       <UniqueIdentifier>{8aa0bb06-73d7-4300-9d95-4336178e8834}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Ending">
+      <UniqueIdentifier>{2bc09906-f76e-4319-8803-9fb3a3322647}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="WinMain.cpp">
@@ -307,6 +310,15 @@
     </ClCompile>
     <ClCompile Include="MapObjects\BossHand.cpp">
       <Filter>MapObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="Ending\MountainAnimation.cpp">
+      <Filter>Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="Ending\DestroyAnimation.cpp">
+      <Filter>Ending</Filter>
+    </ClCompile>
+    <ClCompile Include="Ending\EndingScene.cpp">
+      <Filter>Ending</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -597,6 +609,15 @@
     </ClInclude>
     <ClInclude Include="MapObjects\BossHand.h">
       <Filter>MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Ending\EndingScene.h">
+      <Filter>Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="Ending\MountainAnimation.h">
+      <Filter>Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="Ending\DestroyAnimation.h">
+      <Filter>Ending</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

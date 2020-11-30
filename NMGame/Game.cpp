@@ -5,12 +5,13 @@
 #include "Scenes/SecondScene.h"
 #include "Scenes/ThirdScene.h"
 #include "Intro/IntroScene.h"
+#include "Ending/EndingScene.h"
 
 Game::Game(int fps)
 {
 	mFPS = fps;
 
-	SceneManager::GetInstance()->ReplaceScene(new IntroScene());
+	SceneManager::GetInstance()->ReplaceScene(new EndingScene());
 
 	InitLoop();
 }
