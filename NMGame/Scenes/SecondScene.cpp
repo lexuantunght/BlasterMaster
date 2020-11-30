@@ -15,6 +15,7 @@
 #include "../MapObjects/BulletCannon.h"
 #include "../MapObjects/Eyeball.h"
 #include "../MapObjects/BulletEyeball.h"
+#include "../GameSound.h"
 #include <string>
 #include <fstream>
 
@@ -479,6 +480,7 @@ void SecondScene::checkCollision()
             bound);
         if (r.IsCollided)
         {
+            GameSound::GetInstance()->Play("Assets/Sounds/get_item.mp3");
             //add power
             if (mItemCollections[i]->kindItem == 1 && mPlayer->mPower < 8)
                 mPlayer->mPower += 1;

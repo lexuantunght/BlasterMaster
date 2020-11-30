@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "../GameSound.h"
 Enemy::Enemy()
 {
 
@@ -160,6 +161,8 @@ void Enemy::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::
     if (impactor->Tag == EntityTypes::Bullets)
     {
         mHp--;
+        if (mHp == 0)
+            GameSound::GetInstance()->Play("Assets/Sounds/enemy_die.mp3");
     }
     else
     { 

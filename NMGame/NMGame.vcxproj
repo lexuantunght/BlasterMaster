@@ -182,6 +182,7 @@
     <ClCompile Include="MapObjects\Rock.cpp" />
     <ClCompile Include="MapObjects\RocketBullet.cpp" />
     <ClCompile Include="MapObjects\Skull.cpp" />
+    <ClCompile Include="MapObjects\SuperBlock.cpp" />
     <ClCompile Include="MapObjects\Teleporter.cpp" />
     <ClCompile Include="MapObjects\ThunderBullet.cpp" />
     <ClCompile Include="MapObjects\Worm.cpp" />
@@ -281,6 +282,7 @@
     <ClInclude Include="MapObjects\Rock.h" />
     <ClInclude Include="MapObjects\RocketBullet.h" />
     <ClInclude Include="MapObjects\Skull.h" />
+    <ClInclude Include="MapObjects\SuperBlock.h" />
     <ClInclude Include="MapObjects\Teleporter.h" />
     <ClInclude Include="MapObjects\ThunderBullet.h" />
     <ClInclude Include="MapObjects\Worm.h" />

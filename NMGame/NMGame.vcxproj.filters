@@ -320,6 +320,9 @@
     <ClCompile Include="Ending\EndingScene.cpp">
       <Filter>Ending</Filter>
     </ClCompile>
+    <ClCompile Include="MapObjects\SuperBlock.cpp">
+      <Filter>MapObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -618,6 +621,9 @@
     </ClInclude>
     <ClInclude Include="Ending\DestroyAnimation.h">
       <Filter>Ending</Filter>
+    </ClInclude>
+    <ClInclude Include="MapObjects\SuperBlock.h">
+      <Filter>MapObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

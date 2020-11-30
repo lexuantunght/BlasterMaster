@@ -1,4 +1,5 @@
 #include "DestroyAnimation.h"
+#include "../GameSound.h"
 DestroyAnimation::~DestroyAnimation()
 {
 
@@ -11,6 +12,8 @@ void DestroyAnimation::Update(float dt)
     if (timeLoad <= 2.0f || timeLoad >= 5)
     {
         timeLoad += dt;
+        if (timeLoad > 2.0f && timeLoad < 5)
+            GameSound::GetInstance()->Play("Assets/Sounds/mountain_destroy.mp3");
         return;
     }
     else

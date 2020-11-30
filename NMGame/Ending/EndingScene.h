@@ -20,6 +20,9 @@ public:
 protected:
     Animation* mAnimationHead, * mAnimationDestroy, * mAnimationMountain;
     Sprite* mBackground;
+    Sprite* mTextScroll;
+    Sprite* mTextEnd;
+    Sprite* mBackgroundEnd;
 
     bool mIsPlaySound;
 

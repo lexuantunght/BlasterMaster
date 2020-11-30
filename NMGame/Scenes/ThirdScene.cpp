@@ -577,7 +577,10 @@ void ThirdScene::checkCollision()
         {
             //add power
             if (mItemCollections[i]->kindItem == 1 && mPlayer->mPower < 8)
+            {
+                GameSound::GetInstance()->Play("Assets/Sounds/get_item.mp3");
                 mPlayer->mPower += 1;
+            }
             else if (mItemCollections[i]->kindItem == 6)
             {
                 GameSound::GetInstance()->Play("Assets/Sounds/area_clear.mp3");

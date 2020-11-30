@@ -11,7 +11,7 @@ Game::Game(int fps)
 {
 	mFPS = fps;
 
-	SceneManager::GetInstance()->ReplaceScene(new EndingScene());
+	SceneManager::GetInstance()->ReplaceScene(new IntroScene());
 
 	InitLoop();
 }

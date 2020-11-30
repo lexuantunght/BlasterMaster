@@ -1,6 +1,7 @@
 #include "FirstScene.h"
 #include "SecondScene.h"
 #include "ThirdScene.h"
+#include "../Ending/EndingScene.h"
 #include "../SceneManager.h"
 #include "../Player.h"
 #include "../GameDefines.h"
@@ -56,6 +57,8 @@ void FirstScene::LoadContent()
     //set mau backcolor cho scene o day la mau xanh
     mBackColor = 0x1E1E1E;
     isReplace = false;
+    mIsSoundMine = false;
+    mIsPlaySound = false;
 
     mMap = new Map("Assets/area2.tmx");
     mCamera = new Camera(GameGlobal::GetWidth(), GameGlobal::GetHeight());
@@ -70,6 +73,8 @@ void FirstScene::LoadContent()
     LoadMapBound("Assets/map_bounds.txt");
     mCurrentMapBound = mListMapBound[0];
     mCurrentMapIndex = 0;
+
+    LoadSuperBlocks("Assets/super_blocks.txt");
 
     mPlayer = new Player();
     mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
@@ -158,6 +163,23 @@ void FirstScene::LoadEnemies(const char* path)
     f.close();
 }
 
+void FirstScene::LoadSuperBlocks(const char* path)
+{
+    fstream f;
+    f.open(path, std::ios::in);
+    while (!f.eof())
+    {
+        string line;
+        std::getline(f, line);
+        vector<string> info = { explode(line, ' ') };
+        if (info[0] == "1")
+        {
+            mSuperBlocks.push_back(new SuperBlock(D3DXVECTOR3(stoi(info[1]), stoi(info[2]), 0)));
+        }
+    }
+    f.close();
+}
+
 void FirstScene::Update(float dt)
 {
     if (!mIsShowMenu)
@@ -180,6 +202,7 @@ void FirstScene::Update(float dt)
 
 void FirstScene::InitForEnemies(float dt)
 {
+    mIsSoundMine = false;
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
         if (mEnemies[i] && mEnemies[i]->GetHP() > 0)
@@ -197,14 +220,20 @@ void FirstScene::InitForEnemies(float dt)
                 if (mEnemies[i]->type == Enemy::EnemyType::skull && mEnemies[i]->mBullets.size() == 0
                     && mEnemies[i]->GetVy() == 0 && mEnemies[i]->GetVx() == 0)
                 {
+                    GameSound::GetInstance()->Play("Assets/Sounds/skull_shoot.mp3");
                     mEnemies[i]->mBullets.push_back(new BulletSkull(D3DXVECTOR3(mEnemies[i]->GetPosition().x + 10, mEnemies[i]->GetPosition().y, 0)));
                     mEnemies[i]->mBullets[0]->AddVy(180);
+                }
+                if (mEnemies[i]->type == Enemy::EnemyType::mine)
+                {
+                    mIsSoundMine = true;
                 }
             }
             else
             {
                 mEnemies[i]->mIsActive = false;
                 mEnemies[i]->mBullets.clear();
+                
             }
             /*if (mEnemies[i]->mIsActive && mEnemies[i]->GetPosition().x < mPlayer->GetPosition().x)
             {
@@ -247,6 +276,19 @@ void FirstScene::InitForEnemies(float dt)
                 mPowerCollections.at(mPowerCollections.size() - 1)->SetPosition(D3DXVECTOR3(mEnemies.at(i)->GetPosition().x, mEnemies.at(i)->GetPosition().y - 8, 0));
             }
             mEnemies.erase(mEnemies.begin() + i);
+        }
+    }
+    if (mIsSoundMine && !mIsPlaySound)
+    {
+        GameSound::GetInstance()->PlayRepeat("Assets/Sounds/mine.mp3");
+        mIsPlaySound = true;
+    }
+    else if (!mIsSoundMine)
+    {
+        if (mIsPlaySound)
+        {
+            GameSound::GetInstance()->Stop("mine");
+            mIsPlaySound = false;
         }
     }
 }
@@ -357,15 +399,25 @@ void FirstScene::checkCollision()
                 mPlayer->allowMoveLeft = false;
             }
 
-            if (listCollision[i]->Tag == Entity::EntityTypes::Overworld && mPlayer->isShowJason)
+            if (listCollision[i]->Tag == Entity::EntityTypes::Overworld)
             {
-                mPlayer->AddPosition(-10, 0);
-                isReplace = true;
-                if (mCurrentMapIndex == 6)
-                    SceneManager::GetInstance()->ReplaceScene(new SecondScene(mPlayer->mSophia->GetPosition(), mPlayer->mSophia->IsFlipVertical()));
-                else
-                    SceneManager::GetInstance()->ReplaceScene(new ThirdScene(mPlayer->mSophia->GetPosition(), mPlayer->mSophia->IsFlipVertical()));
-                return;
+                if (mPlayer->isShowJason && mCurrentMapIndex != 12)
+                {
+                    mPlayer->AddPosition(-10, 0);
+                    isReplace = true;
+                    if (mCurrentMapIndex == 6)
+                        SceneManager::GetInstance()->ReplaceScene(new SecondScene(mPlayer->mSophia->GetPosition(), mPlayer->mSophia->IsFlipVertical()));
+                    else
+                        SceneManager::GetInstance()->ReplaceScene(new ThirdScene(mPlayer->mSophia->GetPosition(), mPlayer->mSophia->IsFlipVertical()));
+                    return;
+                }
+                else if (!mPlayer->isShowJason && mCurrentMapIndex == 12)
+                {
+                    GameSound::GetInstance()->Stop("area2");
+                    isReplace = true;
+                    SceneManager::GetInstance()->ReplaceScene(new EndingScene());
+                    return;
+                }
             }
 
             //kiem tra neu va cham voi gate
@@ -611,10 +663,39 @@ void FirstScene::checkCollision()
         //MessageBox(0, const_cast<char*>(str.c_str()), "test", 0);
         if (r.IsCollided)
         {
+            GameSound::GetInstance()->Play("Assets/Sounds/get_item.mp3");
             mPowerCollections.erase(mPowerCollections.begin() + i);
             //tru power
             if (mPlayer->mPower < 8)
                 mPlayer->mPower += 1;
+        }
+    }
+
+    //xu ly va cham da
+    for (size_t i = 0; i < mSuperBlocks.size(); i++)
+    {
+        Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->GetBound(),
+            mSuperBlocks[i]->GetBound());
+        if (r.IsCollided)
+        {
+            Entity::SideCollisions sidePlayer = Collision::getSideCollision(mPlayer, r);
+
+            //lay phia va cham cua Player so voi Entity
+            Entity::SideCollisions sideImpactor = Collision::getSideCollision(mSuperBlocks.at(i), r);
+
+            //goi den ham xu ly collision cua Player va Entity
+            mPlayer->OnCollision(listCollision.at(i), r, sidePlayer);
+            mSuperBlocks.at(i)->OnCollision(mPlayer, r, sideImpactor);
+
+            //ngan di chuyen
+            if (sidePlayer == Entity::SideCollisions::Right)
+            {
+                mPlayer->allowMoveRight = false;
+            }
+            else if (sidePlayer == Entity::SideCollisions::Left)
+            {
+                mPlayer->allowMoveLeft = false;
+            }
         }
     }
     
@@ -638,6 +719,27 @@ void FirstScene::checkCollision()
                 mPlayer->mBullets[i]->OnCollision(listCollisionWithBullet.at(j), r, sidePlayer);
                 listCollisionWithBullet.at(j)->OnCollision(mPlayer->mBullets[i], r, sideImpactor);
                 break;
+            }
+        }
+
+        for (size_t j = 0; j < mSuperBlocks.size(); j++)
+        {
+            Entity::CollisionReturn r = Collision::RecteAndRect(mPlayer->mBullets[i]->GetBound(), mSuperBlocks.at(j)->GetBound());
+            if (r.IsCollided)
+            {
+                //lay phia va cham cua Entity so voi Bullet
+                Entity::SideCollisions sidePlayer = Collision::getSideCollision(mPlayer->mBullets[i], r);
+
+                //lay phia va cham cua Bullet so voi Entity
+                Entity::SideCollisions sideImpactor = Collision::getSideCollision(listCollisionWithBullet.at(j), r);
+
+                //goi den ham xu ly collision cua Bullet va Entity
+                mPlayer->mBullets[i]->OnCollision(mSuperBlocks.at(j), r, sidePlayer);
+                mSuperBlocks.at(j)->OnCollision(mPlayer->mBullets[i], r, sideImpactor);
+                if (mSuperBlocks.at(j)->mDestroyed)
+                {
+                    mSuperBlocks.erase(mSuperBlocks.begin() + j);
+                }
             }
         }
     }
@@ -746,23 +848,24 @@ void FirstScene::PassGateLeft()
 void FirstScene::Draw()
 {
     //goi va draw cac sprite trong vector
-
+    D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
+        GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
     mMap->Draw();
     mPlayer->Draw();
     if (mIsPassGateLeft || mIsPassGateRight)
         mMap->DrawGates();
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
-        D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
-            GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
         if (mEnemies[i]->mIsActive)
             mEnemies.at(i)->Draw(trans);
     }
     for (size_t i = 0; i < mPowerCollections.size(); i++)
     {
-        D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
-            GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
         mPowerCollections.at(i)->Draw(mPowerCollections[i]->GetPosition(), RECT(), D3DXVECTOR2(), trans);
+    }
+    for (size_t i = 0; i < mSuperBlocks.size(); i++)
+    {
+        mSuperBlocks.at(i)->Draw(mSuperBlocks[i]->GetPosition(), RECT(), D3DXVECTOR2(), trans);
     }
     mPlayer->DrawPower();
 

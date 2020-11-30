@@ -20,6 +20,7 @@
 #include "../MapObjects/Mine.h"
 #include "../MapObjects/Enemy.h"
 #include "../Views/Menu.h"
+#include "../MapObjects/SuperBlock.h"
 
 class FirstScene : public Scene
 {
@@ -38,6 +39,7 @@ public:
 
     void LoadEnemies(const char* path);
     void LoadMapBound(const char* path);
+    void LoadSuperBlocks(const char* path);
 
     static vector<Enemy*> mEnemies;
 protected:
@@ -49,6 +51,8 @@ protected:
     bool mIsPassGateRight = false;
     bool mIsPassGateLeft = false;
     bool mIsShowMenu = false;
+    bool mIsSoundMine = false;
+    bool mIsPlaySound = false;
 
     Player* mPlayer;
     Map* mMap;
@@ -57,6 +61,7 @@ protected:
     int mCurrentMapIndex;
     RECT* mListMapBound;
     vector<Sprite*> mPowerCollections;
+    vector<SuperBlock*> mSuperBlocks;
     Menu* menu;
 
     float mTimeCounter;
