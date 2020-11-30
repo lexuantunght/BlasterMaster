@@ -4,7 +4,7 @@
 class Bullet : public Entity
 {
 public:
-	Bullet(D3DXVECTOR3 position, int angle);
+	Bullet(D3DXVECTOR3 position, int angle, bool superBullet);
 	Bullet();
 	~Bullet();
 	virtual void Update(float dt);
@@ -15,7 +15,7 @@ public:
 	RECT GetBound();
 	bool mIsValid;
 private:
-	bool init(D3DXVECTOR3 position, int angle);
+	bool init(D3DXVECTOR3 position, int angle, bool superBullet);
 protected:
 	void OnSetPosition(D3DXVECTOR3 pos);
 	const char* FileName(char* filePath);

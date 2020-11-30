@@ -1,6 +1,7 @@
 #include "PlayerOverhead.h"
 #include "PlayerStates/PlayerStandingOverheadState.h"
 #include "MapObjects/BulletOverhead.h"
+#include "GameSound.h"
 
 PlayerOverhead::PlayerOverhead()
 {
@@ -23,12 +24,15 @@ PlayerOverhead::PlayerOverhead()
     allowJump = true;
     allowShoot = true;
     mPower = 8;
+    mGun = 4;
     for (int i = 0; i < 8; i++)
     {
         mPowerItems.push_back(new Sprite("Assets/powerItem.png"));
     }
     mPowerView = new Sprite("Assets/power.png");
-
+    for (int i = 0; i < 8; i++)
+        mGunItems.push_back(new Sprite("Assets/powerItem.png"));
+    mPowerViewOverhead = new Sprite("Assets/powerOverhead.png");
     Tag = EntityTypes::Player;
 }
 
@@ -49,6 +53,7 @@ void PlayerOverhead::OnKeyPressed(int key)
     {
         if (allowShoot)
         {
+            GameSound::GetInstance()->Play("Assets/Sounds/shoot.mp3");
             if (mCurrentState == PlayerState::RunningUpOverhead || mCurrentState == PlayerState::StandingUpOverhead || mCurrentState == PlayerState::InjuringUpOverhead)
             {
                 this->mPlayerData->player->mBullets.push_back(new BulletOverhead(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 10, mPlayerData->player->GetPosition().y - 32, 0), 90));
@@ -69,6 +74,24 @@ void PlayerOverhead::OnKeyPressed(int key)
                 }
             }
             allowShoot = false;
+        }
+    }
+}
+
+void PlayerOverhead::DrawPower(D3DXVECTOR3 position, RECT sourceRect, D3DXVECTOR2 scale, D3DXVECTOR2 transform, float angle, D3DXVECTOR2 rotationCenter, D3DXCOLOR colorKey)
+{
+    if (mCamera)
+    {
+        D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
+            GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
+        mPowerViewOverhead->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 199, mCamera->GetPosition().y + 72, 0), sourceRect, scale, trans);
+        for (int i = mPower - 1; i >= 0; i--)
+        {
+            mPowerItems.at(i)->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 200, mCamera->GetPosition().y + 97 + 8 * (7 - i), 0), sourceRect, scale, trans);
+        }
+        for (int i = mGun - 1; i >= 0; i--)
+        {
+            mGunItems.at(i)->Draw(D3DXVECTOR3(mCamera->GetPosition().x - 200, mCamera->GetPosition().y - 43 + 8 * (7 - i), 0), sourceRect, scale, trans);
         }
     }
 }

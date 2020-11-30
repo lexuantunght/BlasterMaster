@@ -1,7 +1,7 @@
 #include "Bullet.h"
-Bullet::Bullet(D3DXVECTOR3 position, int angle)
+Bullet::Bullet(D3DXVECTOR3 position, int angle, bool superBullet)
 {
-	init(position, angle);
+	init(position, angle, superBullet);
 }
 
 Bullet::Bullet()
@@ -14,37 +14,73 @@ Bullet::~Bullet()
 	delete mAnimation;
 }
 
-bool Bullet::init(D3DXVECTOR3 position, int angle)
+bool Bullet::init(D3DXVECTOR3 position, int angle, bool superBullet)
 {
-    switch (angle)
+    if (superBullet)
     {
-    case 0:
-        mAnimation = new Animation("Assets/bullet0.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(480);
-        this->SetVy(0);
-        break;
-    case 45:
-        mAnimation = new Animation("Assets/bullet45.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(480);
-        this->SetVy(-480);
-        break;
-    case 90:
-        mAnimation = new Animation("Assets/bullet90.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(0);
-        this->SetVy(-480);
-        break;
-    case 135:
-        mAnimation = new Animation("Assets/bullet135.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(-480);
-        this->SetVy(-480);
-        break;
-    case 180:
-        mAnimation = new Animation("Assets/bullet180.png", TotalFrame(), Row(), Column(), SecondPerFrame());
-        this->SetVx(-480);
-        this->SetVy(0);
-        break;
-    default:
-        break;
+        mAnimation = new Animation("Assets/superBullet.png", 4, 1, 4, 0.1f);
+        switch (angle)
+        {
+        case 0:         
+            this->SetVx(480);
+            this->SetVy(0);
+            break;
+        case 45:
+            mAnimation->SetRotation(-3.14 / 4);
+            this->SetVx(480);
+            this->SetVy(-480);
+            break;
+        case 90:
+            mAnimation->SetRotation(-3.14 / 2);
+            this->SetVx(0);
+            this->SetVy(-480);
+            break;
+        case 135:
+            mAnimation->SetRotation(-3.14 * 3 / 4);
+            this->SetVx(-480);
+            this->SetVy(-480);
+            break;
+        case 180:
+            mAnimation->SetRotation(-3.14);
+            this->SetVx(-480);
+            this->SetVy(0);
+            break;
+        default:
+            break;
+        }
+    }
+    else
+    {
+        switch (angle)
+        {
+        case 0:
+            mAnimation = new Animation("Assets/bullet0.png", TotalFrame(), Row(), Column(), SecondPerFrame());
+            this->SetVx(480);
+            this->SetVy(0);
+            break;
+        case 45:
+            mAnimation = new Animation("Assets/bullet45.png", TotalFrame(), Row(), Column(), SecondPerFrame());
+            this->SetVx(480);
+            this->SetVy(-480);
+            break;
+        case 90:
+            mAnimation = new Animation("Assets/bullet90.png", TotalFrame(), Row(), Column(), SecondPerFrame());
+            this->SetVx(0);
+            this->SetVy(-480);
+            break;
+        case 135:
+            mAnimation = new Animation("Assets/bullet135.png", TotalFrame(), Row(), Column(), SecondPerFrame());
+            this->SetVx(-480);
+            this->SetVy(-480);
+            break;
+        case 180:
+            mAnimation = new Animation("Assets/bullet180.png", TotalFrame(), Row(), Column(), SecondPerFrame());
+            this->SetVx(-480);
+            this->SetVy(0);
+            break;
+        default:
+            break;
+        }
     }
 
     SetPosition(position);

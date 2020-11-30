@@ -19,7 +19,7 @@ FirstScene::FirstScene()
     mTimeCounter = 0;
 }
 
-FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse)
+FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse, bool superBullet)
 {
     mEnemies.clear();
     LoadContent();
@@ -37,6 +37,7 @@ FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse)
     }
     mPlayer->SetPosition(newPos);
     mPlayer->SetReverse(currReverse);
+    mPlayer->superBullet = superBullet;
     mPlayer->showJason();
     if (indexMap == 6)
     {
@@ -735,7 +736,8 @@ void FirstScene::checkCollision()
 
                 //goi den ham xu ly collision cua Bullet va Entity
                 mPlayer->mBullets[i]->OnCollision(mSuperBlocks.at(j), r, sidePlayer);
-                mSuperBlocks.at(j)->OnCollision(mPlayer->mBullets[i], r, sideImpactor);
+                if (mPlayer->superBullet)
+                    mSuperBlocks.at(j)->OnCollision(mPlayer->mBullets[i], r, sideImpactor);
                 if (mSuperBlocks.at(j)->mDestroyed)
                 {
                     mSuperBlocks.erase(mSuperBlocks.begin() + j);

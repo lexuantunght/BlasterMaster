@@ -61,6 +61,7 @@ protected:
     bool mIsBossStage;
     bool mIsLoadedBossStage;
     bool mIsKilledBoss;
+    bool getMachine;
     float mCountPreBoss;
 
     float mTimeCounter;

@@ -40,7 +40,7 @@ Player::Player()
     this->vy = 0;
     this->SetState(new PlayerStandingState(this->mPlayerData));
     skill = 2;
-
+    superBullet = false;
     allowJump = true;
     allowShoot = true;
     mPower = 8;
@@ -154,30 +154,30 @@ void Player::OnKeyPressed(int key)
             {
                 if (mCurrentState == PlayerState::Attacking90 || mCurrentState == PlayerState::Attack90Running)
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y - 10 - 24, 0), 90));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y - 10 - 24, 0), 90, superBullet));
                 }
                 else if (mCurrentState == PlayerState::Attacking || mCurrentState == PlayerState::AttackRunning)
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 32, mPlayerData->player->GetPosition().y - 8 - 24, 0), 45));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 32, mPlayerData->player->GetPosition().y - 8 - 24, 0), 45, superBullet));
                 }
                 else
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 24, mPlayerData->player->GetPosition().y - 12, 0), 0));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 24, mPlayerData->player->GetPosition().y - 12, 0), 0, superBullet));
                 }
             }
             else
             {
                 if (mCurrentState == PlayerState::Attacking90 || mCurrentState == PlayerState::Attack90Running)
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y - 10 - 24, 0), 90));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y - 10 - 24, 0), 90, superBullet));
                 }
                 else if (mCurrentState == PlayerState::Attacking || mCurrentState == PlayerState::AttackRunning)
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 32, mPlayerData->player->GetPosition().y - 8 - 24, 0), 135));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 32, mPlayerData->player->GetPosition().y - 8 - 24, 0), 135, superBullet));
                 }
                 else
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 24, mPlayerData->player->GetPosition().y - 12, 0), 180));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 24, mPlayerData->player->GetPosition().y - 12, 0), 180, superBullet));
                 }
             }
             allowShoot = false;

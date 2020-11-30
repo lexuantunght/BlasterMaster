@@ -52,6 +52,8 @@ void ThirdScene::LoadContent()
     LoadRocks("Assets/mapObjects.txt");
 
     mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(1360, 3372, 0), 1));
+    mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(1198, 2188, 0), 1));
+    mItemCollections.push_back(new ItemCollection(D3DXVECTOR3(1360, 2188, 0), 2));
 
     //get bound submap
     mListMapBound = new RECT[21];
@@ -68,6 +70,7 @@ void ThirdScene::LoadContent()
     mIsLoadedBossStage = false;
     mIsKilledBoss = false;
     mCountPreBoss = 0;
+    getMachine = false;
 }
 
 const vector<string> explode2(const string& s, const char& c)
@@ -364,7 +367,7 @@ void ThirdScene::checkCollision()
             if (listCollision[i]->Tag == Entity::EntityTypes::Overworld)
             {
                 isReplace = true;
-                SceneManager::GetInstance()->ReplaceScene(new FirstScene(oldPos, currReverse));
+                SceneManager::GetInstance()->ReplaceScene(new FirstScene(oldPos, currReverse, getMachine));
                 return;
             }
         }
@@ -576,13 +579,19 @@ void ThirdScene::checkCollision()
         if (r.IsCollided)
         {
             //add power
+            if (mItemCollections[i]->kindItem != 6)
+                GameSound::GetInstance()->Play("Assets/Sounds/get_item.mp3");
             if (mItemCollections[i]->kindItem == 1 && mPlayer->mPower < 8)
             {
-                GameSound::GetInstance()->Play("Assets/Sounds/get_item.mp3");
                 mPlayer->mPower += 1;
+            }
+            else if (mItemCollections[i]->kindItem == 2 && mPlayer->mGun < 8)
+            {
+                mPlayer->mGun += 2;
             }
             else if (mItemCollections[i]->kindItem == 6)
             {
+                getMachine = true;
                 GameSound::GetInstance()->Play("Assets/Sounds/area_clear.mp3");
                 if (mPlayer->getState() == PlayerState::RunningUpOverhead)
                     mPlayer->SetState(new PlayerStandingUpOverheadState(mPlayer->getPlayerData()));

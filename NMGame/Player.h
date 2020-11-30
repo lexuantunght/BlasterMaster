@@ -32,7 +32,7 @@ public:
     void Update(float dt);
 
     void Draw(D3DXVECTOR3 position = D3DXVECTOR3(), RECT sourceRect = RECT(), D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
-    void DrawPower(D3DXVECTOR3 position = D3DXVECTOR3(), RECT sourceRect = RECT(), D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
+    virtual void DrawPower(D3DXVECTOR3 position = D3DXVECTOR3(), RECT sourceRect = RECT(), D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
 
     void SetState(PlayerState* newState);
 
@@ -67,12 +67,14 @@ public:
 
     vector<Bullet*> mBullets;
     int mPower;
+    int mGun;
     bool isShowJason;
     bool isOnLadder;
     bool isGoingLadder;
     Sprite* mSophia;
     int skill; //missle = 1, thunder = 2, rocket = 3
     int missleBulletCount = 20, thunderBulletCount = 20, rocketBulletCount = 20;
+    bool superBullet;
 protected:
     PlayerData* mPlayerData;
 
@@ -102,7 +104,9 @@ protected:
         * mAnimationClimbing;
 
     Sprite* mPowerView;
+    Sprite* mPowerViewOverhead;
     vector<Sprite*> mPowerItems;
+    vector<Sprite*> mGunItems;
 
     void changeAnimation(PlayerState::StateName state);
 

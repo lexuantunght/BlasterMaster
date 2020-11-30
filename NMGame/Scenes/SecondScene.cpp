@@ -311,7 +311,7 @@ void SecondScene::checkCollision()
             if (listCollision[i]->Tag == Entity::EntityTypes::Overworld)
             {
                 isReplace = true;
-                SceneManager::GetInstance()->ReplaceScene(new FirstScene(oldPos, currReverse));
+                SceneManager::GetInstance()->ReplaceScene(new FirstScene(oldPos, currReverse, false));
                 return;
             }
         }
@@ -484,6 +484,8 @@ void SecondScene::checkCollision()
             //add power
             if (mItemCollections[i]->kindItem == 1 && mPlayer->mPower < 8)
                 mPlayer->mPower += 1;
+            if (mItemCollections[i]->kindItem == 2 && mPlayer->mGun < 8)
+                mPlayer->mGun += 1;
             mItemCollections.erase(mItemCollections.begin() + i);
         }
     }
