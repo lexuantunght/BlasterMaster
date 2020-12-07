@@ -1,5 +1,6 @@
 #include "PlayerOverhead.h"
 #include "PlayerStates/PlayerStandingOverheadState.h"
+#include "PlayerStates/PlayerOverheadDeadState.h"
 #include "MapObjects/BulletOverhead.h"
 #include "GameSound.h"
 
@@ -14,6 +15,7 @@ PlayerOverhead::PlayerOverhead()
     mAnimationInjuringOverhead = new Animation("Assets/injuringOverhead.png", 2, 1, 2, 0.02f);
     mAnimationInjuringUpOverhead = new Animation("Assets/injuringUpOverhead.png", 2, 1, 2, 0.02f);
     mAnimationInjuringDownOverhead = new Animation("Assets/injuringDownOverhead.png", 2, 1, 2, 0.02f);
+    mAnimationDeadOverhead = new Animation("Assets/overheadDead.png", 17, 1, 17, 0.1f);
 
     this->mPlayerData = new PlayerData();
     this->mPlayerData->player = this;
@@ -24,6 +26,7 @@ PlayerOverhead::PlayerOverhead()
     allowJump = true;
     allowShoot = true;
     mPower = 8;
+    countTimeDead = 0;
     mGun = 4;
     for (int i = 0; i < 8; i++)
     {
@@ -39,6 +42,37 @@ PlayerOverhead::PlayerOverhead()
 PlayerOverhead::~PlayerOverhead()
 {
 
+}
+
+void PlayerOverhead::Update(float dt)
+{
+    if (mPower == 0 && mPlayerData->player->getState() != PlayerState::OverheadDead)
+        this->SetState(new PlayerOverheadDeadState(mPlayerData));
+    if (mPlayerData->player->getState() == PlayerState::OverheadDead)
+        countTimeDead += dt;
+    if (countTimeDead >= 1.7f)
+        isDead = true;
+    mCurrentAnimation->Update(dt);
+
+    if (this->mPlayerData->state)
+    {
+        this->mPlayerData->state->Update(dt);
+    }
+
+    for (int i = 0; i < mBullets.size(); i++)
+    {
+        if (mBullets[i] && mBullets[i]->mIsValid)
+        {
+            mBullets[i]->Update(dt);
+        }
+        else
+        {
+            delete mBullets[i];
+            mBullets.erase(mBullets.begin() + i);
+        }
+    }
+
+    Entity::Update(dt);
 }
 
 void PlayerOverhead::OnKeyUp(int key)

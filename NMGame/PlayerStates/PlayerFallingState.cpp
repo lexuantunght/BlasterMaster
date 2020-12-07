@@ -3,6 +3,11 @@
 #include "PlayerStandingState.h"
 #include "../GameDefines.h"
 
+PlayerFallingState::PlayerFallingState()
+{
+
+}
+
 PlayerFallingState::PlayerFallingState(PlayerData *playerData)
 {
     this->mPlayerData = playerData;

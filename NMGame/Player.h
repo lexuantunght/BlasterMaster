@@ -29,7 +29,7 @@ public:
 
     void SetCamera(Camera* camera);
 
-    void Update(float dt);
+    virtual void Update(float dt);
 
     void Draw(D3DXVECTOR3 position = D3DXVECTOR3(), RECT sourceRect = RECT(), D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
     virtual void DrawPower(D3DXVECTOR3 position = D3DXVECTOR3(), RECT sourceRect = RECT(), D3DXVECTOR2 scale = D3DXVECTOR2(), D3DXVECTOR2 transform = D3DXVECTOR2(), float angle = 0, D3DXVECTOR2 rotationCenter = D3DXVECTOR2(), D3DXCOLOR colorKey = D3DCOLOR_XRGB(255, 255, 255));
@@ -67,6 +67,7 @@ public:
 
     vector<Bullet*> mBullets;
     int mPower;
+    bool isDead;
     int mGun;
     bool isShowJason;
     bool isOnLadder;
@@ -92,6 +93,7 @@ protected:
         * mAnimationJumping,
         * mAnimationInjuring,
         * mAnimationInjuringJump,
+        * mAnimationInjuringFall,
         * mAnimationInjuringDownOverhead,
         * mAnimationInjuringUpOverhead,
         * mAnimationInjuringOverhead,
@@ -101,7 +103,9 @@ protected:
         * mAnimationRunningOverhead,
         * mAnimationRunningUpOverhead,
         * mAnimationRunningDownOverhead,
-        * mAnimationClimbing;
+        * mAnimationDeadOverhead,
+        * mAnimationClimbing,
+        * mAnimationDead;
 
     Sprite* mPowerView;
     Sprite* mPowerViewOverhead;
@@ -115,4 +119,5 @@ protected:
     //chi cho phep jump khi nhan nhim space, muon nhay lai phai tha phim space roi nhan lai
     bool allowJump, mCurrentReverse;
     bool allowShoot;
+    float countTimeDead;
 };

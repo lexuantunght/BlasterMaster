@@ -12,6 +12,7 @@ public:
 	vector<Sprite*> GetNumbers();
 	Animation* GetSelection();
 	int GetSkill();
+	void SetSkill(int sel);
 	void UpdateBulletCount(int missle, int thunder, int rocket);
 private:
 	Sprite* mViewMenu;

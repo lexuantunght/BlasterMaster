@@ -16,7 +16,7 @@ bool Teleporter::init(D3DXVECTOR3 position, int hp)
     widthBottom = 0;
     vx = 0;
     vy = 0;
-    mTimeMove = 1.0f;
+    mTimeMove = 0.5f;
     mCurrTime = 0;
     type = EnemyType::teleporter;
     Tag = EntityTypes::Enemy;

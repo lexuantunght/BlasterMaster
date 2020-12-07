@@ -13,8 +13,32 @@ std::vector<Enemy*> FirstScene::mEnemies;
 
 FirstScene::FirstScene()
 {
+    mEnemies.clear();
     LoadContent();
     GameSound::GetInstance()->PlayRepeat("Assets/Sounds/area2.mp3");
+    menu = new Menu();
+    mTimeCounter = 0;
+}
+
+FirstScene::FirstScene(D3DXVECTOR3 lastPos)
+{
+    mEnemies.clear();
+    LoadContent();
+    GameSound::GetInstance()->PlayRepeat("Assets/Sounds/area2.mp3");
+    int indexMap = 0;
+    for (int i = 0; i < 15; i++)
+    {
+        if (mListMapBound[i].left < lastPos.x && mListMapBound[i].right > lastPos.x
+            && mListMapBound[i].top < lastPos.y && mListMapBound[i].bottom > lastPos.y)
+        {
+            mCurrentMapBound = mListMapBound[i];
+            mCurrentMapIndex = i;
+            indexMap = i;
+            break;
+        }
+    }
+    mPlayer->SetPosition(lastPos);
+    lastPosition = lastPos;
     menu = new Menu();
     mTimeCounter = 0;
 }
@@ -45,6 +69,13 @@ FirstScene::FirstScene(D3DXVECTOR3 newPos, bool currReverse, bool superBullet)
     }
     else mPlayer->SetPosition(4268, 906);
     menu = new Menu();
+    int* a = this->LoadData();
+    mPlayer->missleBulletCount = a[0];
+    mPlayer->thunderBulletCount = a[1];
+    mPlayer->rocketBulletCount = a[2];
+    mPlayer->skill = a[3];
+    mPlayer->mPower = a[4];
+    menu->SetSkill(mPlayer->skill);
 }
 
 FirstScene::~FirstScene()
@@ -74,13 +105,14 @@ void FirstScene::LoadContent()
     LoadMapBound("Assets/map_bounds.txt");
     mCurrentMapBound = mListMapBound[0];
     mCurrentMapIndex = 0;
-
+    timeWaitAfterDead = 0;
     LoadSuperBlocks("Assets/super_blocks.txt");
 
     mPlayer = new Player();
     mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 2);
     //mPlayer->SetPosition(3584, 702);
     mPlayer->SetCamera(mCamera);
+    lastPosition = mPlayer->GetPosition();
 }
 
 const vector<string> explode(const string& s, const char& c)
@@ -188,8 +220,16 @@ void FirstScene::Update(float dt)
         if (!mIsPassGateRight && !mIsPassGateLeft) checkCollision();
         if (isReplace) return;
         mMap->Update(dt);
-        if (!mIsPassGateRight && !mIsPassGateLeft) mPlayer->HandleKeyboard(keys);
-        mPlayer->Update(dt);
+        if (!mIsPassGateRight && !mIsPassGateLeft && !mPlayer->isDead) mPlayer->HandleKeyboard(keys);
+        if (!mPlayer->isDead) mPlayer->Update(dt);
+        if (mPlayer->isDead) timeWaitAfterDead += dt;
+        if (timeWaitAfterDead >= 3.0f)
+        {
+            GameSound::GetInstance()->Stop("area2");
+            isReplace = true;
+            SceneManager::GetInstance()->ReplaceScene(new FirstScene(lastPosition));
+            return;
+        }
         if (!mIsPassGateRight && !mIsPassGateLeft) InitForEnemies(dt);
         if (!mIsPassGateRight && !mIsPassGateLeft) CheckCameraAndWorldMap();
         if (mIsPassGateRight) PassGateRight();
@@ -257,14 +297,14 @@ void FirstScene::InitForEnemies(float dt)
             {
                 if (mEnemies[i]->GetPosition().x < mPlayer->GetPosition().x)
                 {
-                    mEnemies[i]->SetVx(40);
+                    mEnemies[i]->SetVx(80);
                 }
                 else
                 {
-                    mEnemies[i]->SetVx(-40);
+                    mEnemies[i]->SetVx(-80);
                 }
                 //if (mEnemies[i]->type == Enemy::EnemyType::jumper) mEnemies[i]->SetVy(-40);
-                if (mEnemies[i]->type == Enemy::EnemyType::floater) mEnemies[i]->SetVy(40);
+                if (mEnemies[i]->type == Enemy::EnemyType::floater) mEnemies[i]->SetVy(60);
             }
             if (mEnemies[i]->mIsActive)
                 mEnemies.at(i)->Update(dt);
@@ -402,6 +442,8 @@ void FirstScene::checkCollision()
 
             if (listCollision[i]->Tag == Entity::EntityTypes::Overworld)
             {
+                this->SaveData(mPlayer->missleBulletCount, mPlayer->thunderBulletCount, mPlayer->rocketBulletCount,
+                    mPlayer->skill, mPlayer->mPower);
                 if (mPlayer->isShowJason && mCurrentMapIndex != 12)
                 {
                     mPlayer->AddPosition(-10, 0);
@@ -590,7 +632,8 @@ void FirstScene::checkCollision()
     }
     
     //xu ly player va cham voi enemy
-    if (mPlayer->getState() != PlayerState::Injuring && mPlayer->getState() != PlayerState::Falling && mPlayer->getState() != PlayerState::InjuringJump)
+    if (mPlayer->getState() != PlayerState::Injuring && mPlayer->getState() != PlayerState::InjuringFall 
+        && mPlayer->getState() != PlayerState::InjuringJump && !mPlayer->isDead && mPlayer->getState() != PlayerState::Dead)
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
         if (!mEnemies[i]->mIsActive)
@@ -624,7 +667,8 @@ void FirstScene::checkCollision()
     }
     
     //xu ly player va cham voi dan enemy
-    if (mPlayer->getState() != PlayerState::Injuring && mPlayer->getState() != PlayerState::InjuringJump)
+    if (mPlayer->getState() != PlayerState::Injuring && mPlayer->getState() != PlayerState::InjuringJump 
+        && mPlayer->getState() != PlayerState::InjuringFall && !mPlayer->isDead && mPlayer->getState() != PlayerState::Dead)
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
         if (!mEnemies[i]->mIsActive)
@@ -789,6 +833,7 @@ void FirstScene::PassGateRight()
         {
             mPlayer->SetVx(0);
             mPlayer->SetState(new PlayerStandingState(mPlayer->getPlayerData()));
+            lastPosition = mPlayer->GetPosition();
 
             //set bound submap
             for (int i = 0; i < 15; i++)
@@ -830,6 +875,7 @@ void FirstScene::PassGateLeft()
         {
             mPlayer->SetVx(0);
             mPlayer->SetState(new PlayerStandingState(mPlayer->getPlayerData()));
+            lastPosition = mPlayer->GetPosition();
 
             //set bound submap
             for (int i = 0; i < 15; i++)
@@ -853,7 +899,8 @@ void FirstScene::Draw()
     D3DXVECTOR2 trans = D3DXVECTOR2(GameGlobal::GetWidth() / 2 - mCamera->GetPosition().x,
         GameGlobal::GetHeight() / 2 - mCamera->GetPosition().y);
     mMap->Draw();
-    mPlayer->Draw();
+    if (!mPlayer->isDead)
+        mPlayer->Draw();
     if (mIsPassGateLeft || mIsPassGateRight)
         mMap->DrawGates();
     for (size_t i = 0; i < mEnemies.size(); i++)
@@ -882,7 +929,7 @@ void FirstScene::OnKeyDown(int keyCode)
         mPlayer->OnKeyPressed(keyCode);
     if (mIsShowMenu)
         menu->OnKeyPressed(keyCode);
-    if (keyCode == 0x4D && !mIsShowMenu)
+    if (keyCode == 0x4D && !mIsShowMenu && !mPlayer->isDead)
     {
         menu->UpdateBulletCount(mPlayer->missleBulletCount, mPlayer->thunderBulletCount, mPlayer->rocketBulletCount);
         mIsShowMenu = true;

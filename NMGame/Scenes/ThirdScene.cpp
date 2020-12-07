@@ -22,6 +22,25 @@ ThirdScene::ThirdScene()
 	LoadContent();
 }
 
+ThirdScene::ThirdScene(D3DXVECTOR3 lastPos, D3DXVECTOR3 oldPos, bool currReverse)
+{
+    this->currReverse = currReverse;
+    this->oldPos = oldPos;
+    LoadContent();
+    for (int i = 0; i < 21; i++)
+    {
+        if (mListMapBound[i].left < lastPos.x && mListMapBound[i].right > lastPos.x
+            && mListMapBound[i].top < lastPos.y && mListMapBound[i].bottom > lastPos.y)
+        {
+            mCurrentMapBound = mListMapBound[i];
+            break;
+        }
+    }
+    mPlayer->SetPosition(lastPos);
+    lastPosition = lastPos;
+    mTimeCounter = 0;
+}
+
 ThirdScene::ThirdScene(D3DXVECTOR3 oldPos, bool currReverse)
 {
 	this->currReverse = currReverse;
@@ -35,6 +54,7 @@ ThirdScene::~ThirdScene()
     delete mMap;
     delete bossBackground;
     delete bossStage;
+    mEnemies.clear();
 }
 
 void ThirdScene::LoadContent()
@@ -162,8 +182,16 @@ void ThirdScene::Update(float dt)
     if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) checkCollision();
     if (isReplace) return;
     mMap->Update(dt);
-    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom && !mIsBossStage && !mIsKilledBoss) mPlayer->HandleKeyboard(keys);
-    mPlayer->Update(dt);
+    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom && !mIsBossStage && !mIsKilledBoss && !mPlayer->isDead) mPlayer->HandleKeyboard(keys);
+    if (!mPlayer->isDead) mPlayer->Update(dt);
+    if (mPlayer->isDead) timeWaitAfterDead += dt;
+    if (timeWaitAfterDead >= 3.0f)
+    {
+        GameSound::GetInstance()->Stop("boss");
+        isReplace = true;
+        SceneManager::GetInstance()->ReplaceScene(new ThirdScene(lastPosition, oldPos, currReverse));
+        return;
+    }
     if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom)
     {
         InitForEnemies(dt);
@@ -491,7 +519,8 @@ void ThirdScene::checkCollision()
     }
 
     //xu ly player va cham voi enemy
-    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead && mPlayer->getState() != PlayerState::InjuringDownOverhead)
+    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead 
+        && mPlayer->getState() != PlayerState::InjuringDownOverhead && !mPlayer->isDead && mPlayer->getState() != PlayerState::OverheadDead)
         for (size_t i = 0; i < mEnemies.size(); i++)
         {
             if (!mEnemies[i]->mIsActive)
@@ -537,7 +566,8 @@ void ThirdScene::checkCollision()
         }
 
     //xu ly player va cham voi dan enemy
-    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead && mPlayer->getState() != PlayerState::InjuringDownOverhead)
+    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead 
+        && mPlayer->getState() != PlayerState::InjuringDownOverhead && !mPlayer->isDead && mPlayer->getState() != PlayerState::OverheadDead)
         for (size_t i = 0; i < mEnemies.size(); i++)
         {
             if (!mEnemies[i]->mIsActive)
@@ -587,7 +617,7 @@ void ThirdScene::checkCollision()
             }
             else if (mItemCollections[i]->kindItem == 2 && mPlayer->mGun < 8)
             {
-                mPlayer->mGun += 2;
+                mPlayer->mGun += 1;
             }
             else if (mItemCollections[i]->kindItem == 6)
             {
@@ -715,6 +745,7 @@ void ThirdScene::PassGateRight()
         {
             mPlayer->SetVx(0);
             mPlayer->SetState(new PlayerStandingOverheadState(mPlayer->getPlayerData()));
+            lastPosition = mPlayer->GetPosition();
 
             //set bound submap
             for (int i = 0; i < 21; i++)
@@ -755,6 +786,7 @@ void ThirdScene::PassGateLeft()
         {
             mPlayer->SetVx(0);
             mPlayer->SetState(new PlayerStandingOverheadState(mPlayer->getPlayerData()));
+            lastPosition = mPlayer->GetPosition();
 
             //set bound submap
             for (int i = 0; i < 21; i++)
@@ -811,6 +843,8 @@ void ThirdScene::PassGateTop()
                         bossStage->SetPosition(1792, 1216);
                         bossBackground->SetPosition(1792, 1216);
                     }
+                    else
+                        lastPosition = mPlayer->GetPosition();
                     break;
                 }
             }
@@ -843,6 +877,7 @@ void ThirdScene::PassGateBottom()
         {
             mPlayer->SetVy(0);
             mPlayer->SetState(new PlayerStandingDownOverheadState(mPlayer->getPlayerData()));
+            lastPosition = mPlayer->GetPosition();
 
             //set bound submap
             for (int i = 0; i < 21; i++)
@@ -867,7 +902,7 @@ void ThirdScene::Draw()
     mMap->Draw();
     if (mIsBossStage) bossStage->Draw(trans);
     if (mIsLoadedBossStage) bossBackground->Draw(bossBackground->GetPosition(), RECT(), D3DXVECTOR2(), trans);
-    mPlayer->Draw();
+    if (!mPlayer->isDead) mPlayer->Draw();
     if (!mIsBossStage && !mIsLoadedBossStage) mMap->DrawWalls();
     if (mIsPassGateLeft || mIsPassGateRight || mIsPassGateBottom || mIsPassGateTop)
         mMap->DrawGates();

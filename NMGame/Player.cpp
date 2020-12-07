@@ -11,6 +11,8 @@
 #include "PlayerStates/PlayerInjuringDownOverheadState.h"
 #include "PlayerStates/PlayerInjuringOverheadState.h"
 #include "PlayerStates/PlayerInjuringUpOverheadState.h"
+#include "PlayerStates/PlayerDeadState.h"
+#include "PlayerStates/PlayerInjuringFallState.h"
 #include "MapObjects/ThunderBullet.h"
 #include "MapObjects/RocketBullet.h"
 #include "MapObjects/MissileBullet.h"
@@ -29,8 +31,10 @@ Player::Player()
     mAnimationAttack90Running = new Animation("Assets/sophiaRunAttack90.png", 4, 1, 4, 0.08f);
     mAnimationInjuring = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
     mAnimationInjuringJump = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
+    mAnimationInjuringFall = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
     mAnimationClimbing = new Animation("Assets/climb.png", 2, 1, 2, 0.25f);
     mAnimationFlipping = new Animation("Assets/sophiaFlipping.png", 4, 1, 4, 0.08f);
+    mAnimationDead = new Animation("Assets/deadEffect.png", 2, 1, 2, 0.15f);
     mSophia = nullptr;
     isShowJason = false;
 
@@ -44,6 +48,8 @@ Player::Player()
     allowJump = true;
     allowShoot = true;
     mPower = 8;
+    countTimeDead = 0;
+    isDead = false;
     isOnLadder = false;
     isGoingLadder = false;
     for (int i = 0; i < 8; i++)
@@ -61,6 +67,15 @@ Player::~Player()
 
 void Player::Update(float dt)
 {
+    if (mPower == 0 && mPlayerData->player->getState() != PlayerState::Dead)
+    {
+        GameSound::GetInstance()->Play("Assets/Sounds/dead.mp3");
+        this->SetState(new PlayerDeadState(mPlayerData));
+    }
+    if (mPlayerData->player->getState() == PlayerState::Dead)
+        countTimeDead += dt;
+    if (countTimeDead >= 0.3f)
+        isDead = true;
     mCurrentAnimation->Update(dt);
 
     if (this->mPlayerData->state)
@@ -103,6 +118,7 @@ void Player::OnKeyPressed(int key)
     {
         if (allowJump)
         {
+            GameSound::GetInstance()->Play("Assets/Sounds/jump.mp3");
             if (mCurrentState == PlayerState::Running || mCurrentState == PlayerState::Standing)
             {
                 this->SetState(new PlayerJumpingState(this->mPlayerData));
@@ -134,7 +150,9 @@ void Player::OnKeyPressed(int key)
                     mAnimationAttack90Running = new Animation("Assets/sophiaRunAttack90.png", 4, 1, 4, 0.08f);
                     mAnimationInjuring = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
                     mAnimationInjuringJump = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
+                    mAnimationInjuringFall = new Animation("Assets/sophiaInjuring.png", 2, 1, 2, 0.02f);
                     mAnimationFlipping = new Animation("Assets/sophiaFlipping.png", 4, 1, 4, 0.08f);
+                    mAnimationDead = new Animation("Assets/deadEffect.png", 2, 1, 2, 0.15f);
                     mCurrentAnimation = mAnimationStanding;
                     isShowJason = false;
                 }
@@ -154,30 +172,30 @@ void Player::OnKeyPressed(int key)
             {
                 if (mCurrentState == PlayerState::Attacking90 || mCurrentState == PlayerState::Attack90Running)
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y - 10 - 24, 0), 90, superBullet));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y - 10 - 24, 0), 90, superBullet, isShowJason));
                 }
                 else if (mCurrentState == PlayerState::Attacking || mCurrentState == PlayerState::AttackRunning)
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 32, mPlayerData->player->GetPosition().y - 8 - 24, 0), 45, superBullet));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 32, mPlayerData->player->GetPosition().y - 8 - 24, 0), 45, superBullet, isShowJason));
                 }
                 else
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 24, mPlayerData->player->GetPosition().y - 12, 0), 0, superBullet));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 24, mPlayerData->player->GetPosition().y - 12, 0), 0, superBullet, isShowJason));
                 }
             }
             else
             {
                 if (mCurrentState == PlayerState::Attacking90 || mCurrentState == PlayerState::Attack90Running)
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y - 10 - 24, 0), 90, superBullet));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y - 10 - 24, 0), 90, superBullet, isShowJason));
                 }
                 else if (mCurrentState == PlayerState::Attacking || mCurrentState == PlayerState::AttackRunning)
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 32, mPlayerData->player->GetPosition().y - 8 - 24, 0), 135, superBullet));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 32, mPlayerData->player->GetPosition().y - 8 - 24, 0), 135, superBullet, isShowJason));
                 }
                 else
                 {
-                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 24, mPlayerData->player->GetPosition().y - 12, 0), 180, superBullet));
+                    this->mPlayerData->player->mBullets.push_back(new Bullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x - 24, mPlayerData->player->GetPosition().y - 12, 0), 180, superBullet, isShowJason));
                 }
             }
             allowShoot = false;
@@ -189,10 +207,10 @@ void Player::OnKeyPressed(int key)
         {
             if ((skill == 1 && missleBulletCount > 0) || (skill == 2 && thunderBulletCount > 0) || (skill == 3 && rocketBulletCount > 0))
             {
-                GameSound::GetInstance()->Play("Assets/Sounds/shoot.mp3");
                 switch (skill)
                 {
                 case 1:
+                    GameSound::GetInstance()->Play("Assets/Sounds/missile.mp3");
                     if (!mCurrentReverse)
                     {
                         this->mPlayerData->player->mBullets.push_back(new MissileBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 50, mPlayerData->player->GetPosition().y, 0), 0));
@@ -204,10 +222,12 @@ void Player::OnKeyPressed(int key)
                     missleBulletCount--;
                     break;
                 case 2:
+                    GameSound::GetInstance()->Play("Assets/Sounds/thunder.mp3");
                     this->mPlayerData->player->mBullets.push_back(new ThunderBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x, mPlayerData->player->GetPosition().y + 90, 0)));
                     thunderBulletCount--;
                     break;
                 case 3:
+                    GameSound::GetInstance()->Play("Assets/Sounds/rocket.mp3");
                     if (!mCurrentReverse)
                     {
                         this->mPlayerData->player->mBullets.push_back(new RocketBullet(D3DXVECTOR3(mPlayerData->player->GetPosition().x + 50, mPlayerData->player->GetPosition().y, 0), 0, 1));
@@ -246,6 +266,8 @@ void Player::showJason()
     mAnimationAttack90Running = new Animation("Assets/run.png", 3, 1, 3, 0.08f);
     mAnimationInjuring = new Animation("Assets/injuring.png", 2, 1, 2, 0.02f);
     mAnimationInjuringJump = new Animation("Assets/injuring.png", 2, 1, 2, 0.02f);
+    mAnimationInjuringFall = new Animation("Assets/injuring.png", 2, 1, 2, 0.02f);
+    mAnimationDead = new Animation("Assets/JasonDie.png", 3, 1, 3, 0.1f);
     mCurrentAnimation = mAnimationStanding;
     this->AddVy(-240);
     isShowJason = true;
@@ -401,13 +423,22 @@ void Player::changeAnimation(PlayerState::StateName state)
     case PlayerState::InjuringDownOverhead:
         mCurrentAnimation = mAnimationInjuringDownOverhead;
         break;
+    case PlayerState::OverheadDead:
+        mCurrentAnimation = mAnimationDeadOverhead;
+        break;
     case PlayerState::InjuringJump:
         mCurrentAnimation = mAnimationInjuringJump;
+        break;
+    case PlayerState::InjuringFall:
+        mCurrentAnimation = mAnimationInjuringFall;
         break;
     case PlayerState::Flipping:
         delete mAnimationFlipping;
         mAnimationFlipping = new Animation("Assets/sophiaFlipping.png", 4, 1, 4, 0.1f);
         mCurrentAnimation = mAnimationFlipping;
+        break;
+    case PlayerState::Dead:
+        mCurrentAnimation = mAnimationDead;
         break;
     }
 
@@ -442,7 +473,7 @@ PlayerData* Player::getPlayerData()
 
 void Player::OnNoCollisionWithBottom()
 {
-    if (mCurrentState != PlayerState::Jumping && mCurrentState != PlayerState::Falling && mCurrentState != PlayerState::Climbing && !isGoingLadder && mCurrentState != PlayerState::InjuringJump)
+    if (mCurrentState != PlayerState::Jumping && mCurrentState != PlayerState::Falling && mCurrentState != PlayerState::Climbing && !isGoingLadder && mCurrentState != PlayerState::InjuringJump && mCurrentState != PlayerState::PlayerState::InjuringFall)
     {
         this->SetState(new PlayerFallingState(this->mPlayerData));
     }
@@ -466,6 +497,14 @@ void Player::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity:
         else if (mCurrentState == PlayerState::RunningDownOverhead || mCurrentState == PlayerState::StandingDownOverhead || mCurrentState == PlayerState::InjuringDownOverhead)
         {
             this->SetState(new PlayerInjuringDownOverheadState(mPlayerData));
+        }
+        else if (mCurrentState == PlayerState::Falling)
+        {
+            this->SetState(new PlayerInjuringFallState(this->mPlayerData));
+        }
+        else if (mCurrentState == PlayerState::Jumping)
+        {
+            this->SetState(new PlayerInjuringJumpState(this->mPlayerData));
         }
         else
         {

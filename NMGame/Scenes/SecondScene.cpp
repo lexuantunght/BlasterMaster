@@ -35,6 +35,7 @@ SecondScene::~SecondScene()
 {
     delete mPlayer;
     delete mMap;
+    mEnemies.clear();
 }
 
 void SecondScene::LoadContent()
@@ -60,7 +61,7 @@ void SecondScene::LoadContent()
     mListMapBound = new RECT[1];
     LoadMapBound("Assets/map_bounds_overworld1.txt");
     mCurrentMapBound = mListMapBound[0];
-
+    timeWaitAfterDead = 0;
     mPlayer = new PlayerOverhead();
     mPlayer->SetPosition(GameGlobal::GetWidth() / 2, mMap->GetHeight() - GameGlobal::GetHeight() / 4);
     //mPlayer->SetPosition(3584, 702);
@@ -133,8 +134,16 @@ void SecondScene::Update(float dt)
     if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) checkCollision();
     if (isReplace) return;
     mMap->Update(dt);
-    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) mPlayer->HandleKeyboard(keys);
-    mPlayer->Update(dt);
+    if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom && !mPlayer->isDead) mPlayer->HandleKeyboard(keys);
+    if (!mPlayer->isDead)
+        mPlayer->Update(dt);
+    if (mPlayer->isDead) timeWaitAfterDead += dt;
+    if (timeWaitAfterDead >= 3.0f)
+    {
+        isReplace = true;
+        SceneManager::GetInstance()->ReplaceScene(new SecondScene(oldPos, currReverse));
+        return;
+    }
     if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) InitForEnemies(dt);
     if (!mIsPassGateRight && !mIsPassGateLeft && !mIsPassGateTop && !mIsPassGateBottom) CheckCameraAndWorldMap();
     if (mIsPassGateRight) PassGateRight();
@@ -393,7 +402,8 @@ void SecondScene::checkCollision()
     }
 
     //xu ly player va cham voi enemy
-    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead && mPlayer->getState() != PlayerState::InjuringDownOverhead)
+    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead 
+        && mPlayer->getState() != PlayerState::InjuringDownOverhead && !mPlayer->isDead && mPlayer->getState() != PlayerState::OverheadDead)
         for (size_t i = 0; i < mEnemies.size(); i++)
         {
             if (!mEnemies[i]->mIsActive)
@@ -439,7 +449,8 @@ void SecondScene::checkCollision()
         }
 
     //xu ly player va cham voi dan enemy
-    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead && mPlayer->getState() != PlayerState::InjuringDownOverhead)
+    if (mPlayer->getState() != PlayerState::InjuringOverhead && mPlayer->getState() != PlayerState::InjuringUpOverhead 
+        && mPlayer->getState() != PlayerState::InjuringDownOverhead && !mPlayer->isDead && mPlayer->getState() != PlayerState::OverheadDead)
     for (size_t i = 0; i < mEnemies.size(); i++)
     {
         if (!mEnemies[i]->mIsActive)
@@ -678,7 +689,8 @@ void SecondScene::Draw()
     //goi va draw cac sprite trong vector
 
     mMap->Draw();
-    mPlayer->Draw();
+    if (!mPlayer->isDead)
+        mPlayer->Draw();
     if (mIsPassGateLeft || mIsPassGateRight || mIsPassGateBottom || mIsPassGateTop)
         mMap->DrawGates();
     for (size_t i = 0; i < mEnemies.size(); i++)

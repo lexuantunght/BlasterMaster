@@ -73,6 +73,22 @@ void Enemy::Update(float dt)
             if (vy <= -160) mIsGoDown = true;
         }
     }
+    //for worm and dome
+    if (this->type == EnemyType::dome || this->type == EnemyType::worm)
+    {
+        if (vx > 0)
+        {
+            if ((this->GetPosition().x >= 620 && this->GetPosition().x < 640) || (this->GetPosition().x >= 1000 && this->GetPosition().x < 1020)
+                || (this->GetPosition().x >= 1390 && this->GetPosition().x < 1410))
+                vx = -vx;
+        }
+        else
+        {
+            if ((this->GetPosition().x <= 790 && this->GetPosition().x > 770) || (this->GetPosition().x <= 1180 && this->GetPosition().x > 1160)
+                || (this->GetPosition().x <= 1560 && this->GetPosition().x > 1540))
+                vx = -vx;
+        }
+    }
     Entity::Update(dt);
 }
 
@@ -206,6 +222,7 @@ void Enemy::OnCollision(Entity* impactor, Entity::CollisionReturn data, Entity::
             case Entity::Bottom:
             case Entity::BottomRight:
             case Entity::BottomLeft:
+                if (type != EnemyType::cannon)
                 if (data.RegionCollision.right - data.RegionCollision.left >= 8.0f)
                 {
                     this->AddPosition(0, -(data.RegionCollision.bottom - data.RegionCollision.top));

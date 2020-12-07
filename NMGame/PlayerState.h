@@ -20,6 +20,7 @@ public:
         Die,
         Injuring,
         InjuringJump,
+        InjuringFall,
         Climbing,
         RunningOverhead,
         StandingOverhead,
@@ -29,7 +30,9 @@ public:
         RunningDownOverhead,
         InjuringOverhead,
         InjuringUpOverhead,
-        InjuringDownOverhead
+        InjuringDownOverhead,
+        Dead,
+        OverheadDead
     };
 
     PlayerState(PlayerData* playerData);

@@ -5,6 +5,7 @@ class Bullet : public Entity
 {
 public:
 	Bullet(D3DXVECTOR3 position, int angle, bool superBullet);
+	Bullet(D3DXVECTOR3 position, int angle, bool superBullet, bool jason);
 	Bullet();
 	~Bullet();
 	virtual void Update(float dt);

@@ -323,6 +323,15 @@
     <ClCompile Include="MapObjects\SuperBlock.cpp">
       <Filter>MapObjects</Filter>
     </ClCompile>
+    <ClCompile Include="PlayerStates\PlayerDeadState.cpp">
+      <Filter>PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStates\PlayerOverheadDeadState.cpp">
+      <Filter>PlayerStates</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerStates\PlayerInjuringFallState.cpp">
+      <Filter>PlayerStates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -624,6 +633,15 @@
     </ClInclude>
     <ClInclude Include="MapObjects\SuperBlock.h">
       <Filter>MapObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStates\PlayerDeadState.h">
+      <Filter>PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStates\PlayerOverheadDeadState.h">
+      <Filter>PlayerStates</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerStates\PlayerInjuringFallState.h">
+      <Filter>PlayerStates</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

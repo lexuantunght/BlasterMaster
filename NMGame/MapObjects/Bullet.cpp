@@ -4,6 +4,51 @@ Bullet::Bullet(D3DXVECTOR3 position, int angle, bool superBullet)
 	init(position, angle, superBullet);
 }
 
+Bullet::Bullet(D3DXVECTOR3 position, int angle, bool superBullet, bool jason)
+{
+    if (jason)
+    {
+        mAnimation = new Animation("Assets/jasonBullet.png", TotalFrame(), Row(), Column(), SecondPerFrame());
+        switch (angle)
+        {
+        case 0:
+            this->SetVx(480);
+            this->SetVy(0);
+            break;
+        case 45:
+            this->SetVx(480);
+            this->SetVy(-480);
+            break;
+        case 90:
+            this->SetVx(0);
+            this->SetVy(-480);
+            break;
+        case 135:
+            this->SetVx(-480);
+            this->SetVy(-480);
+            break;
+        case 180:
+            this->SetVx(-480);
+            this->SetVy(0);
+            break;
+        default:
+            break;
+        }
+        SetPosition(D3DXVECTOR3(position.x, position.y + 10, position.z));
+        mStartedPosition = D3DXVECTOR3(position.x, position.y + 10, position.z);
+        mTimeExist = 0;
+        mIsValid = true;
+
+        Entity::SetWidth(mAnimation->GetWidth());
+        Entity::SetHeight(mAnimation->GetHeight());
+        Tag = Entity::EntityTypes::Bullets;
+    }
+    else
+    {
+        init(position, angle, superBullet);
+    }
+}
+
 Bullet::Bullet()
 {
 

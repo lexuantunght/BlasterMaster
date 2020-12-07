@@ -26,6 +26,7 @@ class FirstScene : public Scene
 {
 public:
     FirstScene();
+    FirstScene(D3DXVECTOR3 lastPos);
     FirstScene(D3DXVECTOR3 newPos, bool currReverse, bool superBullet);
     ~FirstScene();
 

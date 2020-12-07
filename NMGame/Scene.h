@@ -16,6 +16,8 @@ public:
     virtual void OnMouseDown(float x, float y);
 
     D3DCOLOR GetBackcolor();
+    void SaveData(int missle, int thunder, int rocket, int sel, int gun);
+    int* LoadData();
 
     virtual ~Scene();
 
@@ -25,4 +27,6 @@ protected:
     D3DCOLOR                mBackColor;
 
     bool isReplace;
+    float timeWaitAfterDead = 0;
+    D3DXVECTOR3 lastPosition;
 };

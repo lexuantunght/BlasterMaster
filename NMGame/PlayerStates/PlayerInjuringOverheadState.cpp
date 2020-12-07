@@ -48,6 +48,23 @@ void PlayerInjuringOverheadState::HandleKeyboard(std::map<int, bool> keys)
         }
         return;
     }
+    else if (keys[VK_UP])
+    {
+        //this->mPlayerData->player->SetState(new PlayerRunningState(this->mPlayerData));
+        if (this->mPlayerData->player->allowMoveUp)
+        {
+            this->mPlayerData->player->SetVy(-140);
+        }
+        return;
+    }
+    else if (keys[VK_DOWN])
+    {
+        if (this->mPlayerData->player->allowMoveDown)
+        {
+            this->mPlayerData->player->SetVy(140);
+        }
+        return;
+    }
     else
     {
         this->mPlayerData->player->SetVx(0);

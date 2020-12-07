@@ -9,7 +9,7 @@ public:
     PlayerJumpingState();
     ~PlayerJumpingState();
 
-    void Update(float dt);
+    virtual void Update(float dt);
 
     void HandleKeyboard(std::map<int, bool> keys);
     void OnCollision(Entity* impactor, Entity::SideCollisions side, Entity::CollisionReturn data);

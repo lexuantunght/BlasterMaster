@@ -56,6 +56,24 @@ void PlayerInjuringUpOverheadState::HandleKeyboard(std::map<int, bool> keys)
         }
         return;
     }
+    else if (keys[VK_RIGHT])
+    {
+        if (this->mPlayerData->player->allowMoveRight)
+        {
+            mPlayerData->player->SetReverse(true);
+            this->mPlayerData->player->SetVx(140);
+        }
+        return;
+    }
+    else if (keys[VK_LEFT])
+    {
+        if (this->mPlayerData->player->allowMoveLeft)
+        {
+            mPlayerData->player->SetReverse(true);
+            this->mPlayerData->player->SetVx(-140);
+        }
+        return;
+    }
     else
     {
         this->mPlayerData->player->SetVy(0);

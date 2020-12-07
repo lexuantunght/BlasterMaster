@@ -35,6 +35,22 @@ Menu::~Menu()
 	mNumbers.clear();
 }
 
+void Menu::SetSkill(int sel)
+{
+	switch (sel)
+	{
+	case 1:
+		mSelection->SetPosition(GameGlobal::GetWidth() / 2 - 60, GameGlobal::GetHeight() / 2 + 125);
+		break;
+	case 2:
+		mSelection->SetPosition(GameGlobal::GetWidth() / 2, GameGlobal::GetHeight() / 2 + 125);
+		break;
+	default:
+		mSelection->SetPosition(GameGlobal::GetWidth() / 2 + 60, GameGlobal::GetHeight() / 2 + 125);
+		break;
+	}
+}
+
 void Menu::UpdateBulletCount(int missle, int thunder, int rocket)
 {
 	for (int i = 0; i < 6; i++)
